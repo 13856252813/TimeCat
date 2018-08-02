@@ -1,0 +1,71 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fl_radio_show"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:id="@+id/rg_radio_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="@dimen/five">
+
+        <RadioButton
+            android:id="@+id/rb_radio_homepage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/hometablayout"
+            android:gravity="center"
+            android:text="首页"
+            android:textColor="@drawable/radio_button_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_radio_subscription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/messagetablayout"
+            android:gravity="center"
+            android:text="消息"
+            android:textColor="@drawable/radio_button_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_radio_find"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/looktablayout"
+            android:gravity="center"
+            android:text="发现"
+            android:textColor="@drawable/radio_button_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_radio_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/minetablayout"
+            android:gravity="center"
+            android:text="我的"
+            android:textColor="@drawable/radio_button_selector" />
+    </RadioGroup>
+</LinearLayout>

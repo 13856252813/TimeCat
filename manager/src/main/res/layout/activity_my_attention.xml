@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/one"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_teacher"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/ten"
+            android:paddingRight="@dimen/ten"
+            android:paddingTop="@dimen/ten">
+
+
+            <TextView
+                android:id="@+id/tv_teacher_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="老师"
+                android:textColor="@color/login_color_btn"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_teacher_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/two"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@color/login_color_btn" />
+
+        </LinearLayout>
+        <!--门店-->
+        <LinearLayout
+            android:id="@+id/ll_user"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/ten"
+            android:paddingRight="@dimen/ten"
+            android:paddingTop="@dimen/ten">
+
+            <TextView
+                android:id="@+id/tv_user_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="用户"
+                android:textColor="@color/color_three"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_user_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/two"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@color/transparent" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lincontent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/ten"
+        android:orientation="vertical" />
+</LinearLayout>

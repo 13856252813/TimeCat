@@ -1,0 +1,51 @@
+打包注意事项
+1、前面改为每个项目的包名
+UMLarbiy中provider的包改一下;     
+管理端
+android:authorities="com.cary.activity.timecat.manager.umeng.message"
+用户端
+android:authorities="com.cary.activity.timecat.umeng.message"
+hmspush的provider改为包名
+管理端
+ android:authorities="com.cary.activity.timecat.manager.updateSdk.fileProvider"
+ android:authorities="com.cary.activity.timecat.manager.hms.update.provider"
+用户端            
+ android:authorities="com.cary.activity.timecat.updateSdk.fileProvider"
+ android:authorities="com.cary.activity.timecat.hms.update.provider"
+
+2、
+
+
+
+时光猫
+Timecat
+keystore 密码 Timecat@
+
+别名: timecat
+创建日期: May 3, 2018
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=Timecat, OU=Timecat, O=Timecat, L=shanghai, ST=shanghai, C=CN
+发布者: CN=Timecat, OU=Timecat, O=Timecat, L=shanghai, ST=shanghai, C=CN
+序列号: 1aa51073
+有效期开始日期: Thu May 03 09:35:02 CST 2018, 截止日期: Sat Apr 09 09:35:02 CST 2118
+证书指纹:
+	 MD5: 48:E9:CD:F6:45:6E:A5:76:0A:17:4B:3B:66:87:CF:65
+	 SHA1: A2:9F:76:8F:97:52:45:BE:B1:32:C6:AE:B8:12:92:7D:B1:CA:4A:AA
+	 SHA256: 42:A8:BA:42:90:C4:F2:1D:75:BF:D4:B9:96:ED:28:F8:21:CF:D9:C2:4E:56:EB:F8:86:9D:67:3B:C8:70:70:01
+	 签名算法名称: SHA256withRSA
+	 版本: 3
+
+扩展:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 1A 7F 5F B0 CE 84 82 55   EA 75 D5 BE 89 F6 C1 4C  .._....U.u.....L
+0010: 80 B9 B0 52                                        ...R
+]
+]
+
+
+

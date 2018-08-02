@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".fragment.person.invitaion.InvitaionCodeActivity">
+
+    <include layout="@layout/title_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/ten">
+
+        <TextView
+            android:id="@+id/tv_invitaion_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/color_three"
+            android:textSize="21dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_invitaion_code_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/five"
+            android:text="我的邀请码"
+            android:textColor="@color/color_six"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/ten"
+            android:drawableLeft="@mipmap/tirps"
+            android:drawablePadding="@dimen/ten"
+            android:text="邀请好友注册可得100积分，好友消费的第一笔订单奖励您5%"
+            android:textColor="@color/color_six"
+            android:textSize="11dp" />
+    </LinearLayout>
+
+    <!--邀请人-->
+    <RelativeLayout
+        android:id="@+id/rl_invitaion_code_write"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@color/white"
+        android:padding="@dimen/ten">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="邀请人"
+            android:textColor="@color/color_three"
+            android:textSize="14dp" />
+
+        <ImageView
+            android:id="@+id/iv_invitaion_code_arrow"
+            android:layout_width="9dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/rightarrow" />
+
+        <TextView
+            android:id="@+id/tv_invitaion_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_toLeftOf="@id/iv_invitaion_code_arrow"
+            android:text="填写邀请码后享9折优惠"
+            android:textColor="#AEAEAE"
+            android:textSize="13dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
+        android:text="我邀请的好友"
+        android:textColor="#AEAEAE"
+        android:textSize="13dp" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout_invitaion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/ten">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_invitaion_code_person"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

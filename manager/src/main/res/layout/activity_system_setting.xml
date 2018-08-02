@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one"
+        android:background="#dedede" />
+
+    <RelativeLayout
+        android:id="@+id/rl_push_onoff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/ten">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="推送开关"
+            android:textColor="#858585"
+            android:textSize="16dp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_push_onoff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:checked="true" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one"
+        android:layout_marginLeft="@dimen/ten"
+        android:background="#dedede" />
+    <!--修改登录密码-->
+    <RelativeLayout
+        android:id="@+id/rl_change_loginpass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/ten">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="修改登录密码"
+            android:textColor="#858585"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:layout_width="9dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/rightarrow" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one"
+        android:layout_marginLeft="@dimen/ten"
+        android:background="#dedede" />
+
+    <RelativeLayout
+        android:id="@+id/rl_version_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/ten">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="版本信息"
+            android:textColor="#858585"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:layout_width="9dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/rightarrow" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one"
+        android:layout_marginLeft="@dimen/ten"
+        android:background="#dedede" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_marginRight="@dimen/ten"
+        android:layout_marginTop="@dimen/twenty"
+        android:background="@drawable/login_lgbtn_shape"
+        android:gravity="center"
+        android:text="退出登录"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+</LinearLayout>

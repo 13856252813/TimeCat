@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/ten">
+
+
+    <ImageView
+        android:id="@+id/iv_message_list_item_head"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_message_list_item_noread"
+        android:layout_width="@dimen/ten"
+        android:layout_height="@dimen/ten"
+        android:layout_alignRight="@id/iv_message_list_item_head"
+        android:background="@drawable/shape_circle_red" />
+
+
+    <ImageView
+        android:id="@+id/iv_message_list_item_group_head"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="35dp"
+        android:src="@mipmap/student" />
+
+    <TextView
+        android:id="@+id/tv_message_list_item_group_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@id/iv_message_list_item_group_head"
+        android:text="李国强"
+        android:textColor="@color/color_three"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_message_list_item_group_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_message_list_item_head"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@id/iv_message_list_item_group_head"
+        android:text="李国强:我不管，我是这个群里最漂亮的"
+        android:textColor="#2d2d2d"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/tv_message_list_item_group_message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/iv_message_list_item_head"
+        android:layout_alignParentRight="true"
+        android:text="12:87"
+        android:textColor="#ACACAC"
+        android:textSize="9dp" />
+</RelativeLayout>

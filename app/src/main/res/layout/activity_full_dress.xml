@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context=".fragment.index.fulldress.FullDressActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/title_layout" />
+
+        <ImageView
+            android:id="@+id/iv_fulldress_sellarea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ten"
+            android:scaleType="fitXY"
+            android:src="@mipmap/salearea" />
+
+        <ImageView
+            android:id="@+id/iv_fulldress_sharearea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/ten"
+            android:scaleType="fitXY"
+            android:src="@mipmap/sharearea" />
+    </LinearLayout>
+
+</ScrollView>

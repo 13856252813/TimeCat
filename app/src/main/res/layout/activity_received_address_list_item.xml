@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--显示地址-->
+    <LinearLayout
+        android:id="@+id/rl_received_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/ten">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_received_address_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/five">
+
+            <TextView
+                android:id="@+id/tv_received_address_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小星星"
+                android:textColor="@color/color_three"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_received_address_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_received_address_name"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_toRightOf="@id/tv_received_address_name"
+                android:text="121111111"
+                android:textColor="#8C8C8C"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_received_address_default_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_received_address_name"
+                android:layout_below="@id/tv_received_address_name"
+                android:layout_marginTop="@dimen/five"
+                android:text="默认收件地址"
+                android:layout_marginRight="@dimen/ten"
+                android:visibility="gone"
+                android:textColor="@color/login_color_btn"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_received_address_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_received_address_default_text"
+                android:layout_below="@id/tv_received_address_name"
+                android:layout_marginTop="@dimen/five"
+                android:text="江苏省 这将是"
+                android:textColor="#8C8C8C"
+                android:textSize="13dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_received_address_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/one"
+                android:layout_marginTop="@dimen/ten"
+                android:background="#dedede" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/ten">
+
+                <CheckBox
+                    android:id="@+id/checkbox_default_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/register_checkbox_style"
+                    android:drawablePadding="@dimen/five"
+                    android:text="设置为默认地址"
+                    android:textColor="#8C8C8C"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_received_address_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:drawableLeft="@mipmap/trash"
+                    android:drawablePadding="@dimen/five"
+                    android:text="删除"
+                    android:textColor="#8C8C8C"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_received_address_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/fifteen"
+                    android:layout_toLeftOf="@id/tv_received_address_delete"
+                    android:drawableLeft="@mipmap/pen"
+                    android:drawablePadding="@dimen/five"
+                    android:text="编辑"
+                    android:textColor="#8C8C8C"
+                    android:textSize="13dp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

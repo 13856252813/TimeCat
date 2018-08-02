@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_push_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
+        android:background="@color/white"
+        android:hint="请输入推送用户的手机号"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:padding="@dimen/ten"
+        android:textColor="#4d4d4d"
+        android:textColorHint="#999999"
+        android:textSize="13dp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/et_push_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
+        android:background="@color/white"
+        android:hint="请输入推送标题"
+        android:padding="@dimen/ten"
+        android:textColor="#4d4d4d"
+        android:textColorHint="#999999"
+        android:textSize="13dp" />
+
+    <EditText
+        android:id="@+id/et_push_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="@dimen/ten"
+        android:background="@color/white"
+        android:gravity="top"
+        android:hint="请输入推送内容"
+        android:padding="@dimen/ten"
+        android:textColor="#4d4d4d"
+        android:textColorHint="#999999"
+        android:textSize="13dp" />
+
+
+    <Button
+        android:id="@+id/btn_pushmessage_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
+        android:background="@drawable/login_lgbtn_shape"
+        android:gravity="center"
+        android:padding="@dimen/ten"
+        android:text="确定发布"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+</LinearLayout>

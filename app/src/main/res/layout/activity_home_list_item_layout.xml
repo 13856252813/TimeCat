@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/activity_home_list_item_hot_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitStart" />
+
+    <TextView
+        android:id="@+id/activity_home_list_item_hot_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_home_list_item_hot_img"
+        android:layout_marginTop="@dimen/ten"
+        android:text="标题"
+        android:textColor="@color/color_three"
+        android:textSize="@dimen/fourteen" />
+
+    <TextView
+        android:id="@+id/activity_home_list_item_hot_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_home_list_item_hot_title"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@drawable/red_tran_shape"
+        android:paddingBottom="@dimen/five"
+        android:paddingLeft="@dimen/ten"
+        android:paddingRight="@dimen/ten"
+        android:paddingTop="@dimen/five"
+        android:text="热门景点"
+        android:textColor="@color/login_color_btn" />
+
+    <TextView
+        android:id="@+id/activity_home_list_item_hot_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/activity_home_list_item_hot_flag"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@id/activity_home_list_item_hot_flag"
+        android:text="¥0"
+        android:textColor="@color/login_color_btn"
+        android:textSize="@dimen/textsize_title"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/activity_home_list_item_hot_money_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/activity_home_list_item_hot_flag"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@id/activity_home_list_item_hot_money"
+        android:text="¥0"
+        android:textColor="@color/color_three"
+        android:textSize="@dimen/textsize_content" />
+
+</RelativeLayout>

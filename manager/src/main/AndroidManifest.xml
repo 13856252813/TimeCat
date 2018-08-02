@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cary.activity.timecat.manager">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 环信 Required -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- bugly start -->
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- bugly end -->
+
+    <permission
+        android:name="com.hyphenate.chatuidemo.permission.MIPUSH_RECEIVE"
+        android:protectionLevel="signatureOrSystem" />
+
+    <uses-permission android:name="com.hyphenate.chatuidemo.permission.MIPUSH_RECEIVE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MyRealApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".guide.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 配置支付宝 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity android:name=".wxapi.WXEntryActivity" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="false" />
+        <uses-library android:name="android.test.runner" />
+
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 环信 start -->
+        <!-- 设置环信应用的AppKey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="YXA6CJa28FsBEeifCgucpQwMsw" />
+        <!-- 声明SDK所需的service SDK核心功能 -->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <!-- 环信end -->
+        <!-- 开机自启动服务 -->
+        <receiver android:name=".easeui.receiver.StartServiceReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- FCM required start -->
+        <service android:name="easeui.fcm.EMFCMMSGService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".easeui.fcm.EMFCMTokenRefreshService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- FCM required end -->
+
+
+        <!-- mi push -->
+        <service
+            android:name="com.xiaomi.mipush.sdk.PushMessageHandler"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedService" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService"
+            android:enabled="true" />
+
+        <receiver
+            android:name="com.hyphenate.chat.EMMipushReceiver"
+            android:exported="true"
+            tools:ignore="ExportedReceiver">
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.MESSAGE_ARRIVED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.ERROR" />
+            </intent-filter>
+        </receiver>
+        <!-- mi push end -->
+
+
+        <!-- 华为 HMS Config -->
+        <!--
+            接入HMSSDK PUSH模块需要注册，第三方相关 :接收Push消息（注册、Push消息、Push连接状态）广播，
+                此receiver类需要开发者自己创建并继承com.huawei.hms.support.api.push.PushReceiver类，
+                参考示例代码中的类：com.huawei.hmsagent.HuaweiPushRevicer
+        -->
+        <receiver android:name=".easeui.receiver.HMSPushReceiver">
+            <intent-filter>
+
+                <!-- 必须,用于接收 TOKEN -->
+                <action android:name="com.huawei.android.push.intent.REGISTRATION" />
+                <!-- 必须，用于接收消息 -->
+                <action android:name="com.huawei.android.push.intent.RECEIVE" />
+                <!-- 可选，用于点击通知栏或通知栏上的按钮后触发 onEvent 回调 -->
+                <action android:name="com.huawei.android.push.intent.CLICK" />
+                <!-- 可选，查看 PUSH 通道是否连接，不查看则不需要 -->
+                <action android:name="com.huawei.intent.action.PUSH_STATE" />
+            </intent-filter>
+        </receiver>
+        <!-- huawei push end -->
+
+        <activity android:name=".MainActivity" />
+        <activity android:name=".register.RegisterActivity" />
+        <activity android:name=".register.ForgetPassActivity" />
+        <activity android:name=".register.PerfectInformationActivity" />
+        <activity android:name=".webview.WebViewActivity" />
+        <activity android:name=".teacherregister.TeacherRegisterActivity" />
+        <activity android:name=".teacherregister.RealNameAuthActivity" />
+        <activity android:name=".teacherregister.CommitSuccessActivity" />
+        <activity android:name=".crashpledge.CrashPledgeActivity" />
+        <activity android:name=".crashpledge.PayPhotoGraphyOrderActivity" />
+        <activity android:name=".message.group.MessageGroupMemberActivity" />
+        <activity android:name=".message.detial.MessageDetialActivity" />
+        <activity android:name=".message.list.MessageSearchNameActivity" />
+        <activity android:name=".message.myfriend.MyFriendListActivity" />
+        <activity android:name=".message.myfriend.detial.FriendDetialActivity" />
+        <activity android:name=".teacher.fragment.grab.TaskDetialActivity" />
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".teacher.fragment.systemmessage.SystemMessageActivity" />
+        <activity android:name=".teacher.fragment.balance.BalanceActivity" />
+        <activity android:name=".teacher.fragment.integral.TimeCreditActivity" />
+        <activity android:name=".teacher.fragment.invitaion.InvitaionCodeActivity" />
+        <activity android:name=".teacher.fragment.crashpledge.CashPledgeActivity" />
+        <activity android:name=".teacher.fragment.servicephone.ServicePhoneActivity" />
+        <activity android:name=".teacher.fragment.systemsetting.SystemSettingActivity" />
+        <activity android:name=".teacher.fragment.self.MyInfomationActivity" />
+        <activity android:name=".easeui.ui.AddContactActivity" />
+        <activity android:name=".easeui.ui.BlacklistActivity" />
+        <activity android:name=".easeui.ui.CallActivity" />
+        <activity android:name=".easeui.ui.CallOptionActivity" />
+        <activity android:name=".easeui.ui.ChatActivity" />
+        <activity android:name=".easeui.ui.ChatRoomDetailsActivity" />
+        <activity android:name=".easeui.ui.MainActivity" />
+        <activity android:name=".easeui.ui.MultiDeviceActivity" />
+        <activity android:name=".easeui.ui.NamePasswordActivity" />
+        <activity android:name=".easeui.ui.RegisterActivity" />
+        <activity android:name=".easeui.ui.VideoCallActivity" />
+        <activity android:name=".easeui.conference.ConferenceInviteJoinActivity" />
+        <activity android:name=".easeui.ui.VoiceCallActivity" />
+        <activity android:name=".easeui.ui.UserProfileActivity" />
+        <activity android:name=".easeui.ui.SharedFilesActivity" />
+        <activity android:name=".easeui.ui.SetServersActivity" />
+        <activity android:name=".easeui.ui.ServiceCheckActivity" />
+        <activity android:name=".easeui.ui.RobotsActivity" />
+        <activity android:name=".easeui.ui.RecorderVideoActivity" />
+        <activity android:name=".easeui.ui.PublicGroupsSeachActivity" />
+        <activity android:name=".easeui.ui.PublicGroupsActivity" />
+        <activity android:name=".easeui.ui.PublicChatRoomsActivity" />
+        <activity android:name=".easeui.ui.PickContactNoCheckboxActivity" />
+        <activity android:name=".easeui.ui.PickAtUserActivity" />
+        <activity android:name=".easeui.ui.OfflinePushSettingsActivity" />
+        <activity android:name=".easeui.ui.OfflinePushNickActivity" />
+        <activity android:name=".easeui.ui.NewGroupActivity" />
+        <activity android:name=".easeui.ui.NewFriendsMsgActivity" />
+        <activity android:name=".easeui.ui.NewChatRoomActivity" />
+        <activity android:name=".easeui.ui.ImageGridActivity" />
+        <activity android:name=".easeui.ui.GroupSimpleDetailActivity" />
+        <activity android:name=".easeui.ui.GroupSearchMessageActivity" />
+        <activity android:name=".easeui.ui.GroupsActivity" />
+        <activity android:name=".easeui.ui.GroupPickContactsActivity" />
+        <activity android:name=".easeui.ui.GroupDetailsActivity" />
+        <activity android:name=".easeui.ui.GroupBlacklistActivity" />
+        <activity android:name=".easeui.ui.ForwardMessageActivity" />
+        <activity android:name=".easeui.ui.EditActivity" />
+        <activity android:name=".easeui.ui.DiagnoseActivity" />
+        <activity android:name=".easeui.ui.ContextMenuActivity" />
+        <activity android:name=".teacher.fragment.newhelper.NewHelperActivity" />
+        <activity android:name=".teacher.fragment.hotscenic.HotScenicActivity" />
+        <activity android:name=".client.myorder.MyOrderActivity" />
+        <activity android:name=".client.myorder.orderdetial.OrderDetialActivity" />
+        <activity android:name=".client.myorder.orderdetial.ConfirmSuccessActivity" />
+        <activity android:name=".client.myorder.orderdetial.ClothBuyDetialActivity" />
+        <activity android:name=".client.myorder.confirmorder.SelectTeacherActivity" />
+        <activity android:name=".client.myorder.confirmorder.SelectScenicActivity" />
+        <activity android:name=".client.myorder.confirmorder.SelectColothActivity" />
+        <activity android:name=".client.myorder.confirmorder.BaseInfoMessageActivity" />
+        <activity android:name=".client.myorder.confirmorder.ConfirmOrderActivity" />
+        <activity android:name=".client.myorder.confirmorder.teacher.TeacherDateActivity" />
+        <activity android:name=".client.myorder.confirmorder.teacher.TeacherDetialActivity" />
+        <activity android:name=".client.myorder.confirmorder.teacher.TeacherWorkGridActivity" />
+        <activity android:name=".client.myorder.confirmorder.imageInfo.ShowPictureActivity" />
+        <activity android:name=".client.withdraw.WithDrawActivity" />
+        <activity android:name=".client.question.QuestionActivity" />
+        <activity android:name=".client.question.QuestionDetialActivity" />
+        <activity android:name=".client.question.QuestionReadListActivity" />
+        <activity android:name=".client.pushmanager.PushDetialActivity" />
+        <activity android:name=".client.pushmanager.PushManagerActivity" />
+        <activity android:name=".client.pushmanager.PushMessageActivity" />
+        <activity android:name=".client.myorder.ReturnOrderActivity" />
+        <activity android:name=".client.finance.FinanceStatisicActivity" />
+        <activity android:name=".client.people.TeacherApplyActivity" />
+        <activity android:name=".client.people.EmployeeManagerActivity" />
+        <activity android:name=".client.people.EmployeeAddActivity"></activity>
+        <activity android:name=".client.selectstore.SelectStoreActivity" />
+        <activity android:name=".client.selectstore.detial.StoreDetialActivity" />
+        <activity android:name=".teacher.fragment.newhelper.NewHelperDetialActivity" />
+    </application>
+
+</manifest>

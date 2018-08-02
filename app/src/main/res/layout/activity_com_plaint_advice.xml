@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:fitsSystemWindows="true"
+    tools:context=".fragment.person.advice.ComPlaintAdviceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/title_layout" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@drawable/login_whitebtn_shape"
+            android:padding="@dimen/ten">
+
+            <TextView
+                android:id="@+id/tv_complaint_advice_questiontype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:visibility="gone"
+                android:textColor="@color/color_three"
+                android:textSize="14dp" />
+
+            <Spinner
+                android:id="@+id/spinner_complaint_advice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/et_complaint_advice_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@drawable/login_whitebtn_shape"
+            android:hint="请输入您的称呼"
+            android:padding="@dimen/ten"
+            android:textColor="@color/color_three"
+            android:textColorHint="@color/color_nine"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/et_complaint_advice_telephone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@drawable/login_whitebtn_shape"
+            android:hint="请输入联系电话"
+            android:inputType="phone"
+            android:padding="@dimen/ten"
+            android:textColor="@color/color_three"
+            android:textColorHint="@color/color_nine"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/et_complaint_advice_content"
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@drawable/login_whitebtn_shape"
+            android:gravity="top"
+            android:hint="感谢您的宝贵建议，如果您有投诉我们会尽快与您取得联系！"
+            android:padding="@dimen/ten"
+            android:textColor="@color/color_three"
+            android:textColorHint="@color/color_nine"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/btn_complaint_advice_commit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@drawable/login_lgbtn_shape"
+            android:gravity="center"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+</ScrollView>

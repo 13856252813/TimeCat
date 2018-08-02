@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".fragment.person.invitaion.WriteInvitaionActivity">
+
+    <include layout="@layout/title_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ten"
+        android:background="#dfdfdf" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
+        android:text="请输入对方邀请码"
+        android:textColor="#AEAEAE"
+        android:textSize="13dp" />
+
+    <EditText
+        android:id="@+id/et_write_invitaion_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten"
+        android:inputType="number"
+        android:padding="@dimen/ten"
+        android:textColor="@color/color_three"
+        android:textSize="13dp" />
+
+    <Button
+        android:id="@+id/btn_add_write_invitaion_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fifteen"
+        android:background="@drawable/login_lgbtn_shape"
+        android:gravity="center"
+        android:padding="@dimen/ten"
+        android:text="添加"
+        android:textColor="@color/white"
+        android:textSize="13dp" />
+
+</LinearLayout>

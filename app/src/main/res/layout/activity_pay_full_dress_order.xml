@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.cary.activity.timecat.fragment.index.photography.PayPhotoGraphyOrderActivity">
+    、
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+            <include layout="@layout/title_layout" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/ten">
+
+                <TextView
+                    android:id="@+id/tv_full_dress_order_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="服装租借"
+                    android:textColor="#858585"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_full_dress_ord_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="¥200.00"
+                    android:textColor="#F83244"
+                    android:textSize="13dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:background="#dedede" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/ten">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/tirps" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="押金在退还衣服后，可全额退款，支付即视为同意《时光猫平台服装租借协议》"
+                    android:textColor="#858585"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@color/white"
+                android:padding="@dimen/ten">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="折扣"
+                    android:textColor="#858585"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/payorderphotography_discount"
+                    android:text="租借服务不支持9折福利"
+                    android:textColor="#858585"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_full_dress_order_discount_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="-¥200.00"
+                    android:textColor="#F83244"
+                    android:textSize="13dp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="支付方式"
+                    android:textColor="#858585"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/ten"
+                    android:background="#dedede" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_full_dress_order_paymethod_alipay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_full_dress_order_check_logo"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/alipay" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_toRightOf="@id/iv_full_dress_order_check_logo"
+                        android:text="支付宝快捷方式"
+                        android:textColor="#858585"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_full_dress_order_check_img_alipay"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/checked" />
+
+                    <TextView
+                        android:id="@+id/tv_full_dress_order_paymethod_alipay_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/five"
+                        android:layout_toLeftOf="@id/iv_full_dress_order_check_img_alipay"
+                        android:text="已选择"
+                        android:textColor="#F83244"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/iv_full_dress_order_check_img_alipay"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:layout_toRightOf="@id/iv_full_dress_order_check_logo"
+                        android:background="#dedede" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_full_dress_order_paymethod_wechat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_full_dress_order_check_logo_wechat"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/wechatpay" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_toRightOf="@id/iv_full_dress_order_check_logo_wechat"
+                        android:text="微信支付"
+                        android:textColor="#858585"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_full_dress_order_check_img_wechat"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/checked2" />
+
+                    <TextView
+                        android:id="@+id/tv_full_dress_order_paymethod_wechat_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/five"
+                        android:layout_toLeftOf="@id/iv_full_dress_order_check_img_wechat"
+                        android:text="已选择"
+                        android:textColor="#F83244"
+                        android:textSize="13dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/iv_full_dress_order_check_img_wechat"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:layout_toRightOf="@id/iv_full_dress_order_check_logo_wechat"
+                        android:background="#dedede" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_full_dress_order_paymethod_friend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_full_dress_order_check_logo_friend"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/friendpay" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_toRightOf="@id/iv_full_dress_order_check_logo_friend"
+                        android:text="好友代付"
+                        android:textColor="#858585"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_full_dress_order_check_img_friend"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/checked2" />
+
+                    <TextView
+                        android:id="@+id/tv_full_dress_order_check_img_friend_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/five"
+                        android:layout_toLeftOf="@id/iv_full_dress_order_check_img_friend"
+                        android:text="已选择"
+                        android:textColor="#F83244"
+                        android:textSize="13dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/iv_full_dress_order_check_img_friend"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:layout_toRightOf="@id/iv_full_dress_order_check_logo_friend"
+                        android:background="#dedede" />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/five"
+            android:background="#dedede" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/ten"
+                android:text="总金额"
+                android:textColor="#858585"
+                android:textSize="13dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="30dp"
+                android:text="¥"
+                android:textColor="#F83345"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_full_dress_order_summoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="345"
+                android:textColor="#F83345"
+                android:textSize="26dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text=".00"
+                android:textColor="#F83345"
+                android:textSize="13dp" />
+
+
+            <Button
+                android:id="@+id/btn_full_dress_order_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="@dimen/ten"
+                android:background="@drawable/login_lgbtn_shape"
+                android:gravity="center"
+                android:padding="@dimen/ten"
+                android:text="确认支付"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

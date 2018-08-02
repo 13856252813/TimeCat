@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".fragment.person.crashpledge.ReturnCrashPledgeActivity">
+
+    <include layout="@layout/title_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/ten">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="退还金额"
+            android:textColor="@color/color_three"
+            android:textSize="13dp" />
+
+        <EditText
+            android:id="@+id/et_return_crash_pledge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="可退¥0.00"
+            android:textColor="@color/color_three"
+            android:textColorHint="#C6C6C6"
+            android:textSize="13dp" />
+
+        <ImageView
+            android:layout_width="9dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/rightarrow" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_all_return_crash_pledge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/ten"
+        android:text="全部退还"
+        android:textColor="@color/login_color_btn"
+        android:textSize="13dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_return_crash_pledge_account_method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="退还渠道"
+                android:textColor="@color/color_three"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_return_crash_pledge_account_method"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_weight="1"
+                android:textColor="@color/color_three"
+                android:textSize="13dp" />
+
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/rightarrow" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one"
+            android:background="#dfdfdf" />
+
+        <LinearLayout
+            android:id="@+id/ll_return_crash_pledge_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten">
+
+            <TextView
+                android:id="@+id/tv_return_crash_pledge_account_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="支付宝账号"
+                android:textColor="@color/color_three"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_return_crash_pledge_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_weight="1"
+                android:textColor="@color/color_three"
+                android:textSize="13dp" />
+
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/rightarrow" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_return_crash_pledge_commit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_marginRight="@dimen/ten"
+        android:layout_marginTop="@dimen/twenty"
+        android:background="@drawable/login_lgbtn_shape"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+</LinearLayout>

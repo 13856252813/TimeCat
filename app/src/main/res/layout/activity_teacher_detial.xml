@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:orientation="vertical"
+    tools:context=".fragment.index.fulldress.confirmorder.teacher.TeacherDetialActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="191dp"
+            android:background="@mipmap/usergroud_teacher"
+            android:orientation="vertical"
+            android:padding="@dimen/ten">
+
+            <ImageView
+                android:id="@+id/iv_teacher_detial_back"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:src="@mipmap/leftarroww" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_teacher_detial_head"
+                    android:layout_width="81dp"
+                    android:layout_height="81dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_launcher" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_teacher_detial_name_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="@dimen/twenty"
+                    android:layout_toRightOf="@id/iv_teacher_detial_head"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_teacher_detial_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="小文  摄影师 | 总监 | 婚纱摄影"
+                        android:textColor="@color/white"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_teacher_detial_store"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_teacher_detial_name"
+                        android:layout_marginTop="@dimen/fifteen"
+                        android:text="时光旅景临汾店"
+                        android:textColor="@color/white"
+                        android:textSize="11dp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_teacher_detial_store"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_teacher_detial_look_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/tv_teacher_detial_collect"
+                            android:drawableLeft="@mipmap/calendarw"
+                            android:text="查看排期"
+                            android:textColor="@color/white"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/tv_teacher_detial_collect"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:drawableTop="@mipmap/heart3"
+                            android:text="关注"
+                            android:textColor="@color/white"
+                            android:textSize="15dp" />
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--指定费用-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/ten">
+
+            <TextView
+                android:id="@+id/tv_teacher_detial_assign_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_teacher_detial_assign"
+                android:text="指定费用:"
+                android:textColor="@color/color_six"
+                android:textSize="11dp" />
+
+            <TextView
+                android:id="@+id/tv_teacher_detial_assign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_toRightOf="@id/tv_teacher_detial_assign_text"
+                android:text="¥ 21332"
+                android:textColor="@color/login_color_btn"
+                android:textSize="19dp" />
+
+            <TextView
+                android:id="@+id/tv_teacher_detial_assign_text_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_teacher_detial_assign"
+                android:layout_toRightOf="@id/tv_teacher_detial_assign"
+                android:text="/套系"
+                android:textColor="@color/login_color_btn"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_teacher_detial_qualificationsn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_teacher_detial_assign_text"
+                android:layout_marginTop="@dimen/ten"
+                android:text="资历费:"
+                android:textColor="@color/color_six"
+                android:textSize="11dp" />
+
+            <TextView
+                android:id="@+id/tv_teacher_detial_qualifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/tv_teacher_detial_assign"
+                android:layout_below="@id/tv_teacher_detial_assign_text"
+                android:layout_toRightOf="@id/tv_teacher_detial_qualificationsn_text"
+                android:text="¥ 12945"
+                android:textColor="@color/login_color_btn"
+                android:textSize="19dp" />
+
+            <TextView
+                android:id="@+id/tv_teacher_detial_qualifications_text_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_teacher_detial_qualifications"
+                android:layout_toRightOf="@id/tv_teacher_detial_qualifications"
+                android:text="/套系"
+                android:textColor="@color/login_color_btn"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_teacher_detial_timecredit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_teacher_detial_timecredit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9.9"
+                    android:textColor="@color/color_three"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/tv_teacher_detial_timecredit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="时光信用"
+                    android:textColor="@color/color_six"
+                    android:textSize="11dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:padding="@dimen/ten"
+            android:text="老师介绍"
+            android:textColor="#A2A1A2"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_teacher_detial_infomation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:padding="@dimen/ten"
+            android:text="小文老师擅长人物、取景"
+            android:textColor="#A2A1A2"
+            android:textSize="15dp" />
+        <!--时光留言-最新评价-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/ten">
+
+
+            <RelativeLayout
+                android:id="@+id/rl_teacher_detial_leave_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:text="时光留言-最新评价"
+                    android:textColor="@color/color_three"
+                    android:textSize="13dp" />
+
+                <ImageView
+                    android:id="@+id/iv_teacher_detial_leave_message_more"
+                    android:layout_width="11dp"
+                    android:layout_height="9dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/rightarrow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/ten"
+                    android:layout_toLeftOf="@id/iv_teacher_detial_leave_message_more"
+                    android:gravity="center_vertical"
+                    android:text="更多"
+                    android:textColor="#8c8c8c"
+                    android:textSize="13dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/ten"
+                android:background="#dfdfdf" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_teacher_detial_comment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <!--&lt;!&ndash;用户留言 信息&ndash;&gt;-->
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="@dimen/ten"-->
+            <!--android:orientation="vertical">-->
+            <!--&lt;!&ndash;用户信息&ndash;&gt;-->
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<ImageView-->
+            <!--android:id="@+id/iv_teacher_detial_leave_message_user_head"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:src="@mipmap/ic_launcher" />-->
+            <!--<RelativeLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="@dimen/ten"-->
+            <!--android:layout_toRightOf="@id/iv_teacher_detial_leave_message_user_head"-->
+            <!--android:orientation="vertical">-->
+            <!--<TextView-->
+            <!--android:id="@+id/tv_teacher_detial_leave_message_user_name"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="时光用户9669"-->
+            <!--android:textColor="@color/color_three"-->
+            <!--android:textSize="13dp" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/tv_teacher_detial_leave_message_user_time"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/tv_teacher_detial_leave_message_user_name"-->
+            <!--android:layout_marginTop="@dimen/ten"-->
+            <!--android:text="2018.05.06 |"-->
+            <!--android:textColor="#8c8c8c"-->
+            <!--android:textSize="10dp" />-->
+
+            <!--<RatingBar-->
+            <!--android:id="@+id/teacher_detial_leave_message_user_time_ratingbar"-->
+            <!--style="@style/yogaCourseRatingBar"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="11dp"-->
+            <!--android:layout_below="@+id/tv_teacher_detial_leave_message_user_name"-->
+            <!--android:layout_marginLeft="@dimen/ten"-->
+            <!--android:layout_marginTop="@dimen/ten"-->
+            <!--android:layout_toRightOf="@id/tv_teacher_detial_leave_message_user_time"-->
+            <!--android:isIndicator="false"-->
+            <!--android:maxWidth="6dp"-->
+            <!--android:numStars="5"-->
+            <!--android:rating="2"-->
+            <!--android:stepSize="0.5" />-->
+            <!--</RelativeLayout>-->
+            <!--</RelativeLayout>-->
+            <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/recycler_teacher_detial_user_img"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginTop="@dimen/ten" />-->
+            <!--</LinearLayout>-->
+
+
+        </LinearLayout>
+
+        <!--作品欣赏-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/ten">
+
+
+            <RelativeLayout
+                android:id="@+id/rl_teacher_detial_works_apprection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:text="作品欣赏"
+                    android:textColor="@color/color_three"
+                    android:textSize="13dp" />
+
+                <ImageView
+                    android:id="@+id/iv_teacher_detial_works_apprection_more"
+                    android:layout_width="11dp"
+                    android:layout_height="9dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/rightarrow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/ten"
+                    android:layout_toLeftOf="@id/iv_teacher_detial_works_apprection_more"
+                    android:gravity="center_vertical"
+                    android:text="更多"
+                    android:textColor="#8c8c8c"
+                    android:textSize="13dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/ten"
+                android:background="#dfdfdf" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_teacher_detial_woroks_apprection"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/ten" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one"
+            android:background="@color/white"
+            android:padding="@dimen/fifteen">
+
+            <Button
+                android:id="@+id/btn_teacher_detial_online_reservation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/login_color_btn"
+                android:text="在线预订"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

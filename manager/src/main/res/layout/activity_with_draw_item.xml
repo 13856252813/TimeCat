@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/ten">
+
+    <ImageView
+        android:id="@+id/iv_with_draw_head"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_launcher" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@id/iv_with_draw_head">
+
+        <TextView
+            android:id="@+id/tv_with_draw_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小文"
+            android:textColor="#4d4d4d"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tv_with_draw_name_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_toRightOf="@id/tv_with_draw_name"
+            android:text="摄影师 | 婚纱摄影"
+            android:textColor="#4d4d4d"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/tv_with_draw_name_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_with_draw_name"
+            android:layout_marginLeft="@dimen/five"
+            android:text="2018年06月21日 提现申请"
+            android:textColor="#4d4d4d"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/tv_with_draw_name_money_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_with_draw_name_money"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_toRightOf="@id/tv_with_draw_name_create"
+            android:text="¥"
+            android:textColor="@color/login_color_btn"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/tv_with_draw_name_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_with_draw_name"
+            android:layout_toRightOf="@id/tv_with_draw_name_money_symbol"
+            android:text="100.00"
+            android:textColor="@color/login_color_btn"
+            android:textSize="13dp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_with_draw_agree"
+        android:layout_width="51dp"
+        android:layout_height="26dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/login_lgbtn_shape"
+        android:text="同意"
+        android:textColor="@color/white"
+        android:textSize="13dp" />
+</RelativeLayout>

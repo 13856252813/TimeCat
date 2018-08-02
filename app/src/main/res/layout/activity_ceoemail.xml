@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cary.activity.timecat.main.dialog.CEOEmailActivity">
+
+    <RelativeLayout
+        android:layout_margin="@dimen/fifty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@mipmap/ceoemail"
+        app:layout_goneMarginTop="@dimen/hundred"
+        app:layout_goneMarginBottom="@dimen/hundred"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+
+        <ImageView
+            android:id="@+id/ivCEOEmailCancel"
+            android:layout_width="@dimen/thirty"
+            android:layout_height="@dimen/thirty"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:src="@mipmap/cancelw" />
+
+        <TextView
+            android:id="@+id/tvClickLook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:padding="@dimen/ten"
+            android:text="@string/click_look"
+            android:textColor="@color/red"
+            android:textSize="@dimen/textsize_titlelarge"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

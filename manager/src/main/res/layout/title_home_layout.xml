@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_home_layout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/fifty"
+    android:padding="@dimen/ten">
+
+    <RelativeLayout
+        android:id="@+id/rl_title_left"
+        android:layout_width="@dimen/forty"
+        android:visibility="gone"
+        android:layout_height="@dimen/forty">
+
+        <ImageView
+            android:id="@+id/title_home_notify"
+            android:layout_width="@dimen/twenty_five"
+            android:layout_height="@dimen/twenty_five"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/left_arrow" />
+
+        <ImageView
+            android:id="@+id/redCirclePoint"
+            android:layout_width="@dimen/ten"
+            android:layout_height="@dimen/ten"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/shape_circle_red" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/title_home_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textsize_titlebar" />
+
+    <TextView
+        android:id="@+id/title_text_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="title_right"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textsize_title"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/home_title_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@mipmap/route"
+        android:text="上海店"
+        android:textColor="@color/login_color_btn"
+        android:textSize="@dimen/textsize_titlesmall"
+        android:visibility="gone" />
+</RelativeLayout>

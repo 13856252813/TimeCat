@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cary.activity.timecat.reglogin.PopupUpLoadActivity">
+
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/fifty"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+
+        <Button
+            android:id="@+id/btn_picture_do_copy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@drawable/login_whitebtn_shape"
+            android:padding="@dimen/ten"
+            android:text="复制"
+            android:textColor="@color/login_color_btn"
+            android:textSize="@dimen/textsize_content"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_picture_do_cut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:background="@drawable/login_whitebtn_shape"
+            android:padding="@dimen/ten"
+            android:text="剪切"
+            android:textColor="@color/login_color_btn"
+            android:textSize="@dimen/textsize_content"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/btn_picture_do_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:background="@drawable/login_whitebtn_shape"
+            android:padding="@dimen/ten"
+            android:text="删除"
+            android:textColor="@color/login_color_btn"
+            android:textSize="@dimen/textsize_content"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/btn_picture_do_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:background="@drawable/login_whitebtn_shape"
+            android:padding="@dimen/ten"
+            android:text="备注"
+            android:textColor="@color/login_color_btn"
+            android:textSize="@dimen/textsize_content"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/btn_picture_do_cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dip"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/login_lgbtn_shape"
+            android:padding="@dimen/ten"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>

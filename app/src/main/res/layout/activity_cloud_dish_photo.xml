@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.cary.activity.timecat.fragment.index.timeclouddish.photo.CloudDishPhotoActivity">
+
+    <include layout="@layout/title_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swiperefreshlayout_clouddish"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/five">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewCloudPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <ImageView
+            android:id="@+id/ivCloudDoImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="50dp"
+            android:background="#00000000"
+            android:src="@mipmap/clouddiskmenu" />
+
+        <LinearLayout
+            android:id="@+id/ll_cloud_dish_bottom_do"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_cloud_dish_cut"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/ten"
+                android:text="剪切"
+                android:textColor="@color/login_color_btn"
+                android:textSize="14dp" />
+
+            <View
+                android:layout_width="@dimen/one"
+                android:layout_height="match_parent"
+                android:background="#dfdfdf" />
+
+            <TextView
+                android:id="@+id/tv_cloud_dish_copy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/ten"
+                android:text="复制"
+                android:textColor="@color/login_color_btn"
+                android:textSize="14dp" />
+
+            <View
+                android:layout_width="@dimen/one"
+                android:layout_height="match_parent"
+                android:background="#dfdfdf" />
+
+            <TextView
+                android:id="@+id/tv_cloud_dish_paste"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/ten"
+                android:text="粘贴"
+                android:textColor="@color/login_color_btn"
+                android:textSize="14dp" />
+
+            <View
+                android:layout_width="@dimen/one"
+                android:layout_height="match_parent"
+                android:background="#dfdfdf" />
+
+            <TextView
+                android:id="@+id/tv_cloud_dish_del"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/ten"
+                android:text="删除"
+                android:textColor="@color/login_color_btn"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

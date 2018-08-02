@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:openxu="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_home_layout" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.cary.activity.timecat.util.view.BannerLayout
+                android:id="@+id/banner1"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:defaultImage="@mipmap/ic_launcher"
+                app:indicatorMargin="10dp"
+                app:indicatorShape="oval"
+                app:indicatorSpace="2dp"
+                app:scrollDuration="1500"
+                app:selectedIndicatorColor="?attr/colorPrimary"
+                app:selectedIndicatorHeight="6dp"
+                app:selectedIndicatorWidth="6dp"
+                app:titleColor="#ff0000"
+                app:unSelectedIndicatorColor="#99ffffff"
+                app:unSelectedIndicatorHeight="6dp"
+                app:unSelectedIndicatorWidth="6dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/white" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@android:color/white" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/five"
+                android:background="@color/white"
+                android:padding="@dimen/ten">
+
+                <ImageView
+                    android:id="@+id/home_news_pater_img"
+                    android:layout_width="@dimen/thirteen"
+                    android:layout_height="@dimen/thirteen"
+                    android:layout_centerVertical="true"
+                    android:scaleType="center"
+                    android:src="@mipmap/newspaper" />
+
+                <TextView
+                    android:id="@+id/home_news_pater_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/five"
+                    android:layout_toRightOf="@id/home_news_pater_img"
+                    android:text="时光头条"
+                    android:textColor="@color/color_three"
+                    android:textSize="@dimen/eleven" />
+
+                <TextView
+                    android:id="@+id/home_news_pater_line_one"
+                    android:layout_width="@dimen/one"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/five"
+                    android:layout_toRightOf="@id/home_news_pater_text"
+                    android:background="#EBEBEB" />
+
+                <com.cary.activity.timecat.util.view.LimitScrollerView
+                    android:id="@+id/limitScroll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginRight="@dimen/ten"
+                    android:layout_toLeftOf="@id/home_news_pater_more"
+                    android:layout_toRightOf="@id/home_news_pater_line_one"
+                    openxu:durationTime="1200"
+                    openxu:limit="1"
+                    openxu:periodTime="2000" />
+
+                <TextView
+                    android:id="@+id/home_news_pater_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/nine"
+                    android:text="更多"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="@dimen/thirteen" />
+
+                <TextView
+                    android:layout_width="@dimen/one"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/five"
+                    android:layout_toLeftOf="@id/home_news_pater_more"
+                    android:background="#EBEBEB" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewGridTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/five"
+                android:background="@android:color/white" />
+
+            <!--热门景点-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/five"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/ten">
+
+                <ImageView
+                    android:layout_width="@dimen/thirteen"
+                    android:layout_height="@dimen/thirteen"
+                    android:layout_centerVertical="true"
+                    android:scaleType="center"
+                    android:src="@mipmap/hotphoto" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/five"
+                    android:layout_toRightOf="@id/home_news_pater_img"
+                    android:text="热门景点"
+                    android:textColor="@color/color_three"
+                    android:textSize="@dimen/eleven" />
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/ten" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
+
+

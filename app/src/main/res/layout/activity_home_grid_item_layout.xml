@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/five"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/main_home_item_list_icon"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:id="@+id/main_home_item_list_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="图片描述"
+        android:layout_marginTop="@dimen/five"
+        android:textSize="@dimen/textsize_content"
+         />
+</LinearLayout>

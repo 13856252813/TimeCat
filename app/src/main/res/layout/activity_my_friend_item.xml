@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.cary.activity.timecat.fragment.index.selectfriendpay.SelectFriendPayActivity">
+
+    <ImageView
+        android:id="@+id/select_friend_pay_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/ten"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/select_friend_pay_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/ten"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@id/select_friend_pay_img"
+        android:text="时光猫"
+        android:textColor="@color/color_three"
+        android:textSize="@dimen/textsize_content" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@id/select_friend_pay_img"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/select_friend_pay_img"
+        android:background="#dfdfdf" />
+
+</RelativeLayout>

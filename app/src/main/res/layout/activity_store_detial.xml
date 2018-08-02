@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:fitsSystemWindows="true"
+    tools:context=".fragment.index.selectstore.detial.StoreDetialActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scrollview_store_detial"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="50dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.cary.activity.timecat.util.view.BannerLayout
+                        android:id="@+id/banner_store_detial"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        app:defaultImage="@mipmap/ic_launcher"
+                        app:indicatorMargin="10dp"
+                        app:indicatorShape="oval"
+                        app:indicatorSpace="2dp"
+                        app:scrollDuration="1500"
+                        app:selectedIndicatorColor="?attr/colorPrimary"
+                        app:selectedIndicatorHeight="6dp"
+                        app:selectedIndicatorWidth="6dp"
+                        app:titleColor="#ff0000"
+                        app:unSelectedIndicatorColor="#99ffffff"
+                        app:unSelectedIndicatorHeight="6dp"
+                        app:unSelectedIndicatorWidth="6dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_store_detial_back"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/thirty"
+                        android:src="@mipmap/leftarroww" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_store_detial_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/banner_store_detial"
+                    android:background="@color/white"
+                    android:padding="@dimen/ten">
+
+                    <TextView
+                        android:id="@+id/tv_store_detial_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/color_three"
+                        android:textSize="16dp" />
+
+                    <RatingBar
+                        android:id="@+id/ratingbar_store_detial"
+                        style="@style/yogaCourseRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="13dp"
+                        android:layout_below="@+id/tv_store_detial_name"
+                        android:layout_marginTop="@dimen/five"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:rating="2"
+                        android:stepSize="0.5" />
+
+                    <TextView
+                        android:id="@+id/tv_store_detial_customer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ratingbar_store_detial"
+                        android:layout_marginTop="@dimen/five"
+                        android:text="服务顾客:16321人次"
+                        android:textColor="@color/color_six"
+                        android:textSize="13dp" />
+
+                    <CheckBox
+                        android:id="@+id/tv_store_detial_collect"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:button="@null"
+                        android:drawablePadding="@dimen/five"
+                        android:drawableTop="@mipmap/heart"
+                        android:gravity="center"
+                        android:text="关注"
+                        android:textColor="@color/color_three"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+                <!--地址-->
+                <RelativeLayout
+                    android:id="@+id/rl_store_detial_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl_store_detial_title"
+                    android:layout_marginTop="@dimen/one"
+                    android:background="@color/white"
+                    android:padding="@dimen/ten">
+
+                    <TextView
+                        android:id="@+id/tv_store_detial_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/app_name"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/route" />
+                </RelativeLayout>
+
+                <!--门店介绍-->
+                <RelativeLayout
+                    android:id="@+id/rl_store_detial_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl_store_detial_address"
+                    android:layout_marginTop="@dimen/ten"
+                    android:background="@color/white"
+                    android:padding="@dimen/ten">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="门店介绍"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_store_detial_desc_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="@dimen/five"
+                        android:drawableRight="@mipmap/rightarrow"
+                        android:text="更多"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_line_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/one"
+                        android:layout_below="@id/tv_store_detial_desc_more"
+                        android:layout_marginTop="@dimen/ten"
+                        android:background="#dfdfdf" />
+
+                    <WebView
+                        android:id="@+id/tv_store_detial_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_line_desc"
+                        android:layout_marginTop="@dimen/ten"
+                        tools:ignore="WebViewLayout" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_store_detial_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_store_detial_desc"
+                        android:layout_marginTop="@dimen/ten" />
+
+                </RelativeLayout>
+                <!--热门套餐-->
+                <RelativeLayout
+                    android:id="@+id/rl_store_detial_hotmeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl_store_detial_desc"
+                    android:layout_marginTop="@dimen/ten"
+                    android:background="@color/white"
+                    android:padding="@dimen/ten">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="热门套餐"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_store_detial_hotmeal_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="@dimen/five"
+                        android:drawableRight="@mipmap/rightarrow"
+                        android:text="更多"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_line_hotmeal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/one"
+                        android:layout_below="@id/tv_store_detial_hotmeal_more"
+                        android:layout_marginTop="@dimen/ten"
+                        android:background="#dfdfdf" />
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_store_detial_hotmeal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_line_hotmeal"
+                        android:layout_marginTop="@dimen/ten" />
+                </RelativeLayout>
+
+                <!--时光老师-->
+                <RelativeLayout
+                    android:id="@+id/rl_store_detial_teacher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl_store_detial_hotmeal"
+                    android:layout_marginTop="@dimen/ten"
+                    android:background="@color/white"
+                    android:padding="@dimen/ten">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时光老师"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_store_detial_teacher_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="@dimen/five"
+                        android:drawableRight="@mipmap/rightarrow"
+                        android:text="更多"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_line_teacher"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/one"
+                        android:layout_below="@id/tv_store_detial_teacher_more"
+                        android:layout_marginTop="@dimen/ten"
+                        android:background="#dfdfdf" />
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_store_detial_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_line_teacher"
+                        android:layout_marginTop="@dimen/ten" />
+                </RelativeLayout>
+
+                <!--客片欣赏-->
+                <RelativeLayout
+                    android:id="@+id/rl_store_detial_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl_store_detial_teacher"
+                    android:layout_marginTop="@dimen/ten"
+                    android:background="@color/white"
+                    android:padding="@dimen/ten">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="客片欣赏"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_store_detial_photo_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="@dimen/five"
+                        android:drawableRight="@mipmap/rightarrow"
+                        android:text="更多"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_line_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/one"
+                        android:layout_below="@id/tv_store_detial_photo_more"
+                        android:layout_marginTop="@dimen/ten"
+                        android:background="#dfdfdf" />
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_store_detial_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_line_photo"
+                        android:layout_marginTop="@dimen/ten" />
+                </RelativeLayout>
+
+                <!--时光留言-->
+                <RelativeLayout
+                    android:id="@+id/rl_store_detial_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rl_store_detial_photo"
+                    android:layout_marginTop="@dimen/ten"
+                    android:background="@color/white"
+                    android:padding="@dimen/ten">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时光留言-最新评论"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_store_detial_comment_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawablePadding="@dimen/five"
+                        android:drawableRight="@mipmap/rightarrow"
+                        android:text="更多"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_line_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/one"
+                        android:layout_below="@id/tv_store_detial_comment_more"
+                        android:layout_marginTop="@dimen/ten"
+                        android:background="#dfdfdf" />
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_store_detial_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_line_comment"
+                        android:layout_marginTop="@dimen/ten" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten">
+
+            <TextView
+                android:id="@+id/tv_store_detial_change"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/login_color_btn"
+                android:gravity="center"
+                android:padding="@dimen/eight"
+                android:text="切换至该门店"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

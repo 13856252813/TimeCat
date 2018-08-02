@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:orientation="vertical"
+    tools:context=".client.myorder.ReturnOrderActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/title_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_myorder_iamge"
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/tv_myorder_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/iv_myorder_iamge"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_toRightOf="@id/iv_myorder_iamge"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tv_myorder_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_myorder_name"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_toRightOf="@id/iv_myorder_iamge"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textColor="@color/color_three"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_myorder_stage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/iv_myorder_iamge"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_toRightOf="@id/iv_myorder_iamge"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textColor="#A2A1A2"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_myorder_stage_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/iv_myorder_iamge"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_toRightOf="@id/tv_myorder_stage"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textColor="#A2A1A2"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_myorder_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/ten"
+                    android:gravity="center"
+                    android:text="¥6000"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:padding="@dimen/ten">
+
+            <TextView
+                android:id="@+id/tv_question_detial_type_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="问题类型"
+                android:textColor="#4D4D4D"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_question_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_toRightOf="@id/tv_question_detial_type_text"
+                android:text="常规问题"
+                android:textColor="#4D4D4D"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_question_detial_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question_detial_type_text"
+                android:layout_marginTop="@dimen/ten"
+                android:text="称        呼"
+                android:textColor="#4D4D4D"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_question_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question_detial_type_text"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_toRightOf="@id/tv_question_detial_time_text"
+                android:text="称呼"
+                android:textColor="#4D4D4D"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_question_detial_telephone_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question_detial_time_text"
+                android:layout_marginTop="@dimen/ten"
+                android:text="电        话"
+                android:textColor="#4D4D4D"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_question_telephone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question_detial_time_text"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_toRightOf="@id/tv_question_detial_telephone_text"
+                android:text="123"
+                android:textColor="#4D4D4D"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_question_detial_remark_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question_telephone"
+                android:layout_marginTop="@dimen/ten"
+                android:text="描        述"
+                android:textColor="#4D4D4D"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_question_remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_question_telephone"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_toRightOf="@id/tv_question_detial_remark_text"
+                android:text="123"
+                android:textColor="#4D4D4D"
+                android:textSize="13dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/ten">
+
+        <Button
+            android:id="@+id/btn_return_order_noagree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/red_tran_shape"
+            android:gravity="center"
+            android:text="拒绝"
+            android:textColor="@color/login_color_btn" />
+
+        <Button
+            android:id="@+id/btn_return_order_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_weight="1"
+            android:background="@drawable/login_lgbtn_shape"
+            android:gravity="center"
+            android:text="同意退款"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</RelativeLayout>

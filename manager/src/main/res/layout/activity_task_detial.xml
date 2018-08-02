@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F4FC"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/one"
+        android:background="@color/white"
+        android:padding="@dimen/ten">
+
+        <ImageView
+            android:id="@+id/iv_task_detial_userhead"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_task_detial_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_task_detial_userhead"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_toRightOf="@id/iv_task_detial_userhead"
+            android:gravity="top"
+            android:text="username"
+            android:textColor="@color/color_three"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_task_detial_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_task_detial_userhead"
+            android:layout_alignLeft="@id/tv_task_detial_username"
+            android:layout_toRightOf="@id/iv_task_detial_userhead"
+            android:text="2018.10.2"
+            android:textColor="@color/color_six"
+            android:textSize="13dp" />
+
+        <ImageView
+            android:id="@+id/iv_task_detial_adderesscity"
+            android:layout_width="12dp"
+            android:layout_height="16dp"
+            android:layout_alignBottom="@id/iv_task_detial_userhead"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_toRightOf="@id/tv_task_detial_create_time"
+            android:src="@mipmap/route" />
+
+        <TextView
+            android:id="@+id/tv_task_detial_adderesscity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_task_detial_userhead"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_toRightOf="@id/iv_task_detial_adderesscity"
+            android:text="上海市"
+            android:textColor="@color/color_six"
+            android:textSize="13dp" />
+
+        <ImageView
+            android:id="@+id/iv_task_detial_money"
+            android:layout_width="11dp"
+            android:layout_height="15dp"
+            android:layout_alignBottom="@id/iv_task_detial_userhead"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_toRightOf="@id/tv_task_detial_adderesscity"
+            android:src="@mipmap/mooney" />
+
+        <TextView
+            android:id="@+id/tv_task_detial_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_task_detial_userhead"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_toRightOf="@id/iv_task_detial_money"
+            android:text="1200"
+            android:textColor="@color/color_six"
+            android:textSize="13dp" />
+
+        <ImageView
+            android:id="@+id/iv_take_photo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/photographer" />
+
+        <TextView
+            android:id="@+id/tv_task_detial_user_head_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/iv_task_detial_userhead"
+            android:layout_marginTop="@dimen/ten"
+            android:background="#cccccc" />
+
+        <TextView
+            android:id="@+id/tv_task_detial_desction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_task_detial_user_head_line"
+            android:layout_marginTop="@dimen/ten"
+            android:text="任务描述"
+            android:textColor="#8C8C8C"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/ten">
+
+        <TextView
+            android:id="@+id/tv_task_detial_grab_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="抢单老师"
+            android:textColor="#8C8C8C"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_task_detial_grab_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/tv_task_detial_grab_text"
+            android:layout_marginTop="@dimen/ten"
+            android:background="#cccccc" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_task_detial_select"
+            android:layout_width="match_parent"
+            android:layout_above="@id/rl_task_detial_confirm_teacher"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_task_detial_grab_line"
+            android:layout_marginTop="@dimen/ten" />
+
+        <RelativeLayout
+            android:id="@+id/rl_task_detial_confirm_teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            android:padding="@dimen/ten">
+
+            <Button
+                android:id="@+id/btn_task_detial_confirm_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="确认选择"
+                android:textColor="@color/white"
+                android:textSize="13dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

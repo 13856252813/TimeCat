@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/ten">
+
+    <ImageView
+        android:id="@+id/iv_question_head"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_launcher" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@id/iv_question_head">
+
+        <TextView
+            android:id="@+id/tv_question_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小号"
+            android:textColor="#4D4D4D"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tv_question_createtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_question_name"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_toRightOf="@id/tv_question_name"
+            android:text="2018年06月23日00:08:19"
+            android:textColor="#A2A1A2"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/tv_question_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_question_name"
+            android:maxLines="1"
+            android:text="内容"
+            android:textColor="#4D4D4D"
+            android:textSize="11dp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="9dp"
+        android:layout_height="14dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/rightarrow" />
+
+</RelativeLayout>

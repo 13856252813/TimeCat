@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.cary.activity.timecat.util.view.BannerLayout
+                    android:id="@+id/banner_fulldress_detial"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    app:defaultImage="@mipmap/ic_launcher"
+                    app:indicatorMargin="10dp"
+                    app:indicatorShape="oval"
+                    app:indicatorSpace="2dp"
+                    app:scrollDuration="1500"
+                    app:selectedIndicatorColor="?attr/colorPrimary"
+                    app:selectedIndicatorHeight="6dp"
+                    app:selectedIndicatorWidth="6dp"
+                    app:titleColor="#ff0000"
+                    app:unSelectedIndicatorColor="#99ffffff"
+                    app:unSelectedIndicatorHeight="6dp"
+                    app:unSelectedIndicatorWidth="6dp" />
+
+                <ImageView
+                    android:id="@+id/iv_fulldress_back"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginTop="@dimen/thirty"
+                    android:src="@mipmap/leftarroww" />
+
+            </RelativeLayout>
+            <!--标题-->
+
+            <LinearLayout
+                android:id="@+id/ll_full_dress_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/banner_fulldress_detial"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <TextView
+                    android:id="@+id/tv_full_dress_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="title"
+                    android:textColor="@color/color_three"
+                    android:textSize="20dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_full_dress_sell_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已售：10笔"
+                        android:textColor="#8c8c8c" />
+
+                    <RatingBar
+                        android:id="@+id/ratingbar_full_dess"
+                        style="@style/yogaCourseRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="12dp"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_toRightOf="@id/tv_full_dress_sell_number"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:rating="2"
+                        android:stepSize="0.5" />
+
+                    <TextView
+                        android:id="@+id/tv_full_dress_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_full_dress_sell_number"
+                        android:gravity="center"
+                        android:text="¥0"
+                        android:textColor="@color/login_color_btn"
+                        android:textSize="@dimen/textsize_title"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_full_dress_old_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/tv_full_dress_money"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_toRightOf="@id/tv_full_dress_money"
+                        android:gravity="center"
+                        android:text="¥0"
+                        android:textColor="@color/color_three"
+                        android:textSize="@dimen/textsize_content" />
+
+                    <CheckBox
+                        android:id="@+id/tv_full_dress_collect"
+                        android:layout_width="40dp"
+                        android:layout_height="34dp"
+                        android:layout_alignParentRight="true"
+                        android:button="@null"
+                        android:drawableTop="@mipmap/heart"
+                        android:gravity="center"
+                        android:text="关注"
+                        android:textColor="@color/login_color_btn"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+            </LinearLayout>
+            <!--店铺名称-->
+            <RelativeLayout
+                android:id="@+id/rl_full_dress_store_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_full_dress_title"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@color/white"
+                android:padding="@dimen/ten">
+
+                <ImageView
+                    android:id="@+id/iv_full_dress_store_name"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/tv_full_dress_store_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_toRightOf="@id/iv_full_dress_store_name"
+                    android:textColor="@color/color_three"
+                    android:textSize="@dimen/thirteen" />
+
+                <ImageView
+                    android:layout_width="9dp"
+                    android:layout_height="14dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/rightarrow" />
+            </RelativeLayout>
+
+            <!--详细介绍-->
+            <LinearLayout
+                android:id="@+id/ll_full_dress_detial_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_full_dress_match_recommend"
+                android:layout_marginTop="@dimen/ten"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageview_show_image"
+                    android:background="@color/white"
+                    android:padding="@dimen/ten"
+                    android:text="详细介绍"
+                    android:textColor="#333333" />
+
+                <WebView
+                    android:id="@+id/webview_full_dress_detial_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"
+                    tools:ignore="WebViewLayout" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+    <!--底部的购买-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/one"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_fulldress_detial_telphone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/telephonecall"
+            android:gravity="center"
+            android:padding="@dimen/eight"
+            android:text="电话"
+            android:textColor="@color/color_six"
+            android:textSize="10dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_fulldress_detial_onlinereserve"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/login_color_btn"
+            android:gravity="center"
+            android:padding="@dimen/eight"
+            android:text="在线预订"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_fulldress_detial_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="60dp"
+        android:layout_weight="1"
+        android:drawableTop="@mipmap/journalist"
+        android:gravity="center"
+        android:padding="@dimen/eight"
+        android:text="客服"
+        android:textColor="@color/color_six"
+        android:textSize="10dp" />
+</RelativeLayout>

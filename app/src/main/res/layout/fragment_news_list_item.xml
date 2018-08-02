@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".fragment.index.news.NewsListFragment">
+
+    <ImageView
+        android:id="@+id/fragment_news_list_item_img"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/fragment_news_list_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ten"
+        android:textColor="@color/color_three"
+        android:layout_alignTop="@id/fragment_news_list_item_img"
+        android:layout_toRightOf="@id/fragment_news_list_item_img"
+        android:text="@string/hello_blank_fragment"
+        android:textSize="@dimen/fifteen" />
+
+    <TextView
+        android:id="@+id/fragment_news_list_item_createtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ten"
+        android:textColor="@color/color_six"
+        android:layout_alignBottom="@id/fragment_news_list_item_img"
+        android:layout_toRightOf="@id/fragment_news_list_item_img"
+        android:text="@string/hello_blank_fragment"
+        android:textSize="@dimen/fifteen" />
+</RelativeLayout>

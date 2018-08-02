@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@color/white"
+        android:padding="@dimen/ten">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="同时将评价分享到动态"
+            android:textColor="@color/color_three"
+            android:textSize="14dp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_synchronization"
+            android:layout_width="53dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
+    <!--评级五星-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/ten">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="技术评价"
+                android:textColor="@color/color_three"
+                android:textSize="14dp" />
+
+            <com.cary.activity.timecat.util.view.RatingBar
+                android:id="@+id/ratingbar_technology_evaluate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                app:starCount="5"
+                app:starEmpty="@mipmap/starform2"
+                app:starFill="@mipmap/starform3"
+                app:starHalf="@mipmap/starform"
+                app:starImageSize="20dp"
+                app:starPadding="30dp"
+                app:starStep="2"
+                app:stepSize="Half" />
+        </LinearLayout>
+        <!--服务评价-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务评价"
+                android:textColor="@color/color_three"
+                android:textSize="14dp" />
+
+            <com.cary.activity.timecat.util.view.RatingBar
+                android:id="@+id/ratingbar_service_evaluate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                app:starCount="5"
+                app:starEmpty="@mipmap/starform2"
+                app:starFill="@mipmap/starform3"
+                app:starHalf="@mipmap/starform"
+                app:starImageSize="20dp"
+                app:starPadding="30dp"
+                app:starStep="2.5"
+                app:stepSize="Half" />
+        </LinearLayout>
+        <!--形象评价-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="形象评价"
+                android:textColor="@color/color_three"
+                android:textSize="14dp" />
+
+            <com.cary.activity.timecat.util.view.RatingBar
+                android:id="@+id/ratingbar_visualize_evaluate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                app:starCount="5"
+                app:starEmpty="@mipmap/starform2"
+                app:starFill="@mipmap/starform3"
+                app:starHalf="@mipmap/starform"
+                app:starImageSize="20dp"
+                app:starPadding="30dp"
+                app:starStep="2.5"
+                app:stepSize="Half" />
+        </LinearLayout>
+        <!--沟通评价-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="沟通评价"
+                android:textColor="@color/color_three"
+                android:textSize="14dp" />
+
+            <com.cary.activity.timecat.util.view.RatingBar
+                android:id="@+id/ratingbar_communicate_evaluate"
+                style="@style/yogaCourseRatingBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                app:starCount="5"
+                app:starEmpty="@mipmap/starform2"
+                app:starFill="@mipmap/starform3"
+                app:starHalf="@mipmap/starform"
+                app:starImageSize="20dp"
+                app:starPadding="30dp"
+                app:starStep="2.5"
+                app:stepSize="Half" />
+        </LinearLayout>
+        <!--守时评价-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="守时评价"
+                android:textColor="@color/color_three"
+                android:textSize="14dp" />
+
+            <com.cary.activity.timecat.util.view.RatingBar
+                android:id="@+id/ratingbar_punchtuality_evaluate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                app:starCount="5"
+                app:starEmpty="@mipmap/starform2"
+                app:starFill="@mipmap/starform3"
+                app:starHalf="@mipmap/starform"
+                app:starImageSize="20dp"
+                app:starPadding="30dp"
+                app:starStep="2.5"
+                app:stepSize="Half" />
+            <!--上面RatingBar属性设置代码是使用的关键 对星星数量，大小，位置，星星样式，间距，默认星级等均做了设置-->
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_evaluate_content"
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:layout_margin="@dimen/ten"
+        android:background="@drawable/edittext_bg"
+        android:gravity="top"
+        android:hint="请输入评价内容，您的评价可能会帮助其他的新人哟"
+        android:padding="@dimen/ten"
+        android:textColor="@color/color_three"
+        android:textSize="14dp" />
+    <!--展示上传的图片-->
+    <GridView
+        android:id="@+id/recycler_add_accessory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:columnWidth="60dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp" />
+</LinearLayout>

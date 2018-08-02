@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+
+    <ImageView
+        android:id="@+id/imageview_show_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/ten" />
+
+    <TextView
+        android:id="@+id/textview_show_image_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageview_show_image"
+        android:layout_marginTop="@dimen/ten"
+        android:padding="@dimen/ten"
+        android:text="备注："
+        android:textColor="#333333" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ten"
+        android:layout_below="@id/textview_show_image_note"
+        android:background="@color/color_f5f5f5" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageview_show_image"
+        android:background="@color/white"
+        android:padding="@dimen/ten"
+        android:text="配套推荐"
+        android:textColor="#333333" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/show_image_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground" />
+
+
+</LinearLayout>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".fragment.person.allmessage.AllMessageListActivity">
+
+    <include layout="@layout/title_layout" />
+
+    <RelativeLayout
+        android:id="@+id/rl_sysmessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@color/white"
+        android:padding="@dimen/ten">
+
+        <ImageView
+            android:id="@+id/iv_sysmessage"
+            android:layout_width="18dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_toRightOf="@id/iv_sysmessage"
+            android:text="系统消息"
+            android:textColor="@color/color_three"
+            android:textSize="14dp" />
+
+        <ImageView
+            android:id="@+id/iv_sysmessage_arrow"
+            android:layout_width="9dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/rightarrow" />
+
+        <TextView
+            android:id="@+id/tv_sysmssage_num"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_toLeftOf="@id/iv_sysmessage_arrow"
+            android:background="@drawable/shape_circle_red"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+    <!--好友申请-->
+    <RelativeLayout
+        android:id="@+id/rl_applyfriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten"
+        android:background="@color/white"
+        android:padding="@dimen/ten">
+
+        <ImageView
+            android:id="@+id/iv_applyfriend"
+            android:layout_width="18dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_toRightOf="@id/iv_applyfriend"
+            android:text="好友申请"
+            android:textColor="@color/color_three"
+            android:textSize="14dp" />
+
+        <ImageView
+            android:id="@+id/iv_applyfriend_arrow"
+            android:layout_width="9dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/rightarrow" />
+
+        <TextView
+            android:id="@+id/tv_applyfriend_num"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_toLeftOf="@id/iv_applyfriend_arrow"
+            android:background="@drawable/shape_circle_red"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+    <!--群消息-->
+    <RelativeLayout
+        android:id="@+id/rl_groupmessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/one"
+        android:background="@color/white"
+        android:padding="@dimen/ten">
+
+        <ImageView
+            android:id="@+id/iv_groupmessage"
+            android:layout_width="18dp"
+            android:layout_height="16dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_toRightOf="@id/iv_groupmessage"
+            android:text="群消息"
+            android:textColor="@color/color_three"
+            android:textSize="14dp" />
+
+        <ImageView
+            android:id="@+id/iv_groupmessage_arrow"
+            android:layout_width="9dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/rightarrow" />
+
+        <TextView
+            android:id="@+id/tv_groupmessage_num"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_toLeftOf="@id/iv_groupmessage_arrow"
+            android:background="@drawable/shape_circle_red"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+</LinearLayout>

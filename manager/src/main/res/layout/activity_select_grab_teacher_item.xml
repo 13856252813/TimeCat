@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/ten"
+    android:paddingTop="@dimen/ten">
+
+    <ImageView
+        android:id="@+id/iv_grab_teacher_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@id/iv_grab_teacher_img"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_grab_teacher_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name 摄影师"
+            android:textColor="@color/color_three"
+            android:textSize="@dimen/textsize_content" />
+
+        <TextView
+            android:id="@+id/tv_grab_teacher_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9.9"
+            android:textColor="@color/login_color_btn"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+
+    <CheckBox
+        android:id="@+id/checkbox_grab_teacher_isselect"
+        android:layout_width="@dimen/thirty"
+        android:layout_height="@dimen/thirty"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/ten"
+        android:button="@drawable/register_checkbox_style" />
+
+
+</RelativeLayout>

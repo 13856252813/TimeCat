@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".fragment.look.interact.InteractDetialActivity">
+
+    <ImageView
+        android:id="@+id/iv_interact_comment_list_item"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_interact_comment_list_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@id/iv_interact_comment_list_item"
+        android:text="时光猫"
+        android:textColor="#F39B77"
+        android:textSize="13dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/ll_interact_comment_reply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_interact_comment_list_name"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_interact_comment_list_item"
+            android:text="回复"
+            android:textColor="@color/color_three"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_interact_comment_reply_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_interact_comment_list_item"
+            android:text="时光猫"
+            android:textColor="#F39B77"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_interact_comment_list_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_interact_comment_list_name"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_marginTop="@dimen/five"
+        android:layout_toRightOf="@id/iv_interact_comment_list_item"
+        android:text="时光猫评论"
+        android:textColor="@color/color_three"
+        android:textSize="13dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_interact_comment_list_context"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_toRightOf="@id/iv_interact_comment_list_item"
+        android:background="#BBBBBB" />
+</RelativeLayout>

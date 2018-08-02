@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/ten">
+
+
+    <ImageView
+        android:id="@+id/activity_select_store_list_item_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@color/white" />
+
+    <TextView
+        android:id="@+id/activity_select_store_list_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_select_store_list_item_img"
+        android:layout_marginTop="@dimen/ten"
+        android:text="标题"
+        android:layout_marginLeft="@dimen/five"
+        android:textColor="@color/color_three"
+        android:textSize="@dimen/fourteen" />
+
+    <RelativeLayout
+        android:id="@+id/activity_select_store_list_item_address_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_select_store_list_item_title">
+
+        <TextView
+            android:id="@+id/activity_select_store_list_item_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_marginTop="@dimen/five"
+            android:drawablePadding="@dimen/five"
+            android:drawableLeft="@mipmap/routew"
+            android:text="上海市徐家汇"
+            android:textColor="@color/color_six"
+            android:textSize="@dimen/textsize_content" />
+
+        <TextView
+            android:id="@+id/activity_select_store_list_item_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activity_select_store_list_item_address"
+            android:layout_marginLeft="@dimen/five"
+            android:layout_marginTop="@dimen/five"
+            android:text="服务顾客:16321人次"
+            android:textColor="@color/color_six"
+            android:textSize="@dimen/textsize_content" />
+
+        <TextView
+            android:id="@+id/tv_select_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/red_tran_shape"
+            android:paddingBottom="@dimen/five"
+            android:paddingLeft="@dimen/ten"
+            android:paddingRight="@dimen/ten"
+            android:paddingTop="@dimen/five"
+            android:text="选择"
+            android:textColor="@color/login_color_btn" />
+
+    </RelativeLayout>
+
+    <RatingBar
+        android:id="@+id/activity_select_store_list_item_ratingbar"
+        style="@style/yogaCourseRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="13dp"
+        android:layout_marginTop="@dimen/five"
+        android:layout_below="@+id/activity_select_store_list_item_address_layout"
+        android:layout_marginLeft="@dimen/ten"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="2"
+        android:stepSize="0.5" />
+
+
+</RelativeLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="191dp"
+            android:orientation="vertical"
+            android:padding="@dimen/ten">
+
+            <ImageView
+                android:id="@+id/iv_friend_detial_back"
+                android:layout_width="11dp"
+                android:layout_height="9dp"
+                android:layout_marginTop="20dp"
+                android:src="@mipmap/left_arrow" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/fifteen"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_friend_detial_head"
+                    android:layout_width="81dp"
+                    android:layout_height="81dp"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_launcher" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_teacher_detial_name_store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/twenty"
+                    android:layout_toRightOf="@id/iv_friend_detial_head"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_friend_detial_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时光猫"
+                        android:textColor="@color/white"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_friend_detial_cloudfish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_friend_detial_name"
+                        android:layout_marginTop="@dimen/fifteen"
+                        android:background="@drawable/white_bg_btn_shape"
+                        android:text="共享云盘"
+                        android:textColor="@color/white"
+                        android:textSize="11dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_friend_detial_collect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:drawableTop="@mipmap/heart3"
+                        android:text="关注"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/ten">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="动态"
+                android:textColor="@color/color_three"
+                android:textSize="13dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/ten"
+                android:background="#dedede" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_friend_deital_news"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_lgbtn_shape"
+                android:gravity="center"
+                android:padding="@dimen/ten"
+                android:text="发消息"
+                android:id="@+id/tv_friend_detial_sendmsg"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

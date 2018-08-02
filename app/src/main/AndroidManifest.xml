@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cary.activity.timecat">
+
+    <!-- 添加可以向外拨打电话的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 热修复网络权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 外部存储读权限，调试工具加载本地补丁需要 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- alipay -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 环信 Required -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- bugly start -->
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- bugly end -->
+
+    <permission
+        android:name="com.hyphenate.chatuidemo.permission.MIPUSH_RECEIVE"
+        android:protectionLevel="signatureOrSystem" />
+
+    <uses-permission android:name="com.hyphenate.chatuidemo.permission.MIPUSH_RECEIVE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MyRealApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/TranslucentTheme">
+        <activity android:name=".guide.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".reglogin.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".reglogin.RegisterActivity" />
+        <activity android:name=".download.DownloadActivity" />
+
+        <meta-data
+            android:name="com.taobao.android.hotfix.IDSECRET"
+            android:value="24837051" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.APPSECRET"
+            android:value="6356110ad3ac96379ac066acfbb9afcc" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.RSASECRET"
+            android:value="MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCYjnj05wStmjAQwsJaI9sdA3YexAU2nX4pJKYTLnslMV7ANx222X/palWUWQoFil3xAkFhUNf0y8CvN0grG4oGII+Mv9dP5dU47TJC6fg8U/ZKSY1aaA97PokLYHjwq2QluIniKvpUXGY4zbYwBAm6jI7PA5OXZ+uQOGgptSHH9b0f305fqKfHw4R370qiYOBVEOmNlTLcvug+naWKnTs+elClZQ/QQvWyjMssu0s/dC+5zrNoAwluFeUERWtZovKZsFydbFYc12NZ3ZHGAk/6SByev3YTPBYQf1GoIVE9UmYyBcEJOQ7nbMgPh/0o7jO6b/TrScZZ/HMWjNi8pmYpAgMBAAECggEAAX8sWqLFnfpsTE3M4FuHs9Ir34Nm1bFX4ol0g62qEaRZXKNtzDR4F88uRcVV3tYLs+ikwZKse79gBZgSQjID+alqHyRmtWb435UcMCHhiJ3+RZ5RH7jzpe7oI09wAFR+KAyWdbycNiWt7xK9ndz8R3NHl2pekVa4rfKPuxEG4tJXgZieWWoYQwlk+YTF4fg1LoJDO/r8pa8iIZy2h6x6DmfqA/pMKaTvUsYdAs5c55TqOHNL48riiai52XsDSZFTl1Gey9+lb6KbYdASomkGlXg4j8SP19M63rRTp6e//XZLhquC/WovGZqyp3PFF+rjSIWDUEZ1PL/UkhglX1H7TQKBgQDbOe8wmtfPwUeartaJx4RXYwUZfeO4KHAIsXCvOqT+aHjVtat01D15KYgXqpvCbMXmv7fLVU119Bdbzdid64kVFnSr4JRyOjU++qvaQ1TbXQ2Jn0qA46XAa3Ej0n8IqraZMvc8EiUWuW0F5yaE6pnl+ix/FlOKjst4hE7poT8lUwKBgQCyJZb0v3aYq3LAagsOl/BhpKGdAN/Po0aV/4CDfvJfhTJIap+rurBMeh0SscAY+C1eVKh88I85SB9g6zuGurJJjE5bVySbUBpfIOd8ZPPtcxq2CcJZwngyopaYip+jQ0Q3T9zjWiTiXdsG+aFaHBjm3ppRr6DUMkfxcbUwNyG7EwKBgQCI6fvKXUpfRBTWNE9kqSir8vmiXA82Wnrt0vPPXE7jXJfq0JUOV+c0no2SSkkQ+iH25NGCufmwqwtTmJGqvwlUFDw1hALx/Ax5EtD1dYuvnMPxqXw8VvCT5gY5GyOfZA66SyxBZgunz5KZVy2lYWdQTBgyHt158Yh98hPesYfgZQKBgQCwv+jhViGV4e1NiSkFRqyiRFRw0NA+U/IRmtnoHYjeSuoTvW5EVUrb5gB4btF4NKvWvsoYhBimLa+sWlfKGewQWtvXdkOEsVoo7h2eZw85lQ14dYBVzEOzgWtHV6qBspi5BEzVabfUvGg2qHB1VhFC5rNXvpgkUOreXAH4H4sg7wKBgAerWdmBw5svo6aSoxWkmUJhft2VSzT5x3BMcKn7p7sgTBdBoath0bMwVGPusjEJXDd1a3kFs12VSEG0mkwdWtceczOer2yRoruVjAkhYFbvX2hul5HUjGIxfT3UlOfWCU867OVjcO9rLgykNdl65QiWom8gyleiJsJEwvH5WCO2" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5b0a78eb8f4a9d1f5e000085" />
+        <!-- Channel ID用来标识App的推广渠道，作为推送消息时给用户分组的一个维度。 -->
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Channel ID" />
+
+        <activity android:name=".MainActivity" />
+        <activity android:name=".webview.WebViewActivity" />
+        <activity android:name=".reglogin.PerfectInformationActivity" />
+        <activity
+            android:name=".reglogin.PopupUpLoadActivity"
+            android:theme="@style/transDialog" />
+        <activity android:name=".reglogin.ForgetPassActivity" />
+        <activity
+            android:name=".main.dialog.CEOEmailActivity"
+            android:theme="@style/transDialog" />
+        <activity android:name=".fragment.MainTabLayoutActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".fragment.index.selectstore.SelectStoreActivity" />
+        <activity android:name=".fragment.index.selectsetmeal.SelectSetMealActivity" />
+        <activity android:name=".fragment.index.setmealdetial.SetMealDetialActivity" />
+        <activity android:name=".fragment.index.baseservice.BaseServiceActivity" />
+        <activity android:name=".fragment.index.photography.PayPhotoGraphyOrderActivity" />
+
+        <!-- 配置支付宝 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity android:name=".wxapi.WXEntryActivity" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="false" />
+        <uses-library android:name="android.test.runner" />
+
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.sina.weibo.sdk.web.WeiboSdkWebActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.sina.weibo.sdk.share.WbShareTransActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 环信 start -->
+        <!-- 设置环信应用的AppKey-->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="1135180519177002#shiguangmao" />
+        <!-- 声明SDK所需的service SDK核心功能 -->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <!-- 环信end -->
+
+        <activity android:name=".fragment.index.basicser.BasicServiceActivity" />
+        <activity android:name=".fragment.index.selectfriendpay.SelectFriendPayActivity" />
+        <activity android:name=".fragment.index.timeclouddish.TimeCloudDishActivity" />
+        <activity android:name=".fragment.index.timeclouddish.photo.CloudDishPhotoActivity" />
+        <activity android:name=".fragment.index.timeclouddish.NewFloderUploadActivity" />
+        <activity android:name=".fragment.index.timeclouddish.showimage.ShowImageActivity" />
+        <activity android:name=".fragment.index.news.NewsActivity" />
+        <activity android:name=".fragment.index.news.NewsDetialActivity" />
+        <activity android:name=".fragment.index.fulldress.FullDressActivity" />
+        <activity android:name=".fragment.index.fulldress.detial.FullDressDetialActivity" />
+        <activity android:name=".fragment.index.fulldress.FullDressOrderActivity" />
+        <activity android:name=".fragment.index.fulldress.confirmorder.ConfirmOrderActivity" />
+        <activity android:name=".fragment.index.fulldress.confirmorder.BaseInfoMessageActivity" />
+        <activity android:name=".fragment.index.fulldress.confirmorder.SelectTeacherActivity" />
+        <activity android:name=".fragment.index.fulldress.confirmorder.SelectColothActivity" />
+        <activity android:name=".fragment.index.fulldress.confirmorder.teacher.TeacherDetialActivity" />
+        <activity android:name=".fragment.index.fulldress.confirmorder.teacher.TeacherWorkGridActivity" />
+        <activity android:name=".fragment.index.fulldress.confirmorder.teacher.TeacherDateActivity" />
+        <activity android:name=".fragment.index.gotogether.GoTogetherPhotoActivity" />
+        <activity android:name=".fragment.index.gotogether.TaskDetialActivity" />
+        <activity android:name=".fragment.index.fulldress.detial.FullDressDetialOrderActivity" />
+        <activity android:name=".fragment.index.fulldress.confirmorder.SelectScenicActivity" />
+        <activity android:name=".fragment.message.group.MessageGroupMemberActivity" />
+        <activity android:name=".fragment.message.detial.MessageDetialActivity" />
+        <activity android:name=".fragment.message.list.MessageSearchNameActivity" />
+        <activity android:name=".fragment.message.myfriend.MyFriendListActivity" />
+        <activity android:name=".fragment.message.myfriend.detial.FriendDetialActivity" />
+        <activity android:name=".fragment.look.interact.InteractActivity" />
+        <activity android:name=".fragment.look.interact.SendDynamicActivity" />
+        <activity android:name=".fragment.look.interact.PlusImageActivity" />
+        <activity android:name=".fragment.look.interact.InteractDetialActivity" />
+        <activity android:name=".fragment.look.integral.IntegralMallActivity" />
+        <activity android:name=".fragment.look.integral.exchange.IntegralExchangeActivity" />
+        <activity android:name=".fragment.person.systemsetting.SystemSettingActivity" />
+        <activity android:name=".fragment.person.systemsetting.VersionActivity" />
+        <activity android:name=".fragment.person.systemmessage.SystemMessageActivity" />
+        <activity android:name=".fragment.person.systemmessage.SysMsgDetialActivity" />
+        <activity android:name=".fragment.person.servicephone.ServicePhoneActivity" />
+        <activity android:name=".fragment.person.sharemoney.ShareMoneyActivity" />
+        <activity android:name=".fragment.person.advice.ComPlaintAdviceActivity" />
+        <activity android:name=".fragment.person.newhelper.NewHelperActivity" />
+        <activity android:name=".fragment.person.newhelper.NewHelperDetialActivity" />
+        <activity android:name=".fragment.person.receiveadd.ReceivedAddressActivity" />
+        <activity android:name=".fragment.person.receiveadd.AddReceiveAddressActivity" />
+        <activity android:name=".fragment.person.attention.MyAttentionActivity" />
+        <activity android:name=".fragment.person.myorder.MyOrderActivity" />
+        <activity android:name=".fragment.person.myorder.orderdetial.OrderDetialActivity" />
+        <activity android:name=".fragment.person.myorder.EvaluateActivity" />
+        <activity android:name=".fragment.person.myorder.orderdetial.ClothBuyDetialActivity" />
+        <activity android:name=".fragment.person.myorder.orderdetial.ConfirmSuccessActivity" />
+        <activity android:name=".fragment.person.invitaion.InvitaionCodeActivity" />
+        <activity android:name=".fragment.person.invitaion.WriteInvitaionActivity" />
+        <activity android:name=".fragment.person.integral.IntegralActivity" />
+        <activity android:name=".fragment.person.balance.BalanceActivity" />
+        <activity android:name=".fragment.person.relevanceuser.RelevanceUserActivity" />
+        <activity android:name=".fragment.person.crashpledge.CashPledgeActivity" />
+        <activity android:name=".fragment.person.crashpledge.ReturnCrashPledgeActivity" />
+        <activity android:name=".fragment.person.allmessage.AllMessageListActivity" />
+        <activity android:name=".fragment.index.selectstore.detial.StoreDetialActivity" />
+        <activity android:name=".fragment.index.selectstore.detial.imageInfo.ShowPictureActivity" />
+        <activity android:name=".fragment.index.photography.PayOrderFailedActivity" />
+        <activity android:name=".fragment.index.fulldress.FullDressTabActivity" />
+        <activity android:name=".fragment.index.fulldress.expressmethod.ExpressMethodActivity" />
+        <activity android:name=".fragment.index.hotscenic.HotScenicActivity" />
+        <activity android:name=".fragment.person.attention.news.NewsAttentionDetialActivity" />
+        <activity android:name=".fragment.index.timeshop.TimeShopActivity" />
+        <activity android:name=".fragment.index.timeshop.TimeShopDetialActivity" />
+        <activity android:name=".fragment.index.timeshop.TimeShopOrderActivity" />
+        <activity android:name=".fragment.index.hotscenic.HotScenicDetialActivity" />
+        <activity android:name=".fragment.index.star.StarListActivity"/>
+
+    </application>
+
+</manifest>

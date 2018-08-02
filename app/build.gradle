@@ -1,0 +1,133 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'Timecat'
+            keyPassword 'Timecat@'
+            storeFile file('/Users/Cary/Downloads/workspace_download/TimeCat/Timecat.keystore')
+            storePassword 'Timecat@'
+        }
+        debug {
+            keyAlias 'Timecat'
+            keyPassword 'Timecat@'
+            storeFile file('/Users/Cary/Downloads/workspace_download/TimeCat/Timecat.keystore')
+            storePassword 'Timecat@'
+        }
+    }
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.cary.activity.timecat"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0.0.10"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    sourceSets {
+        main {
+            // 设置Jni so文件路径 如果有jniLibs目录就不需要设置，好像手动创建的 jniLibs目录无效
+            jniLibs.srcDirs = ['libs']
+        }
+        main { res.srcDirs = ['src/main/res', 'src/main/res/anim', 'src/main/res/color'] }
+    }
+    packagingOptions {//加上这写代码
+        pickFirst 'META-INF/*'
+    }
+    //use legacy for android 6.0
+    useLibrary 'org.apache.http.legacy'
+
+}
+repositories {
+    //libs 目录
+    flatDir {
+        dirs "libs"
+    }
+
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
+    maven {
+        url "http://maven.aliyun.com/nexus/content/repositories/releases"
+    }
+}
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.android.support:appcompat-v7:26.1.0'
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    api 'com.android.support:design:26.1.0'
+    api 'com.android.support:support-v4:26.1.0'
+    testApi 'junit:junit:4.12'
+    androidTestApi 'com.android.support.test:runner:1.0.1'
+    androidTestApi 'com.android.support.test.espresso:espresso-core:3.0.1'
+    api 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    api 'io.reactivex:rxandroid:1.1.0'
+    api(name: 'log-release', ext: 'aar')
+    api 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    //glide 图片
+    api 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
+    //热修复
+    api 'com.aliyun.ams:alicloud-android-hotfix:3.2.1'
+    api 'com.google.code.gson:gson:2.8.1'
+    //oss 上传图片
+    api 'com.aliyun.dpa:oss-android-sdk:2.4.5'
+    api 'com.squareup.okhttp3:okhttp:3.4.1'
+    api 'com.squareup.okio:okio:1.9.0'
+    api 'com.squareup.retrofit2:retrofit:2.1.0'
+    api 'com.squareup.retrofit2:converter-gson:2.1.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    debugApi 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    testApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    //    implementation files('libs/alipaySdk-20180403.jar')
+    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.1'
+    //时间选择器
+    api project(':citypickerview')
+    //友盟
+    //添加了次数限制  https://www.jianshu.com/p/da138bf975f7
+    api 'com.android.support:multidex:1.0.0'
+    api project(':UMLibrary')
+    // HotFix3.0以后
+    //    如果集成了友盟utdid包，可以将该包去除，不会影响使用。
+    //    如果集成了阿里的热修复可以在gradle中compile的时候用exclude解决，但是它的解决方案又分3.0以前的和3.0以后的：
+    // HotFix3.0以后
+    api('com.aliyun.ams:alicloud-android-hotfix:3.0.8') {
+        exclude(module: 'alicloud-android-utdid')
+    }
+    // HotFix3.0以前:
+    //    compile('com.taobao.android:alisdk-hotfix:2.0.9') { exclude(module: 'utdid4all') }
+    //图片点击最大
+    api 'com.nineoldandroids:library:2.4.0'
+    api 'com.facebook.rebound:rebound:0.3.8'
+    //环信
+//    api project(':hmspush')
+    api 'com.parse:parse-android:1.13.1'
+    api 'com.google.firebase:firebase-messaging:11.4.0'
+    // bugly start
+    api 'com.tencent.bugly:crashreport:2.6.6.1'
+    api 'com.tencent.bugly:nativecrashreport:3.3.1'
+    // bugly end
+    api files('libs/hyphenatechat_3.4.3.jar')
+}
+// ADD THIS AT THE BOTTOM
+//apply plugin: 'com.google.gms.google-services'
+

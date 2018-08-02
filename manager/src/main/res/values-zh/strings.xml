@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">时光猫管理端</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_phone">请输入电话号码</string>
+    <string name="prompt_password">请输入密码</string>
+    <string name="prompt_verfiy">请输入验证码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_register_in">注册</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">手机号有误，请检查是否正确</string>
+    <string name="error_invalid_password">密码无效，请输入6-16位的英文、数字</string>
+    <string name="error_incorrect_password">密码不正确</string>
+    <string name="error_field_required">手机号不能为空</string>
+    <string name="permission_rationale">"需要联系人来提供通讯录的权限"</string>
+    <string name="error_field_required_verfiy">验证码不能为空</string>
+    <string name="error_field_required_pass">密码不能为空</string>
+    <string name="error_field_required_repass">确认密码不能为空</string>
+    <string name="error_field_protol_agree">请同意用户协议</string>
+    <string name="error_invalid_password_two">两次输入的密码不一致</string>
+    <string name="Invitation_text">邀请码(非必填，填写后享受9折优惠)</string>
+
+    <string name="Forget_pass_title">忘记密码</string>
+    <string name="Forget_pass_button">重设密码</string>
+
+    <string name="tvRegisterProtolOne">注册即代表同意</string>
+    <string name="tvRegisterProtolTwo">《时光猫平台用户注册协议》</string>
+
+    <string name="perfectInfomationTitle">完善信息</string>
+    <string name="upload_head">上传头像</string>
+    <string name="pleaseinput_nick">请输入昵称</string>
+    <string name="upload_ok">确认提交</string>
+
+    <string name="click_look">点击查看</string>
+
+    <string name="title_home">首页</string>
+    <string name="title_message">消息</string>
+    <string name="title_look">发现</string>
+    <string name="title_person">我的</string>
+
+    <string name="title_activity_fly_refresh">FlyRefresh</string>
+    <string name="title_activity_index_main">Refresh</string>
+
+    <string name="title_style">Style</string>
+    <string name="title_using">Using</string>
+    <string name="title_practice">Practice</string>
+    <string name="region_hint">未选择</string>
+    <string name="region_name">已选地区</string>
+
+
+
+    <string name="get_download_url">获取下载链接</string>
+    <string name="download_file">下载文件</string>
+    <string name="download_url">下载链接</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">跳过</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Lonely</string>
+    <string name="slide_2_title">Meet</string>
+    <string name="slide_3_title">Fall in love at first sight</string>
+    <string name="slide_4_title">Both fall in love</string>
+    <string name="slide_5_title">Together forever</string>
+
+    <string name="play_again">play again</string>
+
+</resources>

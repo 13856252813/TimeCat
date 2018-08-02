@@ -1,0 +1,197 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/ten">
+
+    <TextView
+        android:id="@+id/tv_finanic_statisic_storename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="时光旅景上海店"
+        android:textColor="#686868"
+        android:textSize="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/ten">
+
+        <Spinner
+            android:id="@+id/spinner_finanic_statisic_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_finanic_statisic_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textColor="#686868"
+            android:text="2018年06月"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/fifteen"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/tv_user_newadd_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户新增"
+            android:textColor="#686868"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_user_newadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_toRightOf="@id/tv_user_newadd_text"
+            android:text="0名"
+            android:textColor="@color/color_three"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/tv_orderadd_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单新增"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_below="@id/tv_user_newadd_text"
+            android:textColor="#686868"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_order_add"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_below="@id/tv_user_newadd_text"
+            android:layout_toRightOf="@id/tv_orderadd_text"
+            android:text="0条"
+            android:textColor="@color/color_three"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_today_money_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今日实收"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_below="@id/tv_orderadd_text"
+            android:textColor="#686868"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_today_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_below="@id/tv_orderadd_text"
+            android:layout_toRightOf="@id/tv_today_money_text"
+            android:text="¥0.00"
+            android:layout_marginTop="@dimen/ten"
+            android:textColor="@color/color_three"
+            android:textSize="18dp" />
+        <!--定金收取-->
+        <TextView
+            android:id="@+id/tv_money_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:text="定金收取"
+            android:layout_below="@id/tv_today_money_text"
+            android:textColor="#686868"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_below="@id/tv_today_money_text"
+            android:layout_toRightOf="@id/tv_money_text"
+            android:text="¥0.00"
+            android:textColor="@color/color_three"
+            android:textSize="18dp" />
+        <!--提现申请-->
+        <TextView
+            android:id="@+id/tv_drawwith_text"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_height="wrap_content"
+            android:text="提现申请"
+            android:layout_below="@id/tv_money_text"
+            android:textColor="#686868"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_drawwith"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_below="@id/tv_money_text"
+            android:layout_toRightOf="@id/tv_drawwith_text"
+            android:text="0笔"
+            android:textColor="@color/color_three"
+            android:textSize="18dp" />
+        <!--提现金额-->
+        <TextView
+            android:id="@+id/tv_drawwith_money_text"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_height="wrap_content"
+            android:text="提现金额"
+            android:layout_below="@id/tv_drawwith_text"
+            android:textColor="#686868"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_drawwith_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_below="@id/tv_drawwith_text"
+            android:layout_toRightOf="@id/tv_drawwith_money_text"
+            android:text="¥0.00"
+            android:layout_marginTop="@dimen/ten"
+            android:textColor="@color/color_three"
+            android:textSize="18dp" />
+        <!--押金总额-->
+        <TextView
+            android:id="@+id/tv_cash_pledge_money_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:text="押金总额"
+            android:layout_below="@id/tv_drawwith_money_text"
+            android:textColor="#686868"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tv_cash_pledge_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:layout_below="@id/tv_drawwith_money_text"
+            android:layout_toRightOf="@id/tv_cash_pledge_money_text"
+            android:text="¥0.00"
+            android:textColor="@color/color_three"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

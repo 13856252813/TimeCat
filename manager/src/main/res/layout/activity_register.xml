@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/reg_bg"
+    tools:context="com.cary.activity.timecat.manager.register.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <include layout="@layout/title_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/ten"
+            android:orientation="vertical">
+            <!--phone-->
+            <EditText
+                android:id="@+id/etRegisterInputPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_transparency_bg"
+                android:drawableLeft="@mipmap/telephonew"
+                android:drawablePadding="@dimen/ten"
+                android:hint="@string/prompt_phone"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:maxLines="1"
+                android:padding="@dimen/ten"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+            <!--Verifycode  验证码-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/edit_transparency_bg"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etRegisterInputPhoneVerify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/abw"
+                    android:drawablePadding="@dimen/ten"
+                    android:hint="@string/prompt_verfiy"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:padding="@dimen/ten"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
+
+                <TextView
+                    android:id="@+id/tvGetVerfiy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ten"
+                    android:gravity="center"
+                    android:padding="@dimen/ten"
+                    android:text="获取验证码"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize_content" />
+            </RelativeLayout>
+            <!--password-->
+            <EditText
+                android:id="@+id/etRegisterInputPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/edit_transparency_bg"
+                android:drawableLeft="@mipmap/unlockw"
+                android:drawablePadding="@dimen/ten"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword"
+                android:padding="@dimen/ten"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+            <!--pleasecode  邀请码-->
+            <EditText
+                android:id="@+id/etRegisterInputInvitation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/edit_transparency_bg"
+                android:drawableLeft="@mipmap/hygienicw"
+                android:drawablePadding="@dimen/ten"
+                android:hint="@string/Invitation_text"
+                android:maxLines="1"
+                android:padding="@dimen/ten"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+
+            <Button
+                android:id="@+id/btRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fifteen"
+                android:background="@drawable/login_lgbtn_shape"
+                android:gravity="center"
+                android:padding="@dimen/ten"
+                android:text="@string/action_register_in"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/llRegisterProtol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fifteen"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/ten">
+
+                <CheckBox
+                    android:id="@+id/cbProtol"
+                    android:layout_width="@dimen/thirty"
+                    android:layout_height="@dimen/thirty"
+                    android:button="@drawable/register_checkbox_style"
+                    android:checked="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/tvRegisterProtolOne"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize_small" />
+
+                <TextView
+                    android:id="@+id/tvRegisterProtolText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/tvRegisterProtolTwo"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textsize_small" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

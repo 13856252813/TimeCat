@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f5f5"
+    tools:context=".fragment.index.fulldress.confirmorder.ConfirmOrderActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/title_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tirps" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:gravity="center_vertical"
+                android:text="可以先付定金，慢慢在挑选和补充材料哟"
+                android:textColor="#F83345"
+                android:textSize="13dp" />
+        </LinearLayout>
+        <!--订单商品信息-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/ten"
+            android:text="订单商品信息："
+            android:textColor="@color/color_six"
+            android:textSize="13dp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one"
+            android:background="@color/white"
+            android:padding="@dimen/ten">
+
+            <ImageView
+                android:id="@+id/iv_confirm_order_commodity"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_confirm_order_commodity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_toRightOf="@id/iv_confirm_order_commodity"
+                android:text="婚纱摄影"
+                android:textColor="@color/color_three"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_confirm_order_commodity_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/tv_confirm_order_commodity_title"
+                android:layout_marginRight="@dimen/ten"
+                android:text="¥234"
+                android:textColor="@color/color_three"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tv_confirm_order_commodity_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_confirm_order_commodity_title"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_toRightOf="@id/iv_confirm_order_commodity"
+                android:text="婚纱摄影套餐"
+                android:textColor="@color/color_six"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tv_confirm_order_commodity_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_confirm_order_commodity"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_toRightOf="@id/iv_confirm_order_commodity"
+                android:text="时光旅景酒店"
+                android:textColor="@color/color_six"
+                android:textSize="14dp" />
+        </RelativeLayout>
+        <!--用户基本信息-->
+
+        <RelativeLayout
+            android:id="@+id/rl_confirm_order_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:padding="@dimen/ten">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="用户基本信息"
+                android:textColor="@color/color_six"
+                android:textSize="13dp" />
+
+            <ImageView
+                android:id="@+id/iv_confirm_order_user_arrow"
+                android:layout_width="9dp"
+                android:layout_height="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/rightarrow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_toLeftOf="@id/iv_confirm_order_user_arrow"
+                android:text="编辑"
+                android:textColor="@color/color_six"
+                android:textSize="13dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_confirm_order_user_head"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="name"
+                    android:textColor="@color/color_three"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#dfdfdf" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_bridegroom_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="新郎"
+                    android:textColor="@color/color_six"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_bridegroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_toRightOf="@id/tv_confirm_order_user_bridegroom_text"
+                    android:text="-----"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_brideg_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_confirm_order_user_bridegroom_text"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="新娘"
+                    android:textColor="@color/color_six"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_bride"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_confirm_order_user_bridegroom_text"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_toRightOf="@id/tv_confirm_order_user_brideg_text"
+                    android:text="-----"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_weddingday_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_confirm_order_user_brideg_text"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/ten"
+                    android:text="婚期"
+                    android:textColor="@color/color_six"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_weddingday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_confirm_order_user_brideg_text"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_toRightOf="@id/tv_confirm_order_user_weddingday_text"
+                    android:text="-----"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <!--第二排 时间 景点 接待-->
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_weddingtime_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_toRightOf="@id/tv_confirm_order_user_bridegroom"
+                    android:text="时间"
+                    android:textColor="@color/color_six"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_weddingtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_toRightOf="@id/tv_confirm_order_user_weddingtime_text"
+                    android:text="-----"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_scneic_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_confirm_order_user_weddingtime_text"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_toRightOf="@id/tv_confirm_order_user_bridegroom"
+                    android:text="景点"
+                    android:textColor="@color/color_six"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_scneic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_confirm_order_user_bridegroom_text"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_toRightOf="@id/tv_confirm_order_user_scneic_text"
+                    android:text="-----"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_reception_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_confirm_order_user_scneic"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_toRightOf="@id/tv_confirm_order_user_bridegroom"
+                    android:text="接待"
+                    android:textColor="@color/color_six"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_user_reception"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_confirm_order_user_brideg_text"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/fifteen"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_toRightOf="@id/tv_confirm_order_user_reception_text"
+                    android:text="-----"
+                    android:textColor="@color/color_three"
+                    android:textSize="13dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <!--指定老师-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:padding="@dimen/ten"
+            android:text="指定老师"
+            android:textColor="@color/color_six"
+            android:textSize="13dp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_confirm_order_camcerman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one"
+            android:orientation="horizontal">
+            <!--摄影师-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <ImageView
+                    android:id="@+id/iv_confirm_order_camcerman"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/photographer" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_camcerman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:gravity="center"
+                    android:text="指定老师"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_camcerman_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/five"
+                    android:gravity="center"
+                    android:text="摄影师"
+                    android:textColor="@color/color_three"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_camcerman_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:gravity="center"
+                    android:text="¥-----"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_camcerman_setmeal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:gravity="center"
+                    android:text="x---套系服装"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+            <!--化妆师-->
+            <LinearLayout
+                android:id="@+id/ll_confirm_order_dresser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <ImageView
+                    android:id="@+id/iv_confirm_order_dresser"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/dresser" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_dresser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:gravity="center"
+                    android:text="指定老师"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_dresser_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/five"
+                    android:gravity="center"
+                    android:text="化妆师"
+                    android:textColor="@color/color_three"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_dresser_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:gravity="center"
+                    android:text="¥-----"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_dresser_setmeal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:gravity="center"
+                    android:text="x---套系服装"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+            <!--数码师-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/ten">
+
+                <ImageView
+                    android:id="@+id/iv_confirm_order_numerical"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/digitaldivision" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_numerical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:gravity="center"
+                    android:text="将由平台指派"
+                    android:textColor="@color/login_color_btn"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_numerical_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/five"
+                    android:gravity="center"
+                    android:text="数码师"
+                    android:textColor="@color/color_three"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_order_numical_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/fifteen"
+                    android:gravity="center"
+                    android:text="¥-----"
+                    android:textColor="@color/color_three"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--指定服装-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:padding="@dimen/ten"
+            android:text="指定服装"
+            android:textColor="@color/color_six"
+            android:textSize="13dp" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:paddingLeft="@dimen/ten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/tv_confirm_order_clothing_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:padding="@dimen/ten"
+                        android:text="指定服装1"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_confirm_order_clothing"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_below="@id/tv_confirm_order_clothing_text"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:id="@+id/tv_confirm_order_clothing_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_confirm_order_clothing"
+                        android:maxLines="1"
+                        android:padding="@dimen/ten"
+                        android:text="孔雀绿低胸小礼服"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_confirm_order_clothing_add_boy"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignBaseline="@id/iv_confirm_order_clothing"
+                        android:layout_below="@id/tv_confirm_order_clothing_text"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_toRightOf="@id/iv_confirm_order_clothing"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/iv_confirm_order_clothing_add_boy"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@mipmap/add" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_confirm_order_clothing_name_add_boy"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ll_confirm_order_clothing_add_boy"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_toRightOf="@id/iv_confirm_order_clothing"
+                        android:gravity="center"
+                        android:padding="@dimen/ten"
+                        android:text="男装"
+                        android:textColor="@color/login_color_btn"
+                        android:textSize="13dp" />
+
+                </RelativeLayout>
+                <!--女装-->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/ten"
+                    android:paddingLeft="@dimen/ten"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/tv_confirm_order_clothing_text_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:padding="@dimen/ten"
+                        android:text="指定服装2"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_confirm_order_clothing_two"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_below="@id/tv_confirm_order_clothing_text_two"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:id="@+id/tv_confirm_order_clothing_name_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_confirm_order_clothing_two"
+                        android:maxLines="1"
+                        android:padding="@dimen/ten"
+                        android:text="孔雀绿低胸小礼服"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_confirm_order_clothing_add_girl"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_alignBaseline="@id/iv_confirm_order_clothing_two"
+                        android:layout_below="@id/tv_confirm_order_clothing_text_two"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_toRightOf="@id/iv_confirm_order_clothing_two"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/iv_confirm_order_clothing_add_boy_two"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@mipmap/add" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_confirm_order_clothing_name_add_girl"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ll_confirm_order_clothing_add_girl"
+                        android:layout_marginLeft="@dimen/ten"
+                        android:layout_toRightOf="@id/iv_confirm_order_clothing_two"
+                        android:gravity="center"
+                        android:padding="@dimen/ten"
+                        android:text="女装"
+                        android:textColor="@color/login_color_btn"
+                        android:textSize="13dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <!--指定景点-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:padding="@dimen/ten"
+            android:text="指定景点"
+            android:textColor="@color/color_six"
+            android:textSize="13dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_confirm_order_secnic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:id="@+id/rl_confirm_order_secnic_add"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_confirm_order_secnic_add"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/add" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_confirm_order_secnic_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="指定景点2"
+                        android:textColor="@color/login_color_btn"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tv_confirm_order_secnic_name_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="中国马尔代夫"
+                        android:textColor="@color/color_three"
+                        android:textSize="13dp" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+        <!--交定金 底部-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ten"
+            android:background="@color/white"
+            android:padding="@dimen/ten">
+
+            <TextView
+                android:id="@+id/tv_confirm_order_setmealmoney_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_confirm_order_setmealmoney"
+                android:layout_centerVertical="true"
+                android:text="套餐费用"
+                android:textColor="@color/color_six"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_confirm_order_setmealmoney_flag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_confirm_order_setmealmoney"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_confirm_order_setmealmoney_text"
+                android:text="¥"
+                android:textColor="@color/login_color_btn"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_confirm_order_setmealmoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_confirm_order_setmealmoney_flag"
+                android:text="34532"
+                android:textColor="@color/login_color_btn"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tv_confirm_order_setmealmoney_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_confirm_order_setmealmoney"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_confirm_order_setmealmoney"
+                android:text=".00"
+                android:textColor="@color/login_color_btn"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/tv_confirm_order_commit_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/login_color_btn"
+                android:gravity="center"
+                android:paddingBottom="@dimen/ten"
+                android:paddingLeft="@dimen/fifteen"
+                android:paddingRight="@dimen/fifteen"
+                android:paddingTop="@dimen/ten"
+                android:text="交订金"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

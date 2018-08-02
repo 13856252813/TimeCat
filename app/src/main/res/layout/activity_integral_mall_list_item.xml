@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/ten">
+
+    <ImageView
+        android:id="@+id/iv_integral_mall_list_item"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_integral_mall_list_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="时光猫"
+        android:textColor="@color/color_three"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_integral_mall_list_item_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_integral_mall_list_item_title"
+        android:layout_centerVertical="true"
+        android:text="时光猫"
+        android:textColor="@color/color_three"
+        android:textSize="9dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_integral_mall_list_item"
+        android:layout_alignParentRight="true">
+
+        <TextView
+            android:id="@+id/tv_integral_mall_list_item_old_gral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_integral_mall_list_item_gral"
+            android:layout_alignParentRight="true"
+            android:text="¥1000"
+            android:textColor="@color/color_three"
+            android:textSize="9dp" />
+
+        <TextView
+            android:id="@+id/tv_integral_mall_list_item_gral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_toLeftOf="@id/tv_integral_mall_list_item_old_gral"
+            android:text="¥999"
+            android:textColor="#F83345"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_integral_mall_list_item_gral"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_toLeftOf="@id/tv_integral_mall_list_item_gral"
+            android:text="积分:"
+            android:textColor="#8C8C8C"
+            android:textSize="11dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
