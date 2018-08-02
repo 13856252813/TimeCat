@@ -1,15 +1,20 @@
 package com.cary.activity.timecat.fragment.message.group;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.message.myfriend.FriendListApi;
@@ -80,7 +85,7 @@ public class MessageGroupMemberActivity extends AppCompatActivity {
         token = (String) sharePh.getSharedPreference("token", "");
         uid = (int) sharePh.getSharedPreference("id", 0);
 
-        id = getIntent().getIntExtra("id", 0);
+        id = getIntent().getIntExtra("groupmodel", 0);
 
         setDataList();
         mGroupAdapter = new GroupMemberGridViewAdapter(this,
@@ -109,7 +114,34 @@ public class MessageGroupMemberActivity extends AppCompatActivity {
                 break;
             case R.id.rl_group_message_list_name:
 
-
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                AlertDialog dialog = builder.create();  //创建对话框
+                builder.setTitle("请输入群组名称");    //设置对话框标题
+                builder.setIcon(android.R.drawable.btn_star);
+                final EditText edit = new EditText(this);
+                edit.setHint("请输入群组名称");
+                edit.setHintTextColor(getResources().getColor(R.color.gray));
+                builder.setView(edit);
+                builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String groupName = edit.getText().toString().trim();
+                        Toast.makeText(MessageGroupMemberActivity.this, "你输入的是: " + groupName, Toast.LENGTH_SHORT).show();
+                        if(!TextUtils.isEmpty(groupName)){
+                            createSingleChangeGroup(groupName);
+                        }
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        Toast.makeText(MessageGroupMemberActivity.this, "你点了取消", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setCancelable(true);    //设置按钮是否可以按返回键取消,false则不可以取消
+                dialog.setCanceledOnTouchOutside(true); //设置弹出框失去焦点是否隐藏,即点击屏蔽其它地方是否隐藏
+                dialog.show();
                 break;
             case R.id.btn_group_message_list:
                 createSingleDelGroup();

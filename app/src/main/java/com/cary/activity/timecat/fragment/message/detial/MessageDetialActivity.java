@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.message.group.MessageGroupMemberActivity;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
 
 import java.util.ArrayList;
 
@@ -41,7 +43,7 @@ public class MessageDetialActivity extends AppCompatActivity {
     @BindView(R.id.tvSend)
     TextView tvSend;
     private ChatAdapter adapter;
-    private int message;
+    private int messageId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class MessageDetialActivity extends AppCompatActivity {
         titleTextRight.setText("");
         titleTextRight.setPadding(0, 0, 20, 0);
         titleTextRight.setVisibility(View.VISIBLE);
-        message = getIntent().getIntExtra("message", 0);
+        messageId = getIntent().getIntExtra("message", 0);
 
         recylerView = (RecyclerView) findViewById(R.id.recylerView);
         recylerView.setHasFixedSize(true);
@@ -84,6 +86,13 @@ public class MessageDetialActivity extends AppCompatActivity {
             case R.id.tvSend:
                 String SendTextStr = etMessageDetial.getText().toString().trim();
                 if (!TextUtils.isEmpty(SendTextStr)) {
+                    //创建一条文本消息，content为消息文字内容，toChatUsername为对方用户或者群聊的id，后文皆是如此
+                    EMMessage message = EMMessage.createTxtSendMessage(SendTextStr, messageId);
+//如果是群聊，设置chattype，默认是单聊
+                    if (chatType == CHATTYPE_GROUP)
+                        message.setChatType(ChatType.GroupChat);
+//发送消息
+                    EMClient.getInstance().chatManager().sendMessage(message);
                     ArrayList<ItemModel> data = new ArrayList<>();
                     ChatModel model = new ChatModel();
                     model.setIcon("http://img.my.csdn.net/uploads/201508/05/1438760758_6667.jpg");
@@ -91,6 +100,7 @@ public class MessageDetialActivity extends AppCompatActivity {
                     data.add(new ItemModel(ItemModel.CHAT_B, model));
                     adapter.addAll(data);
                     etMessageDetial.setText("");
+
                     hideKeyBorad(etMessageDetial);
                 }
                 break;

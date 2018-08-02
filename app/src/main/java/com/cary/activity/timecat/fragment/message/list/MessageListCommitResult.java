@@ -1,8 +1,9 @@
 package com.cary.activity.timecat.fragment.message.list;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class MessageListCommitResult {
+public class MessageListCommitResult implements Serializable{
 
     /**
      * code : string
@@ -38,7 +39,7 @@ public class MessageListCommitResult {
         this.data = data;
     }
 
-    public static class Data {
+    public static class Data implements Serializable{
         /**
          * createTime : 2018-07-28T05:25:42.739Z
          * groupId : string
@@ -113,7 +114,7 @@ public class MessageListCommitResult {
             this.users = users;
         }
 
-        public static class Users {
+        public static class Users implements Serializable{
             /**
              * gid : 0
              * groupId : string

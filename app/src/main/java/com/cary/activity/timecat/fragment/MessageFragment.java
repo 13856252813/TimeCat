@@ -178,9 +178,13 @@ public class MessageFragment extends Fragment {
         recyclerViewGridAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int postion) {
-                Intent intent = new Intent(getActivity(), MessageDetialActivity.class);
-                intent.putExtra("id", mMessageListData.get(postion).getId());
-                startActivity(intent);
+                if (mMessageListData.size() > 0) {
+                    Intent intent = new Intent(getActivity(), MessageDetialActivity.class);
+                    Bundle buldle =new Bundle();
+                    buldle.putSerializable("groupmodel",mMessageListData.get(postion));
+                    intent.putExtras(buldle);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -189,7 +193,7 @@ public class MessageFragment extends Fragment {
     private class MyConnectionListener implements EMConnectionListener {
         @Override
         public void onConnected() {
-            Log.v(TAG,"连接聊天服务器成功");
+            Log.v(TAG, "连接聊天服务器成功");
         }
 
         @Override
@@ -200,19 +204,19 @@ public class MessageFragment extends Fragment {
                 public void run() {
                     if (error == EMError.USER_REMOVED) {
                         // 显示帐号已经被移除
-                        ToastUtil.showShort(getActivity(),"账号移除");
+                        ToastUtil.showShort(getActivity(), "账号移除");
                         getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
                     } else if (error == EMError.USER_LOGIN_ANOTHER_DEVICE) {
                         // 显示帐号在其他设备登录
-                        ToastUtil.showShort(getActivity(),"帐号在其他设备登录");
+                        ToastUtil.showShort(getActivity(), "帐号在其他设备登录");
                         getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
                     } else {
                         if (NetUtils.hasNetwork(getActivity())) {
                             //连接不到聊天服务器
-                            ToastUtil.showShort(getActivity(),"连接服务器失败，请稍后重试");
+                            ToastUtil.showShort(getActivity(), "连接服务器失败，请稍后重试");
                         } else {
                             //当前网络不可用，请检查网络设置
-                            ToastUtil.showShort(getActivity(),"当前网络不可用，请检查网络设置");
+                            ToastUtil.showShort(getActivity(), "当前网络不可用，请检查网络设置");
                         }
                     }
                 }

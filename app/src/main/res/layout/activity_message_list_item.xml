@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/ten"
         android:layout_toRightOf="@id/iv_message_list_item_group_head"
-        android:text="李国强"
+        android:text=" "
         android:textColor="@color/color_three"
         android:textSize="16dp" />
 
@@ -45,7 +45,7 @@
         android:layout_alignBottom="@id/iv_message_list_item_head"
         android:layout_marginLeft="@dimen/ten"
         android:layout_toRightOf="@id/iv_message_list_item_group_head"
-        android:text="李国强:我不管，我是这个群里最漂亮的"
+        android:text=" "
         android:textColor="#2d2d2d"
         android:textSize="13dp" />
 
