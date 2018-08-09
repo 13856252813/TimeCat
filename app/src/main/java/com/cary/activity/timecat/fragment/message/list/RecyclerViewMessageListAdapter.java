@@ -63,7 +63,7 @@ public class RecyclerViewMessageListAdapter extends RecyclerView.Adapter<Recycle
         if (mDateBeen != null && mDateBeen.size() > 0) {
             return mDateBeen.size();
         }
-        return 1;
+        return 0;
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

@@ -336,6 +336,7 @@ public class TimeUtil {
             Date parse1 = dateFormat.parse(getNowTime());
 
             long diff = parse1.getTime() - parse.getTime();
+            Log.e("fl","------diff:"+diff+"----start:"+starTime);
             if (diff > 30) {
                 isDayu = true;
             } else {

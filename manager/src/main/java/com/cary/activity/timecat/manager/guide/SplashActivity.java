@@ -21,7 +21,6 @@ import com.cary.activity.timecat.manager.util.TimeUtil;
 /**
  * 开屏页
  */
-@SuppressLint("Registered")
 public class SplashActivity extends AppCompatActivity {
 
     private final String TAG = SplashActivity.class.getSimpleName();

@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.MainTabLayoutActivity;
+import com.cary.activity.timecat.guide.PrefManager;
 import com.cary.activity.timecat.util.BaseUtil;
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.ToastUtil;
@@ -98,6 +99,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView tvRightText;
     private TextView tvTitleText;
 
+
     private LoginCommitParam logincommitParam;
     private LoginApi loginapi;
 
@@ -106,12 +108,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressDialog dialog;
     private String deviceToken;//= (String) sharedPreferencesHelper.getSharedPreference("deviceToken","");
 
+    private PrefManager mPreManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+        mPreManager=new PrefManager(this);
         sharedPreferencesHelper = new SharedPreferencesHelper(this);
         initPlatforms();
         dialog = new ProgressDialog(this);
@@ -560,6 +566,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Log.d("main", "登录聊天服务器失败！");
                         }
                     });
+                    sharedPreferencesHelper.put("isLogin",true);
+                    mPreManager.setSaveTime();
                     startActivity(new Intent(LoginActivity.this, MainTabLayoutActivity.class));
                     finish();
                 } else {

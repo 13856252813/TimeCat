@@ -30,7 +30,6 @@ android {
         // Enabling multidex support.
         multiDexEnabled true
     }
-
     buildTypes {
         release {
             multiDexEnabled true
@@ -42,7 +41,7 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
-
+    buildToolsVersion '26.0.3'
 }
 repositories {
     //libs 目录
@@ -99,7 +98,6 @@ dependencies {
     //    api 'com.umeng.sdk:analytics:7.5.3'
     //    api 'com.umeng.sdk:push:4.2.0'
     //    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
-
     api 'com.parse:parse-android:1.13.1'
     api 'com.google.firebase:firebase-messaging:11.4.0'
     // bugly start
@@ -109,6 +107,5 @@ dependencies {
     //图片点击最大
     api 'com.nineoldandroids:library:2.4.0'
     api 'com.facebook.rebound:rebound:0.3.8'
-
     api 'com.android.support:multidex:1.0.0'
 }

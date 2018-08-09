@@ -123,8 +123,6 @@ public class MainTabLayoutActivity extends AppCompatActivity implements RadioGro
                     Toast.LENGTH_SHORT).show();
             exitTime = System.currentTimeMillis();
         } else {
-            //退出时保存
-            prefManager.setSaveTime();
             finish();
             System.exit(0);
         }

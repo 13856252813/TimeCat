@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.MainTabLayoutActivity;
 import com.cary.activity.timecat.reglogin.LoginActivity;
+import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.TimeUtil;
 
 @SuppressLint("Registered")
@@ -45,17 +46,19 @@ public class WelcomeActivity extends AppCompatActivity {
     private int currentItem = 0; // 当前图片的索引号
     private int flaggingWidth;// 互动翻页所需滚动的长度是当前屏幕宽度的1/3
 
+    private SharedPreferencesHelper mSharePreference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mSharePreference=new SharedPreferencesHelper(this);
         //在setContentView()前检查是否第一次运行
         prefManager = new PrefManager(this);
         tu = new TimeUtil();
-//        if(!prefManager.isFirstTimeLaunch()){
+        if(!prefManager.isFirstTimeLaunch()){
             launchHomeScreen();
-            finish();
-//        }
+        }
 
         //让状态栏透明
         if(Build.VERSION.SDK_INT >= 21){
@@ -142,10 +145,12 @@ public class WelcomeActivity extends AppCompatActivity {
     private void launchHomeScreen(){
         //此处判断是否跳转到什么地方
         //此处加非 可以跳转到登录界面
-        Log.v(TAG,"145 tu.compareTwoTime3(prefManager.getSaveTime()):"+tu.compareTwoTime3(prefManager.getSaveTime())
-                +"-prefManager.getSaveTime():"+prefManager.getSaveTime());
 
-        if(tu.compareTwoTime3(prefManager.getSaveTime())) {
+        boolean isLogin= (boolean) mSharePreference.getSharedPreference("isLogin",false);
+
+        Log.v(TAG,"145 tu.compareTwoTime3(prefManager.getSaveTime()):"+tu.compareTwoTime3(prefManager.getSaveTime())
+                +"-prefManager.getSaveTime():"+prefManager.getSaveTime()+"------isLogin:"+isLogin);
+        if(isLogin && tu.compareTwoTime3(prefManager.getSaveTime())) {
             startActivity(new Intent(this, MainTabLayoutActivity.class));
         }else{
             startActivity(new Intent(this, LoginActivity.class));
