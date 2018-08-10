@@ -19,6 +19,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -99,7 +100,7 @@ public class TimeCloudDishFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ImageView ivAddImage;
-//    private SwipeRefreshLayout mSwipeRefresh;
+    private SwipeRefreshLayout mSwipeRefresh;
     private NewFloderUploaderPopu menuWindow;
     private final static int CAMERAPRESS = 3;
 
@@ -149,7 +150,7 @@ public class TimeCloudDishFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_time_cloud_dish, container, false);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler);
-//        mSwipeRefresh = rootView.findViewById(R.id.swiperefreshlayout_timedish);
+        mSwipeRefresh = rootView.findViewById(R.id.swiperefreshlayout_timedish);
         ivAddImage = rootView.findViewById(R.id.ivCloudAddImage);
 
         cdApi = CloudDishApi.getApi();
@@ -200,13 +201,13 @@ public class TimeCloudDishFragment extends Fragment {
             }
         });
 
-//        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                currentpage = 1;
-//                setMethod();
-//            }
-//        });
+        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                currentpage = 1;
+                setMethod();
+            }
+        });
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override//滚动状态变化时回调
@@ -264,7 +265,7 @@ public class TimeCloudDishFragment extends Fragment {
                     View dialogView = factory.inflate(R.layout.dialog_new_floder, null);//这里必须是final的
                     final EditText edit = (EditText) dialogView.findViewById(R.id.editTextDialogNewFloder);//获得输入框对象
 
-                    new AlertDialog.Builder(getActivity())
+                    AlertDialog mDialog = new AlertDialog.Builder(getActivity(),R.style.alert_dialog)
                             .setTitle("请输入新建文件夹名称")//提示框标题
                             .setView(dialogView)
                             .setPositiveButton("确定",//提示框的两个按钮
@@ -283,8 +284,8 @@ public class TimeCloudDishFragment extends Fragment {
                                         }
                                     })
                             .setNegativeButton("取消", null)
-                            .create()
-                            .show();
+                            .create();
+                    mDialog.show();
                     break;
                 case R.id.btn_upload_photo:
                     if (Build.VERSION.SDK_INT >= 23) {
@@ -464,7 +465,7 @@ public class TimeCloudDishFragment extends Fragment {
                     mListDatas = cpcr.getData();
                     if (currentpage == 1) {
                         mAdapter.reSetData(mListDatas);
-//                        mSwipeRefresh.setRefreshing(false);
+                        mSwipeRefresh.setRefreshing(false);
                     } else if (currentpage > 1) {
                         mAdapter.addAll(mListDatas);
                     }

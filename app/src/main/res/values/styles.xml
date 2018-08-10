@@ -276,4 +276,9 @@
         <!-- 遮罩层 -->
         <item name="android:backgroundDimAmount">0.5</item>
     </style>
+    <style name="alert_dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowSoftInputMode">stateAlwaysVisible|adjustPan</item>
+    </style>
+
+
 </resources>
