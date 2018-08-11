@@ -188,7 +188,7 @@ public class RelevanceUserActivity extends AppCompatActivity {
                 Log.i(TAG, "success!!!");
                 Log.i(TAG, "---" + response.body().toString());
                 mResList = response.body();
-                if ("00".equals(mResData.getCode())) {
+                if ("00".equals(mResList.getCode())) {
                     RequestOptions options2 = new RequestOptions()
 //                    .centerCrop()
                             .override(60, 40)

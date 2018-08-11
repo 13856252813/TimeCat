@@ -27,6 +27,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Xml;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +80,6 @@ import retrofit2.Response;
 /**
  * 时光云盘 fragment
  */
-@SuppressLint("ValidFragment")
 public class TimeCloudDishFragment extends Fragment {
 
     private String TAG = TimeCloudDishFragment.class.getSimpleName();
@@ -118,15 +118,25 @@ public class TimeCloudDishFragment extends Fragment {
     //上传图片
     private UploadPicCommitResult uploadPicCR;
     private UploadPicApi uploadPicApi;
-    int newFloderType = 0;//文件夹类型 私密 公开 默认公开
+    int newFloderType = 0;//文件夹类型 私密 公开 默认公开1
 
-    public TimeCloudDishFragment(int pos) {
-        this.position = pos;
+
+    public static TimeCloudDishFragment newInstance(int position) {
+        TimeCloudDishFragment newFragment = new TimeCloudDishFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("position", position);
+        newFragment.setArguments(bundle);
+        return newFragment;
+
     }
+
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Bundle bundle=getArguments();
+        position=bundle.getInt("position");
+
         osscredentialsApi = OSSCredentialsApi.getApi();
         ossPutClass = new OSSPutClass(getActivity());
         credentialProvider = new OSSCustomSignerCredentialProvider() {
@@ -182,20 +192,20 @@ public class TimeCloudDishFragment extends Fragment {
                 intent.setClass(getActivity(), CloudDishPhotoActivity.class);
                 intent.putExtra("id", mListDatas.get(postion).getId());
 
-                //跳转到图片
-                String imageUrl = HttpUrlClient.ALIYUNPHOTOBASEURL+mListDatas.get(postion).getFolder();
-                imageInfoObj = new ImageInfoObj();
-                imageInfoObj.imageUrl = imageUrl;
-                imageInfoObj.imageWidth = 1280;
-                imageInfoObj.imageHeight = 720;
-                imageWidgetInfoObj = new ImageWidgetInfoObj();
-                imageWidgetInfoObj.x = imageView.getLeft();
-                imageWidgetInfoObj.y = imageView.getTop();
-                imageWidgetInfoObj.width = imageView.getLayoutParams().width;
-                imageWidgetInfoObj.height = imageView.getLayoutParams().height;
-                intent.setClass(getActivity(), ShowPictureActivity.class);
-                intent.putExtra("imageInfoObj", imageInfoObj);
-                intent.putExtra("imageWidgetInfoObj", imageWidgetInfoObj);
+//                //跳转到图片
+//                String imageUrl = HttpUrlClient.ALIYUNPHOTOBASEURL+mListDatas.get(postion).getFolder();
+//                imageInfoObj = new ImageInfoObj();
+//                imageInfoObj.imageUrl = imageUrl;
+//                imageInfoObj.imageWidth = 1280;
+//                imageInfoObj.imageHeight = 720;
+//                imageWidgetInfoObj = new ImageWidgetInfoObj();
+//                imageWidgetInfoObj.x = imageView.getLeft();
+//                imageWidgetInfoObj.y = imageView.getTop();
+//                imageWidgetInfoObj.width = imageView.getLayoutParams().width;
+//                imageWidgetInfoObj.height = imageView.getLayoutParams().height;
+//                intent.setClass(getActivity(), ShowPictureActivity.class);
+//                intent.putExtra("imageInfoObj", imageInfoObj);
+//                intent.putExtra("imageWidgetInfoObj", imageWidgetInfoObj);
 
                 startActivity(intent);
             }
@@ -557,6 +567,7 @@ public class TimeCloudDishFragment extends Fragment {
     };
 
     private void createSingleNewFloder(int flag, String newFloderName) {
+        Log.e("fl","---flag:"+flag);
         String token = shareHelper.getSharedPreference("token", "").toString();
         int uid = (int) shareHelper.getSharedPreference("id", 0);
         Call<NewFloderCommitResult> call = newFloaderApi.getService().createCommit(token, uid + "", flag, newFloderName);

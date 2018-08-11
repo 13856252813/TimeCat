@@ -96,7 +96,7 @@ public class TimeCloudDishActivity extends FragmentActivity {
         fragments = new ArrayList<>();
         for (int i = 0; i < mTabTitle.length; i++) {
             tabs.add(mTabTitle[i]);
-            TimeCloudDishFragment fragment = new TimeCloudDishFragment(i);
+            TimeCloudDishFragment fragment = TimeCloudDishFragment.newInstance(i);
             fragments.add(fragment);
         }
 

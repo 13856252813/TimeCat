@@ -63,6 +63,16 @@ public class NewsAttentionResult {
             return this.totalSize;
         }
 
+        @Override
+        public String toString() {
+            return "Pi{" +
+                    "currentPage=" + currentPage +
+                    ", pageSize=" + pageSize +
+                    ", query=" + query +
+                    ", totalPage=" + totalPage +
+                    ", totalSize=" + totalSize +
+                    '}';
+        }
     }
 
     public class Information {
@@ -221,4 +231,13 @@ public class NewsAttentionResult {
         return this.pi;
     }
 
+    @Override
+    public String toString() {
+        return "NewsAttentionResult{" +
+                "code='" + code + '\'' +
+                ", data=" + data +
+                ", msg='" + msg + '\'' +
+                ", pi=" + pi +
+                '}';
+    }
 }

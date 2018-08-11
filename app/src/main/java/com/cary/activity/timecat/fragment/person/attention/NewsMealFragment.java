@@ -140,13 +140,14 @@ public class NewsMealFragment extends Fragment {
         @Override
         public void onResponse(Call<NewsAttentionResult> call, Response<NewsAttentionResult> response) {
             if (response.isSuccessful()) {
-                Log.i(TAG, "success!!!");
+                Log.i(TAG, "success!!!"+currentpage);
                 Log.i(TAG, "---" + response.body().toString());
                 mNewsComRes = response.body();
                 if ("00".equals(mNewsComRes.getCode())) {
                     mNewsData = mNewsComRes.getData();
                     if (currentpage == 1) {
                         mAdapter.reSetData(mNewsData);
+                        Log.i(TAG, "size!!!"+mNewsData.size());
                         swiperefreshlayoutAttention.setRefreshing(false);
                     } else if (currentpage > 1) {
                         mAdapter.addAll(mNewsData);

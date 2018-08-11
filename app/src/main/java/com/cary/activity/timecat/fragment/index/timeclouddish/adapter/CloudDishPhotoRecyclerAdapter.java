@@ -17,8 +17,9 @@ import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.index.timeclouddish.photo.CloudDishPhotoResult;
 import com.cary.activity.timecat.http.base.HttpUrlClient;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
+import java.util.HashMap;
 
 /**
  * Created by Cary on 2018/4/10.
@@ -29,7 +30,7 @@ public class CloudDishPhotoRecyclerAdapter extends RecyclerView.Adapter<Recycler
 
     private Context mContext;
     private List<CloudDishPhotoResult.Data> mList;
-    private TreeMap<CloudDishPhotoResult.Data, Boolean> mMap;
+    private HashMap<CloudDishPhotoResult.Data, Boolean> mMap;
     private OnItemClickCoustomListener mClickListener;
     private boolean isShow;//是否显示可编辑
 
@@ -113,6 +114,9 @@ public class CloudDishPhotoRecyclerAdapter extends RecyclerView.Adapter<Recycler
         viewHolder.check_cloud_dish_isshow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(mMap==null){
+                    mMap=new HashMap<CloudDishPhotoResult.Data, Boolean>();
+                }
                 if (isChecked) {
                     mMap.put(mList.get(position), true);
                 } else {
@@ -158,6 +162,9 @@ public class CloudDishPhotoRecyclerAdapter extends RecyclerView.Adapter<Recycler
 
     public void reSetData(List<CloudDishPhotoResult.Data> list) {
         this.mList = list;
+        if(mMap==null){
+            mMap=new HashMap<CloudDishPhotoResult.Data, Boolean>();
+        }
         for (int i = 0; i < list.size(); i++) {
             mMap.put(list.get(i), false);
         }
@@ -223,7 +230,7 @@ public class CloudDishPhotoRecyclerAdapter extends RecyclerView.Adapter<Recycler
 
         void onImageView(int position);//后面的图片操作
 
-        void onSelectView(TreeMap<CloudDishPhotoResult.Data, Boolean> mMap);//判断选中
+        void onSelectView(HashMap<CloudDishPhotoResult.Data, Boolean> mMap);//判断选中
     }
 
     class AuthorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

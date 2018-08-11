@@ -108,7 +108,7 @@ public class RecyclerViewSStoreAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     public void addAll(List<SelectStoreCommitResult.Data> list) {
-        this.mDateBeen.addAll(list);
+        if(mDateBeen!=null)this.mDateBeen.addAll(list);
         notifyDataSetChanged();
     }
 

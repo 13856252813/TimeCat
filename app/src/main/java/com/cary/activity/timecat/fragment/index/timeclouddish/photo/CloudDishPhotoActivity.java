@@ -26,6 +26,7 @@ import com.cary.activity.timecat.util.ToastUtil;
 import com.cary.activity.timecat.util.modelbean.ModelBeanData;
 import com.cary.activity.timecat.util.view.PictureDoPopu;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -68,7 +69,7 @@ public class CloudDishPhotoActivity extends BaseActivity {
     @BindView(R.id.ll_cloud_dish_bottom_do)
     LinearLayout llCloudDishBottomDo;
 
-    private TreeMap<CloudDishPhotoResult.Data, Boolean> mMap;//判断选中了那几条
+    private HashMap<CloudDishPhotoResult.Data, Boolean> mMap;//判断选中了那几条
     private CloudDishPhotoResult cpcr;
     private List<CloudDishPhotoResult.Data> mList;
     private CloudDishPhotoApi cdApi;
@@ -146,7 +147,7 @@ public class CloudDishPhotoActivity extends BaseActivity {
             }
 
             @Override
-            public void onSelectView(TreeMap<CloudDishPhotoResult.Data, Boolean> mMap) {
+            public void onSelectView(HashMap<CloudDishPhotoResult.Data, Boolean> mMap) {
                 //判断 map的值 为true的
                 CloudDishPhotoActivity.this.mMap = mMap;
             }
