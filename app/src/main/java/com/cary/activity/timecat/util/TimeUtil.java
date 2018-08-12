@@ -14,7 +14,17 @@ import java.util.Locale;
 
 public class TimeUtil {
     private static String TAG = "TimeUtil";
-    private SimpleDateFormat sf = null;
+
+
+    private static TimeUtil mInstance;
+
+    public static TimeUtil getTimeUtil(){
+        if(mInstance==null){
+            mInstance=new TimeUtil();
+        }
+        return mInstance;
+
+    }
 
     /**
      * 获取当前时间
@@ -246,7 +256,23 @@ public class TimeUtil {
      */
     public String getDateToString(long time) {
         Date d = new Date(time);
-        sf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return sf.format(d);
+    }
+    /**
+     * 把时间戳变yyyy-MM-dd HH:mm格式时间
+     *
+     * @param time
+     * @return
+     */
+    public String getDateToString(String time) {
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date d = null;
+        try {
+            d = sf.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return sf.format(d);
     }
 

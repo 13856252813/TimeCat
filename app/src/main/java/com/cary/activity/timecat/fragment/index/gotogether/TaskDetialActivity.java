@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
+import com.cary.activity.timecat.util.StringUtils;
+import com.cary.activity.timecat.util.TimeUtil;
 import com.cary.activity.timecat.util.ToastUtil;
 import com.cary.activity.timecat.util.modelbean.ModelBeanData;
 
@@ -161,8 +163,10 @@ public class TaskDetialActivity extends BaseActivity {
                         //化妆
                         ivTakePhoto.setImageDrawable(getResources().getDrawable(R.mipmap.dresser));
                     }
-                    tvTaskDetialCreateTime.setText(taskRes.getData().getCreateTime());
-                    tvTaskDetialAdderesscity.setText(taskRes.getData().getServiceCity());
+                    tvTaskDetialCreateTime.setText(TimeUtil.getTimeUtil().getDateToString(taskRes.
+                            getData().getCreateTime()));
+                    tvTaskDetialAdderesscity.setText(StringUtils.getCityNameFromDate(taskRes.
+                            getData().getServiceCity()));
                     tvTaskDetialMoney.setText(taskRes.getData().getAmount() + "");
                     tvTaskDetialDesction.setText(taskRes.getData().getContent());
                     boolean isSelect = false;//是否有选中的老师
