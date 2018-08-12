@@ -196,7 +196,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/one"
         android:background="@color/white"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_fulldress_detial_telphone"
@@ -213,10 +213,10 @@
 
         <TextView
             android:id="@+id/tv_fulldress_detial_onlinereserve"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@color/login_color_btn"
+            android:baselineAligned="false"
             android:gravity="center"
             android:padding="@dimen/eight"
             android:text="在线预订"

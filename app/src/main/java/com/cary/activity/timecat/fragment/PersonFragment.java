@@ -262,7 +262,7 @@ public class PersonFragment extends Fragment {
             case R.id.rl_user_myorder:
 //                ToastUtil.showShort(getActivity(), "我的订单");
                 intent.setClass(getActivity(), MyOrderActivity.class);
-                intent.putExtra("balance", mRes.getData().getAmount());
+                if(mRes!=null)intent.putExtra("balance", mRes.getData().getAmount());
                 startActivity(intent);
                 break;
             case R.id.ll_user_mycasheldge:

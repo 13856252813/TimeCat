@@ -26,6 +26,7 @@ import com.bumptech.glide.Glide;
 import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.index.fulldress.selection.FullDressColothCollect;
+import com.cary.activity.timecat.fragment.index.photography.PayPhotoGraphyOrderActivity;
 import com.cary.activity.timecat.fragment.index.selectstore.detial.StoreDetialActivity;
 import com.cary.activity.timecat.fragment.index.timeshop.TimeShopActivity;
 import com.cary.activity.timecat.http.base.HttpUrlClient;
@@ -173,8 +174,8 @@ public class HotScenicDetialActivity extends BaseActivity {
                 break;
             case R.id.tv_fulldress_detial_onlinereserve:
 
-//                Intent intent = new Intent(this, PayPhotoGraphyOrderActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(this, PayPhotoGraphyOrderActivity.class);
+                startActivity(intent);
                 break;
 
         }

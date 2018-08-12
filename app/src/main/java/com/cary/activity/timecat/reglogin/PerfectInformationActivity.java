@@ -586,8 +586,8 @@ public class PerfectInformationActivity extends AppCompatActivity {
                 bucketName = osscredentialsComRes.getData().getBucketName();
                 Log.v(TAG, "buckname:" + osscredentialsComRes.getData().getBucketName());
 
-                {"endpoint":"oss-cn-hangzhou.aliyuncs.com","accessKeyId":"LTAI1WzOdcWDGWNl","accessKeySecret":"X2AvzuKH8Zs2YGcLwweXG34POMdXa6",
-                        "bucketName":"timecats-yunpan","domain":"http://timecats-yunpan.oss-cn-hangzhou.aliyuncs.com/"}
+//                {"endpoint":"oss-cn-hangzhou.aliyuncs.com","accessKeyId":"LTAI1WzOdcWDGWNl","accessKeySecret":"X2AvzuKH8Zs2YGcLwweXG34POMdXa6",
+//                        "bucketName":"timecats-yunpan","domain":"http://timecats-yunpan.oss-cn-hangzhou.aliyuncs.com/"}
                 initOss(osscredentialsComRes.getData().getEndpoint(), osscredentialsComRes.getData().getAccessKeyId(),
                         osscredentialsComRes.getData().getAccessKeySecret(), osscredentialsComRes.getData().getSecurityToken());
             } else {
