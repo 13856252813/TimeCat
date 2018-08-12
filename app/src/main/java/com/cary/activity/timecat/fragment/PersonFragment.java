@@ -319,6 +319,9 @@ public class PersonFragment extends Fragment {
     private Callback<PersonSelfResult> callback = new Callback<PersonSelfResult>() {
         @Override
         public void onResponse(Call<PersonSelfResult> call, Response<PersonSelfResult> response) {
+            if(getActivity()==null){
+                return;
+            }
             if (response.isSuccessful()) {
                 Log.i(TAG, "success!!!");
                 Log.i(TAG, "---" + response.body().toString());
@@ -332,10 +335,10 @@ public class PersonFragment extends Fragment {
                     RequestOptions options2 = new RequestOptions()
 //                    .centerCrop()
                             .override(88, 88)
-                            .placeholder(R.mipmap.ic_launcher)
+                            .placeholder(R.mipmap.avatarw)
                             .error(R.mipmap.avatarw)
                             .priority(Priority.HIGH)
-                            .transform(new GlideCircleTransform(getActivity(), 2, getActivity().getResources().getColor(R.color.black)));
+                            .transform(new GlideCircleTransform(getActivity(), 2, R.color.black));
                     Glide.with(getActivity()).load(imageUrl).apply(options2).into(ivUserHead);
                     tvUserNick.setText(mRes.getData().getNickname());
                     tvUserBanlance.setText(mRes.getData().getAmount() + "");
@@ -360,6 +363,9 @@ public class PersonFragment extends Fragment {
         @Override
         public void onResponse(Call<PersonSelfResult> call, Response<PersonSelfResult> response) {
             if (response.isSuccessful()) {
+                if(getActivity()==null){
+                    return;
+                }
                 Log.i(TAG, "success!!!");
                 Log.i(TAG, "---" + response.body().toString());
                 mRes = response.body();
@@ -367,13 +373,13 @@ public class PersonFragment extends Fragment {
                     RequestOptions options2 = new RequestOptions()
 //                    .centerCrop()
                             .override(88, 88)
-                            .placeholder(R.mipmap.ic_launcher)
+                            .placeholder(R.mipmap.avatarw)
                             .error(R.mipmap.avatarw)
                             .priority(Priority.HIGH)
                             .transform(new GlideCircleTransform(getActivity(), 2, getActivity().getResources().getColor(R.color.black)));
                     String imageUrl = //"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2595140314,823568551&fm=27&gp=0.jpg";
                     HttpUrlClient.ALIYUNPHOTOBASEURL+mRes.getData().getImgurl();
-                    Glide.with(getActivity()).load(imageUrl).apply(options2).into(ivUserLink);
+                    Glide.with(getActivity()).load(imageUrl).apply(options2).into(rivUserHead);
 
                 } else {
                     ToastUtil.showShort(getActivity(), mRes.getMsg());
@@ -389,6 +395,11 @@ public class PersonFragment extends Fragment {
             Log.e(TAG, "***" + t.getMessage());
         }
     };
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
     private void createSingle(int uid) {
         Call<PersonSelfResult> call = mApi.getService().createCommit(token, uid);

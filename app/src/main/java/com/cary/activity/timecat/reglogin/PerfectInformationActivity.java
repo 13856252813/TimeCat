@@ -325,7 +325,6 @@ public class PerfectInformationActivity extends AppCompatActivity {
                 RegisterCommitResult regComRes = response.body();
                 if ("00".equals(regComRes.getCode())) {
                     startActivity(new Intent(PerfectInformationActivity.this, MainTabLayoutActivity.class));
-                    finish();
                 } else {
                     ToastUtil.showShort(PerfectInformationActivity.this, regComRes.getMsg());
                 }
@@ -587,6 +586,8 @@ public class PerfectInformationActivity extends AppCompatActivity {
                 bucketName = osscredentialsComRes.getData().getBucketName();
                 Log.v(TAG, "buckname:" + osscredentialsComRes.getData().getBucketName());
 
+                {"endpoint":"oss-cn-hangzhou.aliyuncs.com","accessKeyId":"LTAI1WzOdcWDGWNl","accessKeySecret":"X2AvzuKH8Zs2YGcLwweXG34POMdXa6",
+                        "bucketName":"timecats-yunpan","domain":"http://timecats-yunpan.oss-cn-hangzhou.aliyuncs.com/"}
                 initOss(osscredentialsComRes.getData().getEndpoint(), osscredentialsComRes.getData().getAccessKeyId(),
                         osscredentialsComRes.getData().getAccessKeySecret(), osscredentialsComRes.getData().getSecurityToken());
             } else {
@@ -656,6 +657,7 @@ public class PerfectInformationActivity extends AppCompatActivity {
             public void onSuccess(PutObjectRequest request, PutObjectResult result) {
                 Log.d("PutObject", "UploadSuccess");
                 LogUtils.v("PutObject==result:" + result.toString());
+                ToastUtil.showShort(PerfectInformationActivity.this,"上传成功");
                 uploadimgFlag = true;
             }
 

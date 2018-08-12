@@ -17,9 +17,13 @@ import java.util.List;
 public class MainScrollNewsAdapter implements LimitScrollerView.LimitScrollAdapter {
     private List<NewsCommitResult.Data> datas;
     private Context mContext;
-    public void setDatas(List<NewsCommitResult.Data> datas, Context context,LimitScrollerView limitScroll) {
+
+    public MainScrollNewsAdapter(Context mContext) {
+        this.mContext = mContext;
+    }
+
+    public void setDatas(List<NewsCommitResult.Data> datas, LimitScrollerView limitScroll) {
         this.datas = datas;
-        this.mContext = context;
         //API:2、开始滚动
         limitScroll.startScroll();
     }
@@ -31,13 +35,14 @@ public class MainScrollNewsAdapter implements LimitScrollerView.LimitScrollAdapt
 
     @Override
     public View getView(int index) {
-        View itemView = LayoutInflater.from(mContext).inflate(R.layout.limit_scroller_item, null, false);
+        View itemView = LayoutInflater.from(mContext).inflate(R.layout.limit_scroller_item, null);
         TextView tv_text = (TextView) itemView.findViewById(R.id.tv_text);
-
-        //绑定数据
-        itemView.setTag(datas.get(index));
-        //iv_icon.setImageResource(data.getIcon());
-        tv_text.setText(datas.get(index).getTitle());
+        if(datas!=null && datas.size()>0){
+            //绑定数据
+            itemView.setTag(datas.get(index));
+            //iv_icon.setImageResource(data.getIcon());
+            tv_text.setText(datas.get(index).getTitle());
+        }
         return itemView;
     }
 }

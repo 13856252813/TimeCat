@@ -80,5 +80,25 @@ public class OSSCredentialsCommitResult {
             return this.securityToken;
         }
 
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "accessKeyId='" + accessKeyId + '\'' +
+                    ", accessKeySecret='" + accessKeySecret + '\'' +
+                    ", bucketName='" + bucketName + '\'' +
+                    ", endpoint='" + endpoint + '\'' +
+                    ", expiration='" + expiration + '\'' +
+                    ", securityToken='" + securityToken + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "OSSCredentialsCommitResult{" +
+                "code='" + code + '\'' +
+                ", data=" + data +
+                ", msg='" + msg + '\'' +
+                '}';
     }
 }

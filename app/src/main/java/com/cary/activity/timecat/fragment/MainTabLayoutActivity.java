@@ -88,20 +88,31 @@ public class MainTabLayoutActivity extends AppCompatActivity implements RadioGro
         FragmentTransaction transaction = manager.beginTransaction();
         switch (checkedId) {
             case R.id.rb_radio_homepage:
-                transaction.replace(R.id.fl_radio_show, mFragments[0]);
-                transaction.commit();
+                if(!mFragments[0].isAdded()){
+                    transaction.replace(R.id.fl_radio_show, mFragments[0]);
+                    transaction.commit();
+                }
+
                 break;
             case R.id.rb_radio_subscription:
-                transaction.replace(R.id.fl_radio_show, mFragments[1]);
-                transaction.commit();
+                if(!mFragments[1].isAdded()){
+                    transaction.replace(R.id.fl_radio_show, mFragments[1]);
+                    transaction.commit();
+                }
+
                 break;
             case R.id.rb_radio_find:
-                transaction.replace(R.id.fl_radio_show, mFragments[2]);
-                transaction.commit();
+                if(!mFragments[2].isAdded()){
+                    transaction.replace(R.id.fl_radio_show, mFragments[2]);
+                    transaction.commit();
+                }
+
                 break;
             case R.id.rb_radio_mine:
-                transaction.replace(R.id.fl_radio_show, mFragments[3]);
-                transaction.commit();
+                if(!mFragments[3].isAdded()){
+                    transaction.replace(R.id.fl_radio_show, mFragments[3]);
+                    transaction.commit();
+                }
                 break;
         }
 

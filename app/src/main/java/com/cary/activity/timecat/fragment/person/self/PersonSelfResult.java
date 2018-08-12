@@ -347,6 +347,45 @@ public class PersonSelfResult {
             return this.token;
         }
 
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "id=" + id +
+                    ", nickname='" + nickname + '\'' +
+                    ", imgurl='" + imgurl + '\'' +
+                    ", mobile='" + mobile + '\'' +
+                    ", password='" + password + '\'' +
+                    ", realName='" + realName + '\'' +
+                    ", idCard='" + idCard + '\'' +
+                    ", cardBefore='" + cardBefore + '\'' +
+                    ", cardAfter='" + cardAfter + '\'' +
+                    ", totalAmount=" + totalAmount +
+                    ", freezeAmount=" + freezeAmount +
+                    ", amount=" + amount +
+                    ", relatedUser=" + relatedUser +
+                    ", type='" + type + '\'' +
+                    ", score=" + score +
+                    ", credit=" + credit +
+                    ", requestCode='" + requestCode + '\'' +
+                    ", registerTime='" + registerTime + '\'' +
+                    ", lastLoginTime='" + lastLoginTime + '\'' +
+                    ", pid=" + pid +
+                    ", photoAmount=" + photoAmount +
+                    ", extraAmount=" + extraAmount +
+                    ", teacherType='" + teacherType + '\'' +
+                    ", shopId=" + shopId +
+                    ", level='" + level + '\'' +
+                    ", position='" + position + '\'' +
+                    ", openid='" + openid + '\'' +
+                    ", qqid='" + qqid + '\'' +
+                    ", weiboid='" + weiboid + '\'' +
+                    ", totalDeposit=" + totalDeposit +
+                    ", deposit=" + deposit +
+                    ", deviceToken='" + deviceToken + '\'' +
+                    ", deviceType='" + deviceType + '\'' +
+                    ", token='" + token + '\'' +
+                    '}';
+        }
     }
 
     private String code;
@@ -379,4 +418,11 @@ public class PersonSelfResult {
         return this.data;
     }
 
+
+    @Override
+    public String toString() {
+        return "PersonSelfResult{" +
+                "data=" + data +
+                '}';
+    }
 }

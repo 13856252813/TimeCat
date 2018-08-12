@@ -242,6 +242,9 @@ public class PersonFragment extends Fragment {
         @Override
         public void onResponse(Call<PersonSelfResult> call, Response<PersonSelfResult> response) {
             if (response.isSuccessful()) {
+                if(getActivity()==null){
+                    return;
+                }
                 Log.i(TAG, "success!!!");
                 Log.i(TAG, "---" + response.body().toString());
                 mRes = response.body();

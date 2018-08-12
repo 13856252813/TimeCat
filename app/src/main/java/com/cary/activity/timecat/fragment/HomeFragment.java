@@ -136,6 +136,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View root, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(root, savedInstanceState);
+        Log.e("fl","-----onViewCreated-");
+
 //        StatusBarUtil.setPaddingSmart(getActivity(), root.findViewById(R.id.toolbar));
         setStatusBar();
 
@@ -209,6 +211,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         createSingleHotScenic();
         //获取热点咨询数据
         mNewsApi = mNewsApi.getApi();
+        mAdapter = new MainScrollNewsAdapter(getActivity());
         createSingleNews();
 
         /********************************begin首页滚动begin****************************************/
@@ -224,8 +227,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
         //API:1、设置数据适配器
-        mAdapter = new MainScrollNewsAdapter();
-        limitScroll.setDataAdapter(mAdapter);
         /********************************end首页滚动end****************************************/
         //滚动的更多
         homeNewsPaterMore = root.findViewById(R.id.home_news_pater_more);
@@ -529,7 +530,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 if ("00".equals(mNewsComRes.getCode())) {
                     mNewsData = mNewsComRes.getData();
                     //滚动数据
-                    mAdapter.setDatas(mNewsData, getActivity(), limitScroll);
+                    mAdapter.setDatas(mNewsData, limitScroll);
+                    limitScroll.setDataAdapter(mAdapter);
                 } else {
                     ToastUtil.showShort(getActivity(), mNewsComRes.getMsg());
                 }

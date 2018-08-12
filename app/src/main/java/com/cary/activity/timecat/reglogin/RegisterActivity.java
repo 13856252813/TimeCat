@@ -316,7 +316,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 //                    startActivity(intentcommit);
                     startActivityForResult(intentcommit, 1001);
 //                    setResult(1001, intentcommit);
-                    finish();
                 } else {
                     ToastUtil.showShort(RegisterActivity.this, loginComRes.getMsg());
                 }

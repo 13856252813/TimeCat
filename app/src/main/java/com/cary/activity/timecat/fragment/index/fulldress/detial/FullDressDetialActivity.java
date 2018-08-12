@@ -308,7 +308,7 @@ public class FullDressDetialActivity extends BaseActivity {
                         selectPopu.cancel();
                         Intent intent = new Intent(FullDressDetialActivity.this, FullDressDetialOrderActivity.class);
                         intent.putExtra("photoFlag", photoFlag);
-                        intent.putExtra("itemNorm",itemStr.substring(0,itemStr.length()-1));
+                        if(!TextUtils.isEmpty(itemStr)) intent.putExtra("itemNorm",itemStr.substring(0,itemStr.length()-1));
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("fulldressdetial", (Serializable) FDDetialComRes.getData());
                         intent.putExtras(bundle);
