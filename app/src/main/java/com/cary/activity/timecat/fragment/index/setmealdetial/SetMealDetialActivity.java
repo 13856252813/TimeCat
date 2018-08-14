@@ -1,5 +1,6 @@
 package com.cary.activity.timecat.fragment.index.setmealdetial;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -28,7 +30,8 @@ import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.index.banner.BannerApi;
 import com.cary.activity.timecat.fragment.index.banner.BannerCommitResult;
-import com.cary.activity.timecat.fragment.index.photography.PayPhotoGraphyOrderActivity;
+import com.cary.activity.timecat.fragment.index.basicser.BasicServiceActivity;
+import com.cary.activity.timecat.fragment.index.fulldress.confirmorder.ConfirmOrderActivity;
 import com.cary.activity.timecat.fragment.index.selectsetmeal.SetMealApi;
 import com.cary.activity.timecat.fragment.index.selectstore.detial.StoreCommentApi;
 import com.cary.activity.timecat.fragment.index.selectstore.detial.StoreDetialActivity;
@@ -116,6 +119,11 @@ public class SetMealDetialActivity extends BaseActivity {
     RecyclerView recyclerSetMealDetial;
     @BindView(R.id.recycler_setmeal_detial_comment)
     RecyclerView recyclerSetmealDetialComment;
+    @BindView(R.id.basic_serve)
+    RelativeLayout mLayoutBasicServe;
+    @BindView(R.id.layout_service)
+    LinearLayout mLayoutService;
+
     //banner数据
     private BannerApi bannerApi;
     private List<String> bannerUrls = new ArrayList<>();
@@ -138,15 +146,12 @@ public class SetMealDetialActivity extends BaseActivity {
     private int userId;
     private SharedPreferencesHelper sharedPreferencesHelper;
     private int storeId;//门店id
+    private String titleStr[] = {"底片全送", "专车接送", "满意在付款", "送货上门", "赠送U盘", "一对一拍摄", "VIP化妆间"};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_set_meal_detial);
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        //默认API 最低19
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -204,6 +209,8 @@ public class SetMealDetialActivity extends BaseActivity {
 
         mCommentApi = StoreCommentApi.getApi();
         createSingleComment();
+        initBasicServiceView();
+
     }
 
     @Override
@@ -211,7 +218,40 @@ public class SetMealDetialActivity extends BaseActivity {
         return R.layout.activity_set_meal_detial;
     }
 
-    @OnClick({R.id.iv_set_meal_detial_back, R.id.rl_set_meal_store_name, R.id.tv_set_meal_collect, R.id.tv_set_meal_detial_service, R.id.tv_set_meal_detial_telphone, R.id.tv_set_meal_detial_onlinereserve})
+    /**
+     * 初始化基础模块
+     */
+    @SuppressLint("ResourceAsColor")
+    private void initBasicServiceView() {
+        int length;
+        if (titleStr.length / 3 == 0) {
+            length = 1;
+        } else if (titleStr.length % 3 == 0 && titleStr.length / 3 != 0) {
+            length = titleStr.length / 3;
+        } else {
+            length = titleStr.length / 3 + 1;
+        }
+        for (int i = 0; i < length; i++) {
+            LinearLayout layout = new LinearLayout(this);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.gravity = Gravity.CENTER;
+            layout.setLayoutParams(params);
+            layout.setOrientation(LinearLayout.HORIZONTAL);
+            for (int j = 0; j < 3; j++) {
+                TextView textView = new TextView(this);
+                textView.setTextColor(R.color.color_333333);
+                textView.setTextSize(13);
+                textView.setPadding(3, 3, 3, 3);
+                textView.setText("示范方安抚");
+                layout.addView(textView);
+            }
+            mLayoutService.addView(layout);
+        }
+
+    }
+
+    @OnClick({R.id.iv_set_meal_detial_back, R.id.basic_serve, R.id.rl_set_meal_store_name, R.id.tv_set_meal_collect, R.id.tv_set_meal_detial_service, R.id.tv_set_meal_detial_telphone, R.id.tv_set_meal_detial_onlinereserve})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_set_meal_detial_back:
@@ -234,7 +274,12 @@ public class SetMealDetialActivity extends BaseActivity {
                 break;
             case R.id.tv_set_meal_detial_onlinereserve:
 //                ToastUtil.showShort(this, "在线预定");
-                Intent intent = new Intent(this, PayPhotoGraphyOrderActivity.class);
+//                Intent intent = new Intent(this, PayPhotoGraphyOrderActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("detialresult", mDetialRes);
+//                intent.putExtras(bundle);
+//                startActivity(intent);
+                Intent intent = new Intent(this, ConfirmOrderActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("detialresult", mDetialRes);
                 intent.putExtras(bundle);
@@ -245,6 +290,10 @@ public class SetMealDetialActivity extends BaseActivity {
                 intent1.putExtra("id", storeId);//传递的是门店id
                 startActivity(intent1);
                 break;
+            case R.id.basic_serve:
+                startActivity(new Intent(this, BasicServiceActivity.class));
+                break;
+
         }
     }
 

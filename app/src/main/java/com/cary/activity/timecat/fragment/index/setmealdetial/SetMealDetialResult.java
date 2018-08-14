@@ -214,6 +214,32 @@ public class SetMealDetialResult implements Serializable{
             return this.frontMoney;
         }
 
+        @Override
+        public String toString() {
+            return "Data{" +
+                    "id=" + id +
+                    ", storeId=" + storeId +
+                    ", storeName='" + storeName + '\'' +
+                    ", storeImgurl='" + storeImgurl + '\'' +
+                    ", imgurl='" + imgurl + '\'' +
+                    ", imgurls='" + imgurls + '\'' +
+                    ", title='" + title + '\'' +
+                    ", price=" + price +
+                    ", marketPrice=" + marketPrice +
+                    ", sellCount=" + sellCount +
+                    ", evaStar=" + evaStar +
+                    ", clothCount=" + clothCount +
+                    ", filmCount=" + filmCount +
+                    ", rucheCount=" + rucheCount +
+                    ", content='" + content + '\'' +
+                    ", createTime='" + createTime + '\'' +
+                    ", type='" + type + '\'' +
+                    ", packageType=" + packageType +
+                    ", packagePhotoType=" + packagePhotoType +
+                    ", frontMoney=" + frontMoney +
+                    ", LoginUid='" + LoginUid + '\'' +
+                    '}';
+        }
     }
 
     private String code;
@@ -246,4 +272,13 @@ public class SetMealDetialResult implements Serializable{
         return this.data;
     }
 
+
+    @Override
+    public String toString() {
+        return "SetMealDetialResult{" +
+                "code='" + code + '\'' +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

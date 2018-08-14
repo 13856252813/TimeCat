@@ -99,15 +99,6 @@ public class ShowImageActivity extends BaseActivity {
         createSingleImage();
         createSingle(currentPage + "");
 
-        adapter.setItemClickListener(new ShowImageAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                ToastUtil.showShort(ShowImageActivity.this, "postion:" + position);
-                Intent intent = new Intent(ShowImageActivity.this, SetMealDetialActivity.class);
-                intent.putExtra("id", mLists.get(position).getId());
-                startActivity(intent);
-            }
-        });
 
         /*********套餐推荐**********/
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

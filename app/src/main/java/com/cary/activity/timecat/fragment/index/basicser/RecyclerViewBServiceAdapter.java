@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.main.adapter.OnItemClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +18,7 @@ import java.util.List;
 public class RecyclerViewBServiceAdapter extends RecyclerView.Adapter<RecyclerViewBServiceAdapter.ListViewHolder> {
     private Context mContext;
     //泛型是RecyclerView所需的Bean类
-    private List<BasicServiceDataBean> mDateBeen = new ArrayList<>();
+    private List<BasicServiceDataBean> mDateBeen;
     private OnItemClickListener mClickListener;
 
     //构造方法，一般需要接收两个参数 1.上下文 2.集合对象（包含了我们所需要的数据）
@@ -73,10 +72,11 @@ public class RecyclerViewBServiceAdapter extends RecyclerView.Adapter<RecyclerVi
         public ListViewHolder(View itemView, OnItemClickListener listener) {
             super(itemView);
             mListener = listener;
-            mTextViewTitle = (TextView) itemView.findViewById(R.id.activity_select_store_list_item_title);
-            mTvDesc = (TextView) itemView.findViewById(R.id.activity_select_store_list_item_address);
+            mTextViewTitle = (TextView) itemView.findViewById(R.id.title);
+            mTvDesc = (TextView) itemView.findViewById(R.id.dec);
             itemView.setOnClickListener(this);
         }
+
 
         public void setData(BasicServiceDataBean data) {
             //给imageView设置图片数据

@@ -1,6 +1,7 @@
 package com.cary.activity.timecat.fragment.index.basicser;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -54,7 +55,8 @@ public class BasicServiceActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         titleText.setText("基础服务");
-        rlTitle.setBackgroundColor(R.color.white);
+        titleText.setTextColor(Color.RED);
+        titleBack.setImageResource(R.mipmap.basic_back);
 
         initData();
 

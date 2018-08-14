@@ -3,6 +3,7 @@ package com.cary.activity.timecat.fragment.index.fulldress;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -118,6 +119,7 @@ public class FullDressOrderActivity extends AppCompatActivity {
                 isSelectPay = 3;
                 break;
             case R.id.btn_full_dress_order_confirm:
+                Log.e("fl","--------comfirmorder");
                 String paymoney = tvFullDressOrderSummoney.getText().toString().trim();
                 AlipayClass ac = new AlipayClass(this);
                 WeChatPayClass wcpc = new WeChatPayClass(this);

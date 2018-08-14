@@ -138,6 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/ten"
                     android:background="@color/white"
+                    android:orientation="vertical"
                     android:padding="@dimen/ten">
 
                     <ImageView
@@ -146,6 +147,19 @@
                         android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:src="@mipmap/ic_launcher" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/ten"
+                        android:orientation="vertical">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycler_set_meal_detial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_set_meal_store_name"
@@ -407,36 +421,42 @@
                     android:orientation="vertical" />
 
                 <!--先拍照满意再付款-->
-                <LinearLayout
+                <RelativeLayout
+                    android:id="@+id/basic_serve"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/ten"
                     android:background="@color/white"
-                    android:orientation="vertical"
                     android:padding="@dimen/ten">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
                         android:text="先拍照满意再付款"
                         android:textColor="@color/color_three"
                         android:textSize="13dp" />
 
-                </LinearLayout>
 
-                <!--底部图片-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:drawableRight="@mipmap/rightarrow"
+                        android:text="更多"
+                        android:textColor="@color/color_three"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
                 <LinearLayout
+                    android:id="@+id/layout_service"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/ten"
-                    android:orientation="vertical">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/recycler_set_meal_detial"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
+                    android:background="@android:color/holo_blue_bright"
+                    android:layout_height="100dp"
+                    android:orientation="vertical" />
+                <!--底部图片-->
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
 

@@ -96,6 +96,7 @@ public class SetMealDetialActivity extends AppCompatActivity {
 //    TextView tvSetmealDetialDesc;
 //    @BindView(R.id.recycler_tv_setmeal_detial_img)
 //    RecyclerView recyclerTvSetmealDetialImg;
+
     @BindView(R.id.tv_income_photo)
     TextView tvIncomePhoto;
     @BindView(R.id.rl_income_photo)

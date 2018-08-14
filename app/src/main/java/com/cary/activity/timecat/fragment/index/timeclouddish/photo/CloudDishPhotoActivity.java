@@ -24,11 +24,11 @@ import com.cary.activity.timecat.fragment.index.timeclouddish.showimage.ShowImag
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.ToastUtil;
 import com.cary.activity.timecat.util.modelbean.ModelBeanData;
+import com.cary.activity.timecat.util.view.NewFloderUploaderPopu;
 import com.cary.activity.timecat.util.view.PictureDoPopu;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,12 +88,11 @@ public class CloudDishPhotoActivity extends BaseActivity {
     private String idStr = "";//选中的id
     private String idPic;//文件id
 
+    private NewFloderUploaderPopu mUploadPopuWindow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_cloud_dish_photo);
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         ButterKnife.bind(this);
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
         titleText.setTextColor(getResources().getColor(R.color.color_three));
@@ -104,6 +103,12 @@ public class CloudDishPhotoActivity extends BaseActivity {
         titleTextRight.setPadding(0, 0, 20, 0);
         titleText.setText("选择样片");
 
+        mUploadPopuWindow=new NewFloderUploaderPopu(this, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         if(!TextUtils.isEmpty(idStr)){
             idStr = getIntent().getStringExtra("idStr");
             createSingleList("");
@@ -112,7 +117,7 @@ public class CloudDishPhotoActivity extends BaseActivity {
         ivCloudDoImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mUploadPopuWindow.show();
             }
         });
 
@@ -152,6 +157,7 @@ public class CloudDishPhotoActivity extends BaseActivity {
                 CloudDishPhotoActivity.this.mMap = mMap;
             }
         });
+
 
         swiperefreshlayoutClouddish.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -193,9 +199,11 @@ public class CloudDishPhotoActivity extends BaseActivity {
     @OnClick({R.id.title_back, R.id.title_text_right, R.id.tv_cloud_dish_cut,
             R.id.tv_cloud_dish_copy, R.id.tv_cloud_dish_paste, R.id.tv_cloud_dish_del})
     public void onViewClicked(View view) {
-        for (CloudDishPhotoResult.Data data : mMap.keySet()) {
-            if (mMap.get(data)) {
-                idStr += data.getId() + ",";
+        if(mMap!=null){
+            for (CloudDishPhotoResult.Data data : mMap.keySet()) {
+                if (mMap.get(data)) {
+                    idStr += data.getId() + ",";
+                }
             }
         }
         if (!TextUtils.isEmpty(idStr)) {

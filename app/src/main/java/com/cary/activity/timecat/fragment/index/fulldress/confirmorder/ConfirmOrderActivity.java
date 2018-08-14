@@ -1,22 +1,18 @@
 package com.cary.activity.timecat.fragment.index.fulldress.confirmorder;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cary.activity.timecat.R;
+import com.cary.activity.timecat.fragment.index.setmealdetial.SetMealDetialResult;
 import com.cary.activity.timecat.fragment.index.timeclouddish.showimage.SpaceItemDecoration;
 
 import butterknife.BindView;
@@ -157,31 +153,16 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     LinearLayout llConfirmOrderCamcerman;
     private SelectSniecAdapter adapter;
 
+    private SetMealDetialResult mMealDetailBean;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_order);
         ButterKnife.bind(this);
 
-        //默认API 最低19
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            ViewGroup contentView = window.getDecorView().findViewById(Window.ID_ANDROID_CONTENT);
-            contentView.getChildAt(0).setFitsSystemWindows(false);
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION  //该参数指布局能延伸到navigationbar，我们场景中不应加这个参数
-//                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-            );
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-            window.setNavigationBarColor(Color.TRANSPARENT); //设置navigationbar颜色为透明
-        }
+        mMealDetailBean= (SetMealDetialResult) getIntent().getSerializableExtra("detialresult");
+
 
         titleText.setText("确认订单");
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
@@ -201,6 +182,16 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         //设置item间距，30dp
         recyclerviewConfirmOrderSecnic.addItemDecoration(new SpaceItemDecoration(20));
         recyclerviewConfirmOrderSecnic.setAdapter(adapter);
+        setDatas();
+    }
+
+    private void setDatas(){
+        if(mMealDetailBean==null){
+            return;
+        }
+        tvConfirmOrderCommodityDesc.setText(mMealDetailBean.getData().getTitle());
+        tvConfirmOrderCommodityStore.setText(mMealDetailBean.getData().getStoreName());
+        tvConfirmOrderCommodityPrice.setText(mMealDetailBean.getData().getPrice()+"");
     }
 
     @OnClick({R.id.title_back, R.id.iv_confirm_order_commodity, R.id.ll_confirm_order_camcerman,
@@ -245,7 +236,6 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                 break;
             case R.id.rl_confirm_order_secnic_add:
                 intent.setClass(this,SelectScenicActivity.class);
-
                 startActivity(intent);
                 break;
 

@@ -1,7 +1,6 @@
 package com.cary.activity.timecat.fragment.index.timeclouddish;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.ContentUris;
 import android.content.Context;
@@ -27,7 +26,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Xml;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,14 +49,12 @@ import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.index.selectstore.detial.imageInfo.ImageInfoObj;
 import com.cary.activity.timecat.fragment.index.selectstore.detial.imageInfo.ImageWidgetInfoObj;
-import com.cary.activity.timecat.fragment.index.selectstore.detial.imageInfo.ShowPictureActivity;
 import com.cary.activity.timecat.fragment.index.timeclouddish.adapter.TimeCloudDishRecyclerAdapter;
 import com.cary.activity.timecat.fragment.index.timeclouddish.newfloder.NewFloderApi;
 import com.cary.activity.timecat.fragment.index.timeclouddish.newfloder.NewFloderCommitResult;
 import com.cary.activity.timecat.fragment.index.timeclouddish.photo.CloudDishPhotoActivity;
 import com.cary.activity.timecat.fragment.index.timeclouddish.uploadpic.UploadPicApi;
 import com.cary.activity.timecat.fragment.index.timeclouddish.uploadpic.UploadPicCommitResult;
-import com.cary.activity.timecat.http.base.HttpUrlClient;
 import com.cary.activity.timecat.main.adapter.OnItemClickListener;
 import com.cary.activity.timecat.oss.OSSCredentialsApi;
 import com.cary.activity.timecat.oss.OSSCredentialsCommitResult;
@@ -190,7 +186,7 @@ public class TimeCloudDishFragment extends Fragment {
                 //判断是否是文件夹 跳转 跳转不同的界面
                 //跳转到列表
                 intent.setClass(getActivity(), CloudDishPhotoActivity.class);
-                intent.putExtra("id", mListDatas.get(postion).getId());
+                intent.putExtra("id", mListDatas.get(postion).getId()+"");
 
 //                //跳转到图片
 //                String imageUrl = HttpUrlClient.ALIYUNPHOTOBASEURL+mListDatas.get(postion).getFolder();
@@ -422,7 +418,7 @@ public class TimeCloudDishFragment extends Fragment {
     public void OssUploadImg(String bucketName, final String objectKey, String uploadimage) {
         // 构造上传请求
         PutObjectRequest put = new PutObjectRequest(bucketName, objectKey, uploadimage);
-// 异步上传时可以设置进度回调
+       // 异步上传时可以设置进度回调
         put.setProgressCallback(new OSSProgressCallback<PutObjectRequest>() {
             @Override
             public void onProgress(PutObjectRequest request, long currentSize, long totalSize) {
@@ -550,7 +546,9 @@ public class TimeCloudDishFragment extends Fragment {
                 Log.i(TAG, "---" + response.body().toString());
                 newFloderCR = response.body();
                 if ("00".equals(newFloderCR.getCode())) {
-                    ToastUtil.showShort(getActivity(), newFloderCR.getData().getFolder() + "Create Success");
+                    ToastUtil.showShort(getActivity(), "文件夹创建成功");
+                    currentpage = 1;
+                    setMethod();
                 } else {
                     ToastUtil.showShort(getActivity(), newFloderCR.getMsg());
                 }
@@ -567,7 +565,6 @@ public class TimeCloudDishFragment extends Fragment {
     };
 
     private void createSingleNewFloder(int flag, String newFloderName) {
-        Log.e("fl","---flag:"+flag);
         String token = shareHelper.getSharedPreference("token", "").toString();
         int uid = (int) shareHelper.getSharedPreference("id", 0);
         Call<NewFloderCommitResult> call = newFloaderApi.getService().createCommit(token, uid + "", flag, newFloderName);
