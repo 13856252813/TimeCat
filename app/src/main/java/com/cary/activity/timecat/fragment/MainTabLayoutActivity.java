@@ -6,18 +6,17 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.guide.PrefManager;
 import com.cary.activity.timecat.main.dialog.CEOEmailActivity;
 
-public class MainTabLayoutActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainTabLayoutActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     private RadioGroup mRadioGroup;
     private Fragment[] mFragments;
@@ -29,11 +28,6 @@ public class MainTabLayoutActivity extends AppCompatActivity implements RadioGro
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_tab_layout);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        //透明导航栏 @底部 这一句不要加，目的是防止沉浸式状态栏和部分底部自带虚拟按键的手机（比如华为）发生冲突，注释掉就好了
-//        保存的初始化
         prefManager = new PrefManager(this);
         //这句话，可以再次显示引导页
 //        prefManager.setFirstTimeLaunch(true);
@@ -46,8 +40,11 @@ public class MainTabLayoutActivity extends AppCompatActivity implements RadioGro
         initFragment();
         setListener();
 
-        //状态栏透明和间距处理
-//        StatusBarUtil.immersive(this, 0xff000000, 0.1f);
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_main_tab_layout;
     }
 
 

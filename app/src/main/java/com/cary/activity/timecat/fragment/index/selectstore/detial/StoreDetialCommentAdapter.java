@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class StoreDetialCommentAdapter extends RecyclerView.Adapter<StoreDetialCommentAdapter.ViewHolder> implements View.OnClickListener {
 
-    private List<StoreDetialCommentResult.Data> mLists = new ArrayList<>();
+    private List<StoreDetialCommentResult.DataBean> mLists = new ArrayList<>();
     private Context mContext;
     private StoreDetialCommentImageAdapter mImageAdapter;
 
@@ -56,7 +56,7 @@ public class StoreDetialCommentAdapter extends RecyclerView.Adapter<StoreDetialC
         this.mContext = mContext;
     }
 
-    public void setDatas(List<StoreDetialCommentResult.Data> mLists) {
+    public void setDatas(List<StoreDetialCommentResult.DataBean> mLists) {
         this.mLists = mLists;
         notifyDataSetChanged();
     }
@@ -85,10 +85,10 @@ public class StoreDetialCommentAdapter extends RecyclerView.Adapter<StoreDetialC
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        StoreDetialCommentResult.Data data = mLists.get(position);
+        StoreDetialCommentResult.DataBean data = mLists.get(position);
         holder.tvTeacherDetialLeaveMessageUserName.setText(data.getWebUser().getNickname());//data.getTitle());
         holder.tvTeacherDetialLeaveMessageUserTime.setText(data.getEvaTime());
-        holder.teacherDetialLeaveMessageUserTimeRatingbar.setRating(data.getStarCount());
+        holder.teacherDetialLeaveMessageUserTimeRatingbar.setRating((float) data.getStarCount());
         RequestOptions options2 = new RequestOptions()
 //                    .centerCrop()
                 .override(40, 40)

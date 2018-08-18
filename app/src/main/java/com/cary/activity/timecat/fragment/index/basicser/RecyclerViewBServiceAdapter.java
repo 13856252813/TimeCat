@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.main.adapter.OnItemClickListener;
+import com.cary.activity.timecat.model.BasicService;
 
 import java.util.List;
 
@@ -18,13 +19,17 @@ import java.util.List;
 public class RecyclerViewBServiceAdapter extends RecyclerView.Adapter<RecyclerViewBServiceAdapter.ListViewHolder> {
     private Context mContext;
     //泛型是RecyclerView所需的Bean类
-    private List<BasicServiceDataBean> mDateBeen;
+    private List<BasicService.DataBean> mDateBeen;
     private OnItemClickListener mClickListener;
 
     //构造方法，一般需要接收两个参数 1.上下文 2.集合对象（包含了我们所需要的数据）
-    public RecyclerViewBServiceAdapter(Context context,List<BasicServiceDataBean> dataBean) {
+    public RecyclerViewBServiceAdapter(Context context,List<BasicService.DataBean> dataBean) {
         this.mContext = context;
         this.mDateBeen = dataBean;
+    }
+    //构造方法，一般需要接收两个参数 1.上下文 2.集合对象（包含了我们所需要的数据）
+    public RecyclerViewBServiceAdapter(Context context) {
+        this.mContext = context;
     }
 
     @Override
@@ -42,9 +47,13 @@ public class RecyclerViewBServiceAdapter extends RecyclerView.Adapter<RecyclerVi
     public void onBindViewHolder(RecyclerViewBServiceAdapter.ListViewHolder holder, int position) {
         final int pos = position;
         //从集合里拿对应的item的数据对象
-        BasicServiceDataBean dateBean = mDateBeen.get(position);
+        BasicService.DataBean dateBean = mDateBeen.get(position);
         //给Holder里面的控件对象设置数据
         holder.setData(dateBean);
+    }
+
+    public void setDatas(List<BasicService.DataBean> list){
+        mDateBeen=list;
     }
 
     //决定RecyclerView有多少条item
@@ -62,7 +71,7 @@ public class RecyclerViewBServiceAdapter extends RecyclerView.Adapter<RecyclerVi
     }
 
     //自动帮我们写的ViewHolder，参数：View布局对象
-    public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ListViewHolder extends RecyclerView.ViewHolder  {
         private TextView mTextViewTitle;
         private TextView mTvDesc;
 
@@ -74,21 +83,15 @@ public class RecyclerViewBServiceAdapter extends RecyclerView.Adapter<RecyclerVi
             mListener = listener;
             mTextViewTitle = (TextView) itemView.findViewById(R.id.title);
             mTvDesc = (TextView) itemView.findViewById(R.id.dec);
-            itemView.setOnClickListener(this);
         }
 
 
-        public void setData(BasicServiceDataBean data) {
+        public void setData(BasicService.DataBean data) {
             //给imageView设置图片数据
             //给TextView设置文本数据
-            mTextViewTitle.setText("·"+data.title);
-            mTvDesc.setText("  "+data.desc);
+            mTextViewTitle.setText(data.getServiceName());
+            mTvDesc.setText("  "+data.getServiceDetail());
         }
 
-        @Override
-        public void onClick(View v) {
-            // getpostion()为Viewholder自带的一个方法，用来获取RecyclerView当前的位置，将此作为参数，传出去
-            mListener.onItemClick(v, getPosition());
-        }
     }
 }

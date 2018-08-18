@@ -2,9 +2,7 @@ package com.cary.activity.timecat.fragment.person.systemsetting;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -12,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.reglogin.ForgetPassActivity;
 import com.cary.activity.timecat.reglogin.LoginActivity;
@@ -23,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SystemSettingActivity extends AppCompatActivity {
+public class SystemSettingActivity extends BaseActivity {
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -48,10 +47,7 @@ public class SystemSettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_system_setting);
         ButterKnife.bind(this);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         titleText.setText("系统设置");
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
@@ -70,6 +66,16 @@ public class SystemSettingActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_system_setting;
+    }
+
+    @Override
+    public boolean setCustomerView() {
+        return false;
     }
 
     @OnClick({R.id.title_back, R.id.rl_push_onoff, R.id.rl_change_loginpass, R.id.rl_version_, R.id.btn_logout})
@@ -92,8 +98,7 @@ public class SystemSettingActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.btn_logout:
-                sph.put("token", "");
-                sph.put("id", "");
+                sph.clear();
                 intent.setClass(this, LoginActivity.class);
                 startActivity(intent);
                 EMClient.getInstance().logout(true);

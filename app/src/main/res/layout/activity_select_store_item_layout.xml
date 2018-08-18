@@ -39,7 +39,8 @@
             android:layout_marginRight="20dp"
             android:drawablePadding="@dimen/five"
             android:drawableLeft="@mipmap/route2"
-            android:text="上海市徐家汇"
+            android:layout_toLeftOf="@+id/tv_select_store"
+            android:layout_alignParentLeft="true"
             android:textColor="@color/color_six"
             android:textSize="@dimen/textsize_content" />
 

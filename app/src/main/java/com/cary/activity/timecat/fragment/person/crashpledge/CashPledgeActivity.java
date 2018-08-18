@@ -2,13 +2,13 @@ package com.cary.activity.timecat.fragment.person.crashpledge;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.index.photography.PayPhotoGraphyOrderActivity;
 
@@ -19,7 +19,7 @@ import butterknife.OnClick;
 /**
  * 押金
  */
-public class CashPledgeActivity extends AppCompatActivity {
+public class CashPledgeActivity extends BaseActivity {
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -42,7 +42,6 @@ public class CashPledgeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cash_pledge);
         ButterKnife.bind(this);
 
         titleText.setText("押金");
@@ -54,6 +53,11 @@ public class CashPledgeActivity extends AppCompatActivity {
         deposit = getIntent().getDoubleExtra("deposit", 0);
         tvCashpledgeNumber.setText(totalDeposit + "");
         tvCashpledgeNumberText.setText("(¥" + deposit + "可退款)");
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_cash_pledge;
     }
 
     @OnClick({R.id.title_back, R.id.btn_cash_pledge_charge, R.id.btn_cash_pledge_outcharge})

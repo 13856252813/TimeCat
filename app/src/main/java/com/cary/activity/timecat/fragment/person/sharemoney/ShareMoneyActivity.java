@@ -2,7 +2,6 @@ package com.cary.activity.timecat.fragment.person.sharemoney;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.person.invitaion.InvitaionCodeActivity;
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
@@ -22,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ShareMoneyActivity extends AppCompatActivity {
+public class ShareMoneyActivity extends BaseActivity {
     private static final String TAG = ShareMoneyActivity.class.getSimpleName();
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -50,7 +50,6 @@ public class ShareMoneyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_share_money);
         ButterKnife.bind(this);
 
         titleText.setText("分享赚钱");
@@ -67,6 +66,11 @@ public class ShareMoneyActivity extends AppCompatActivity {
         invitaionPerson = getIntent().getIntExtra("invitaionperson", 0);
 
         createSingle();
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_share_money;
     }
 
     @OnClick({R.id.title_back, R.id.btn_share_money_code})

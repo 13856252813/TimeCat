@@ -11,8 +11,8 @@
 
         <ImageView
             android:id="@+id/title_home_notify"
-            android:layout_width="@dimen/twenty_five"
-            android:layout_height="@dimen/twenty_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@mipmap/leftarroww" />
 
@@ -32,7 +32,7 @@
         android:layout_centerInParent="true"
         android:text="title"
         android:textColor="@color/white"
-        android:textSize="@dimen/textsize_titlebar" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/title_text_right"

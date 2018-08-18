@@ -1,7 +1,6 @@
 package com.cary.activity.timecat.fragment.person.newhelper;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.ToastUtil;
@@ -24,7 +24,7 @@ import retrofit2.Response;
 /**
  * 新手帮助
  */
-public class NewHelperActivity extends AppCompatActivity {
+public class NewHelperActivity extends BaseActivity {
 
     private static final String TAG = NewHelperActivity.class.getSimpleName();
 
@@ -47,7 +47,6 @@ public class NewHelperActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_helper);
         ButterKnife.bind(this);
 
         titleText.setText("新手帮助");
@@ -67,10 +66,15 @@ public class NewHelperActivity extends AppCompatActivity {
         createSingle();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerNewhelperList.setLayoutManager(layoutManager);
-//下面这行代码就是添加分隔线的方法
         recyclerNewhelperList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
     }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_new_helper;
+    }
+
     private Callback<NewHelperResult> callback  = new Callback<NewHelperResult>() {
         @Override
         public void onResponse(Call<NewHelperResult> call, Response<NewHelperResult> response) {

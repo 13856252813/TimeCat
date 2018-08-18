@@ -3,7 +3,6 @@ package com.cary.activity.timecat.fragment.index.timeclouddish;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import butterknife.OnClick;
 /**
  * 时光云盘
  */
-public class TimeCloudDishActivity extends FragmentActivity {
+public class TimeCloudDishActivity extends BaseActivity {
     @BindView(R.id.title_back)
     ImageView titleBack;
     @BindView(R.id.title_text)
@@ -56,7 +56,6 @@ public class TimeCloudDishActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_cloud_dish);
         ButterKnife.bind(this);
 
         String IdStr = getIntent().getStringExtra("id");
@@ -71,6 +70,16 @@ public class TimeCloudDishActivity extends FragmentActivity {
         tabViewpager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         initTabLayout();
 
+    }
+
+    @Override
+    public boolean setCustomerView() {
+        return false;
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_time_cloud_dish;
     }
 
     private void initTabLayout() {

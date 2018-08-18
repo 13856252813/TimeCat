@@ -3,7 +3,6 @@ package com.cary.activity.timecat.fragment.index.news;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -13,13 +12,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class NewsActivity extends FragmentActivity {
+public class NewsActivity extends BaseActivity {
     @BindView(R.id.title_back)
     ImageView titleBack;
     @BindView(R.id.title_text)
@@ -44,7 +44,6 @@ public class NewsActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news);
         ButterKnife.bind(this);
 
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
@@ -56,6 +55,16 @@ public class NewsActivity extends FragmentActivity {
         titleBack.setPadding(20, 0, 0, 0);
         titleBack.setImageDrawable(getResources().getDrawable(R.mipmap.leftarrow));
 
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_news;
+    }
+
+    @Override
+    public boolean setCustomerView() {
+        return false;
     }
 
     private void initView() {

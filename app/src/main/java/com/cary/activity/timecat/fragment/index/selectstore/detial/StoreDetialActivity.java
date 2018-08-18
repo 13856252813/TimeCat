@@ -150,7 +150,7 @@ public class StoreDetialActivity extends BaseActivity {
     private StoreDetialCommentAdapter mStoreDetialCommentAdapter;
     private StoreCommentApi mCommentApi;
     private StoreDetialCommentResult mStoreCommentRes;
-    private List<StoreDetialCommentResult.Data> mCommentList;
+    private List<StoreDetialCommentResult.DataBean> mCommentList;
 
 
     private SharedPreferencesHelper sharePh;

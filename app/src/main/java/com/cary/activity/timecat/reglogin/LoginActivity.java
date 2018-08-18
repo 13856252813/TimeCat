@@ -547,6 +547,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Log.e(TAG, "token:" + loginComRes.getData().getToken());
                     sharedPreferencesHelper.put("id", loginComRes.getData().getId());
                     sharedPreferencesHelper.put("token", loginComRes.getData().getToken());
+                    sharedPreferencesHelper.put("storeId", loginComRes.getData().getshopId());
+                    sharedPreferencesHelper.put("storeName",loginComRes.getData().getStoreName());
                     EMClient.getInstance().login( loginComRes.getData().getId()+"","123456",new EMCallBack() {//回调
                         @Override
                         public void onSuccess() {

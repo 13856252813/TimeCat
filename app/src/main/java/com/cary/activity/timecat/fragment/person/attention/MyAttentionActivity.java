@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 
 import butterknife.BindView;
@@ -20,7 +20,7 @@ import butterknife.OnClick;
 /**
  * 我的关注
  */
-public class MyAttentionActivity extends AppCompatActivity {
+public class MyAttentionActivity extends BaseActivity {
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -62,7 +62,6 @@ public class MyAttentionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_attention);
         ButterKnife.bind(this);
         titleText.setText("我的关注");
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
@@ -73,6 +72,11 @@ public class MyAttentionActivity extends AppCompatActivity {
         //调用切换Fragmnet方法
         changeFragmnet(new AttentionMealFragment());
 
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_my_attention;
     }
 
     //切换fragment的方法

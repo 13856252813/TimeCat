@@ -3,20 +3,20 @@ package com.cary.activity.timecat.fragment.person.servicephone;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ServicePhoneActivity extends AppCompatActivity {
+public class ServicePhoneActivity extends BaseActivity {
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -51,7 +51,6 @@ public class ServicePhoneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_service_phone);
         ButterKnife.bind(this);
 
         titleText.setText("客服电话");
@@ -60,6 +59,11 @@ public class ServicePhoneActivity extends AppCompatActivity {
         titleBack.setPadding(20, 0, 0, 0);
         titleBack.setImageDrawable(getResources().getDrawable(R.mipmap.leftarrow));
 
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_service_phone;
     }
 
     @OnClick({R.id.title_back, R.id.ll_information, R.id.ll_consociation, R.id.ll_bigcustomer, R.id.ll_wechatservice})

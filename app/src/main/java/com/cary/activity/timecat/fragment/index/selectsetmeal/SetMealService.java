@@ -2,6 +2,7 @@ package com.cary.activity.timecat.fragment.index.selectsetmeal;
 
 import com.cary.activity.timecat.fragment.index.setmealdetial.SetMealCollectResult;
 import com.cary.activity.timecat.fragment.index.setmealdetial.SetMealDetialResult;
+import com.cary.activity.timecat.model.BasicService;
 
 import retrofit2.Call;
 import retrofit2.http.DELETE;
@@ -31,6 +32,11 @@ public interface SetMealService {
     @GET("api/PhotoPackage/{id}")
     Call<SetMealDetialResult> createCommitId(@Header("access-token") String token,
                                              @Path("id") String storeId);
+
+
+    //根据id获取数据
+    @GET("api/StoreService/List")
+    Call<BasicService> getBasicList();
 
 
     @POST("api/PackageAttention")

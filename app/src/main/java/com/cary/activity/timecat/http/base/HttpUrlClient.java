@@ -20,7 +20,7 @@ public class HttpUrlClient {
 
     public static String BASEURL = "http://39.106.187.244:8080/time-cat-api/";
 
-    public static String ALIYUNPHOTOBASEURL = "http://timecats-yunpan.oss-cn-hangzhou.aliyuncs.com";
+    public static String ALIYUNPHOTOBASEURL = "http://timecats-yunpan.oss-cn-hangzhou.aliyuncs.com/";
     public static String YUNPHOTOBASEURL ="http://oss-cn-hangzhou.aliyuncs.com/";
 
     public static String PAYORDERSUCCESS = "http://m.baidu.com";

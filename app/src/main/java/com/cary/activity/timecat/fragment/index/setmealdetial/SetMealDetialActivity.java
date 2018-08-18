@@ -1,22 +1,16 @@
 package com.cary.activity.timecat.fragment.index.setmealdetial;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
+import com.cary.activity.timecat.adapter.BasicServiceAdapter;
 import com.cary.activity.timecat.fragment.index.banner.BannerApi;
 import com.cary.activity.timecat.fragment.index.banner.BannerCommitResult;
 import com.cary.activity.timecat.fragment.index.basicser.BasicServiceActivity;
@@ -39,6 +34,7 @@ import com.cary.activity.timecat.fragment.index.selectstore.detial.StoreDetialCo
 import com.cary.activity.timecat.fragment.index.selectstore.detial.StoreDetialCommentResult;
 import com.cary.activity.timecat.fragment.index.timeclouddish.showimage.SpaceItemDecoration;
 import com.cary.activity.timecat.http.base.HttpUrlClient;
+import com.cary.activity.timecat.model.BasicService;
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.ToastUtil;
 import com.cary.activity.timecat.util.view.BannerLayout;
@@ -63,8 +59,6 @@ public class SetMealDetialActivity extends BaseActivity {
 
     @BindView(R.id.banner_set_meal_detial)
     BannerLayout bannerSetMealDetial;
-    @BindView(R.id.tv_set_meal_detial_service)
-    TextView tvSetMealDetialService;
     @BindView(R.id.tv_set_meal_detial_telphone)
     TextView tvSetMealDetialTelphone;
     @BindView(R.id.tv_set_meal_detial_onlinereserve)
@@ -87,22 +81,10 @@ public class SetMealDetialActivity extends BaseActivity {
     LinearLayout llSetMealTitle;
     @BindView(R.id.iv_set_meal_store_name)
     ImageView ivSetMealStoreName;
-    @BindView(R.id.tv_set_meal_store_name)
-    TextView tvSetMealStoreName;
+//    @BindView(R.id.tv_set_meal_store_name)
+//    TextView tvSetMealStoreName;
     @BindView(R.id.rl_set_meal_store_name)
     LinearLayout rlSetMealStoreName;
-    //    @BindView(R.id.iv_setmeal_detial_user_head)
-//    ImageView ivSetmealDetialUserHead;
-//    @BindView(R.id.tv_setmeal_detial_name)
-//    TextView tvSetmealDetialName;
-//    @BindView(R.id.tv_setmeal_detial_user_time)
-//    TextView tvSetmealDetialUserTime;
-//    @BindView(R.id.ratingbar_setmeal_detial)
-//    RatingBar ratingbarSetmealDetial;
-//    @BindView(R.id.tv_setmeal_detial_desc)
-//    TextView tvSetmealDetialDesc;
-//    @BindView(R.id.recycler_tv_setmeal_detial_img)
-//    RecyclerView recyclerTvSetmealDetialImg;
     @BindView(R.id.tv_income_photo)
     TextView tvIncomePhoto;
     @BindView(R.id.rl_income_photo)
@@ -115,14 +97,14 @@ public class SetMealDetialActivity extends BaseActivity {
     TextView tvColoth;
     @BindView(R.id.rl_coloth)
     RelativeLayout rlColoth;
-    @BindView(R.id.recycler_set_meal_detial)
-    RecyclerView recyclerSetMealDetial;
     @BindView(R.id.recycler_setmeal_detial_comment)
     RecyclerView recyclerSetmealDetialComment;
     @BindView(R.id.basic_serve)
     RelativeLayout mLayoutBasicServe;
-    @BindView(R.id.layout_service)
-    LinearLayout mLayoutService;
+    @BindView(R.id.basic_list)
+    RecyclerView mBasicRecyclerView;
+    @BindView(R.id.store_name)
+    TextView mStoreName;
 
     //banner数据
     private BannerApi bannerApi;
@@ -135,40 +117,25 @@ public class SetMealDetialActivity extends BaseActivity {
     //关注
     private SetMealCollectResult mMealColRes;
 
+    private BasicServiceAdapter mBasicAdapter;
+
     //留言评论
     private StoreDetialCommentAdapter mStoreDetialCommentAdapter;
     private StoreCommentApi mCommentApi;
     private StoreDetialCommentResult mStoreCommentRes;
-    private List<StoreDetialCommentResult.Data> mCommentList;
+    private List<StoreDetialCommentResult.DataBean> mCommentList;
 
     private String token;
     private String id;//套餐
     private int userId;
     private SharedPreferencesHelper sharedPreferencesHelper;
     private int storeId;//门店id
-    private String titleStr[] = {"底片全送", "专车接送", "满意在付款", "送货上门", "赠送U盘", "一对一拍摄", "VIP化妆间"};
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            ViewGroup contentView = window.getDecorView().findViewById(Window.ID_ANDROID_CONTENT);
-            contentView.getChildAt(0).setFitsSystemWindows(false);
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION  //该参数指布局能延伸到navigationbar，我们场景中不应加这个参数
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-            window.setNavigationBarColor(Color.TRANSPARENT); //设置navigationbar颜色为透明
-        }
         ButterKnife.bind(this);
 
         sharedPreferencesHelper = new SharedPreferencesHelper(this);
@@ -209,8 +176,19 @@ public class SetMealDetialActivity extends BaseActivity {
 
         mCommentApi = StoreCommentApi.getApi();
         createSingleComment();
-        initBasicServiceView();
+        initBasicRecyclerView();
+//        initNoteRecyclerView();
 
+
+    }
+
+
+    public void initBasicRecyclerView(){
+        GridLayoutManager layoutManager=new GridLayoutManager(this,3);
+        mBasicRecyclerView.setLayoutManager(layoutManager);
+        mBasicAdapter=new BasicServiceAdapter(this);
+        mBasicRecyclerView.setAdapter(mBasicAdapter);
+        getBasicDate();
     }
 
     @Override
@@ -218,40 +196,8 @@ public class SetMealDetialActivity extends BaseActivity {
         return R.layout.activity_set_meal_detial;
     }
 
-    /**
-     * 初始化基础模块
-     */
-    @SuppressLint("ResourceAsColor")
-    private void initBasicServiceView() {
-        int length;
-        if (titleStr.length / 3 == 0) {
-            length = 1;
-        } else if (titleStr.length % 3 == 0 && titleStr.length / 3 != 0) {
-            length = titleStr.length / 3;
-        } else {
-            length = titleStr.length / 3 + 1;
-        }
-        for (int i = 0; i < length; i++) {
-            LinearLayout layout = new LinearLayout(this);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.gravity = Gravity.CENTER;
-            layout.setLayoutParams(params);
-            layout.setOrientation(LinearLayout.HORIZONTAL);
-            for (int j = 0; j < 3; j++) {
-                TextView textView = new TextView(this);
-                textView.setTextColor(R.color.color_333333);
-                textView.setTextSize(13);
-                textView.setPadding(3, 3, 3, 3);
-                textView.setText("示范方安抚");
-                layout.addView(textView);
-            }
-            mLayoutService.addView(layout);
-        }
 
-    }
-
-    @OnClick({R.id.iv_set_meal_detial_back, R.id.basic_serve, R.id.rl_set_meal_store_name, R.id.tv_set_meal_collect, R.id.tv_set_meal_detial_service, R.id.tv_set_meal_detial_telphone, R.id.tv_set_meal_detial_onlinereserve})
+    @OnClick({R.id.iv_set_meal_detial_back, R.id.basic_serve, R.id.rl_set_meal_store_name, R.id.tv_set_meal_collect, R.id.tv_set_meal_detial_telphone, R.id.tv_set_meal_detial_onlinereserve})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_set_meal_detial_back:
@@ -265,9 +211,6 @@ public class SetMealDetialActivity extends BaseActivity {
                     //取消 未选中
                     createSingleMealUnCollect();
                 }
-                break;
-            case R.id.tv_set_meal_detial_service:
-                ToastUtil.showShort(this, "客服");
                 break;
             case R.id.tv_set_meal_detial_telphone:
                 ToastUtil.showShort(this, "电话");
@@ -312,9 +255,9 @@ public class SetMealDetialActivity extends BaseActivity {
                     tvSetMealMoney.setText("¥" + mDetialRes.getData().getPrice());
                     tvSetMealOldMoney.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                     tvSetMealOldMoney.setText("¥:" + mDetialRes.getData().getMarketPrice());
-                    tvSetMealStoreName.setText(mDetialRes.getData().getStoreName());//门店的title
                     String storeImg = HttpUrlClient.ALIYUNPHOTOBASEURL + mDetialRes.getData().getStoreImgurl();
                     Glide.with(SetMealDetialActivity.this).load(storeImg).into(ivSetMealStoreName);
+                    mStoreName.setText(mDetialRes.getData().getStoreName());
                     storeId = mDetialRes.getData().getStoreId();
                     tvColoth.setText(mDetialRes.getData().getClothCount() + "");
                     tvIncomePhoto.setText(mDetialRes.getData().getRucheCount() + "");
@@ -351,6 +294,32 @@ public class SetMealDetialActivity extends BaseActivity {
         }
     };
 
+    public void getBasicDate(){
+        Call<BasicService> call = mApi.getService().getBasicList();
+        call.enqueue(new Callback<BasicService>() {
+            @Override
+            public void onResponse(Call<BasicService> call, Response<BasicService> response) {
+                if (response.isSuccessful()) {
+                    Log.i(TAG, "success!!!");
+                    Log.i(TAG, "---" + response.body().toString());
+                    BasicService service=response.body();
+                    if ("00".equals(service.getCode())) {
+                        mBasicAdapter.setData(service.getData());
+                        mBasicAdapter.notifyDataSetChanged();
+                    } else {
+                        ToastUtil.showShort(SetMealDetialActivity.this, mStoreCommentRes.getMsg());
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BasicService> call, Throwable t) {
+                Log.e(TAG, "***" + t.getMessage());
+            }
+        });
+    }
+
     private void createSingleMeal() {
         Call<SetMealDetialResult> call = mApi.getService().createCommitId(token, id);
         call.enqueue(callbackdetial);
@@ -363,6 +332,7 @@ public class SetMealDetialActivity extends BaseActivity {
             if (response.isSuccessful()) {
                 Log.i(TAG, "success!!!");
                 Log.i(TAG, "---" + response.body().toString());
+                Log.e("fl","----------------------"+ response.body().toString());
                 mStoreCommentRes = response.body();
                 if ("00".equals(mStoreCommentRes.getCode())) {
                     mCommentList = mStoreCommentRes.getData();

@@ -76,6 +76,26 @@ public class LoginCommitResult implements Serializable{
 
         private String token;
 
+        private int shopId;
+
+        private String storeName;
+
+        public int getshopId() {
+            return shopId;
+        }
+
+        public void setshopId(int shopId) {
+            this.shopId = shopId;
+        }
+
+        public String getStoreName() {
+            return storeName;
+        }
+
+        public void setStoreName(String storeName) {
+            this.storeName = storeName;
+        }
+
         public String getToken() {
             return token;
         }

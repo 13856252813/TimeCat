@@ -60,7 +60,6 @@ public class SelectStoreActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_select_store);
         ButterKnife.bind(this);
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
         titleText.setTextColor(getResources().getColor(R.color.color_three));

@@ -1,9 +1,10 @@
-package com.cary.activity.timecat.fragment.index.selectstore.detial;
+package com.cary.activity.timecat.model;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class StoreDetialCommentResult implements Serializable{
+public class TimeNote implements Serializable {
+
 
     /**
      * code : 00

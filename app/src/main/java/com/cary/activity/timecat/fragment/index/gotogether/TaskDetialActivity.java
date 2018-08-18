@@ -83,10 +83,7 @@ public class TaskDetialActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_task_detial);
         ButterKnife.bind(this);
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         titleText.setText("任务详情");
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));

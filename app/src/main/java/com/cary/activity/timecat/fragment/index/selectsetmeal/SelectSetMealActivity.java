@@ -3,7 +3,6 @@ package com.cary.activity.timecat.fragment.index.selectsetmeal;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
@@ -13,8 +12,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.index.selectsetmeal.fragment.TabFragment;
+import com.cary.activity.timecat.util.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +24,7 @@ import butterknife.OnClick;
 /**
  * 选择套餐
  */
-public class SelectSetMealActivity extends FragmentActivity {
+public class SelectSetMealActivity extends BaseActivity {
     @BindView(R.id.title_back)
     ImageView titleBack;
     @BindView(R.id.title_text)
@@ -52,6 +53,7 @@ public class SelectSetMealActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_set_meal);
         ButterKnife.bind(this);
+        StatusBarUtil.setColor(this,getResources().getColor(R.color.white),0);
 
         IdStr = getIntent().getStringExtra("id");
         typeList = getIntent().getStringExtra("type");
@@ -67,6 +69,12 @@ public class SelectSetMealActivity extends FragmentActivity {
         titleBack.setImageDrawable(getResources().getDrawable(R.mipmap.leftarrow));
 
     }
+
+    @Override
+    public int getLayout() {
+        return 0;
+    }
+
     private void initView() {
         mTabTitles[0] = "全部";
         mTabTitles[1] = "私人订制";

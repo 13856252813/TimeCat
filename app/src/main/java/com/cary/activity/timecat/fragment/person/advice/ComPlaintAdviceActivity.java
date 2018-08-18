@@ -1,7 +1,6 @@
 package com.cary.activity.timecat.fragment.person.advice;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.TimeUtil;
@@ -29,7 +29,7 @@ import retrofit2.Response;
 /**
  * 投诉建议
  */
-public class ComPlaintAdviceActivity extends AppCompatActivity {
+public class ComPlaintAdviceActivity extends BaseActivity {
 
     private static final String TAG = ComPlaintAdviceActivity.class.getSimpleName();
 
@@ -67,7 +67,6 @@ public class ComPlaintAdviceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_com_plaint_advice);
         ButterKnife.bind(this);
 
         titleText.setText("投诉建议");
@@ -84,6 +83,11 @@ public class ComPlaintAdviceActivity extends AppCompatActivity {
         adviceApi = AdviceApi.getApi();
         spHelper = new SharedPreferencesHelper(this);
         timeUtil =  new TimeUtil();
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_com_plaint_advice;
     }
 
     @OnClick({R.id.title_back, R.id.btn_complaint_advice_commit})

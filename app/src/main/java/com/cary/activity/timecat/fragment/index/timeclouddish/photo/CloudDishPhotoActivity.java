@@ -192,6 +192,11 @@ public class CloudDishPhotoActivity extends BaseActivity {
     }
 
     @Override
+    public boolean setCustomerView() {
+        return false;
+    }
+
+    @Override
     public int getLayout() {
         return R.layout.activity_cloud_dish_photo;
     }
