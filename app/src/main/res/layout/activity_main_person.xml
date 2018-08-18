@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#dddddd"
     android:orientation="vertical">
 
@@ -65,24 +66,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rl_notify_user"
+
                 android:padding="10dp">
 
-                <com.cary.activity.timecat.util.view.RoundImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/riv_user_head"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:scaleType="centerCrop"/>
-
-                <ImageView
-                    android:id="@+id/iv_user_head"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/usericon_bg_circle"
-                    android:scaleType="centerCrop" />
+                    android:src="@mipmap/avatarw"
+                    app:civ_border_color="@color/color_cccccc"
+                    app:civ_border_width="5dp" />
 
 
                 <TextView
@@ -99,7 +92,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/iv_user_head"
+                    android:layout_alignBottom="@id/riv_user_head"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@id/riv_user_head">
 

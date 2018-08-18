@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -21,7 +22,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.cary.activity.timecat.BaseActivity;
+import com.cary.activity.timecat.MyRealApplication;
 import com.cary.activity.timecat.R;
+import com.cary.activity.timecat.activity.CommentActivity;
 import com.cary.activity.timecat.adapter.BasicServiceAdapter;
 import com.cary.activity.timecat.fragment.index.banner.BannerApi;
 import com.cary.activity.timecat.fragment.index.banner.BannerCommitResult;
@@ -105,6 +108,8 @@ public class SetMealDetialActivity extends BaseActivity {
     RecyclerView mBasicRecyclerView;
     @BindView(R.id.store_name)
     TextView mStoreName;
+    @BindView(R.id.layout_comment)
+    FrameLayout mLayoutComment;
 
     //banner数据
     private BannerApi bannerApi;
@@ -197,7 +202,7 @@ public class SetMealDetialActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.iv_set_meal_detial_back, R.id.basic_serve, R.id.rl_set_meal_store_name, R.id.tv_set_meal_collect, R.id.tv_set_meal_detial_telphone, R.id.tv_set_meal_detial_onlinereserve})
+    @OnClick({R.id.iv_set_meal_detial_back, R.id.layout_comment,R.id.basic_serve, R.id.rl_set_meal_store_name, R.id.tv_set_meal_collect, R.id.tv_set_meal_detial_telphone, R.id.tv_set_meal_detial_onlinereserve})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_set_meal_detial_back:
@@ -235,6 +240,11 @@ public class SetMealDetialActivity extends BaseActivity {
                 break;
             case R.id.basic_serve:
                 startActivity(new Intent(this, BasicServiceActivity.class));
+                break;
+            case R.id.layout_comment:
+                Intent intent2=new Intent(this, CommentActivity.class);
+                intent2.putExtra("id",id);
+                startActivity(intent2);
                 break;
 
         }
@@ -399,7 +409,7 @@ public class SetMealDetialActivity extends BaseActivity {
                 if ("00".equals(mMealColRes.getCode())) {
                     setColloect(false);
                 } else {
-                    ToastUtil.showShort(SetMealDetialActivity.this, mMealColRes.getMsg());
+                    ToastUtil.showShort(MyRealApplication.getInstance(), mMealColRes.getMsg());
                 }
             } else {
                 Log.e(TAG, "+++" + response.message());
@@ -452,7 +462,7 @@ public class SetMealDetialActivity extends BaseActivity {
                         bannerSetMealDetial.setViewUrls(bannerUrls, null);
                     }
                 } else {
-                    ToastUtil.showShort(SetMealDetialActivity.this, bannerComRes.getMsg());
+                    ToastUtil.showShort(MyRealApplication.getInstance(), bannerComRes.getMsg());
                 }
             } else {
                 Log.e(TAG, "+++" + response.message());

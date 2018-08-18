@@ -14,10 +14,15 @@ import com.hyphenate.util.DensityUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     private WindowManager mWindowManager;
     View mFloatView;
+
+    private Unbinder mUnbind;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         PushAgent.getInstance(this).onAppStart();
         setStatusBar();
-
+        mUnbind= ButterKnife.bind(this);
         mWindowManager=getWindowManager();
 
     }
@@ -62,6 +67,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mUnbind.unbind();
 
     }
 

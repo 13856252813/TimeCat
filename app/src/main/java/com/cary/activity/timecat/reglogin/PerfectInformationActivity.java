@@ -37,6 +37,7 @@ import com.alibaba.sdk.android.oss.callback.OSSProgressCallback;
 import com.alibaba.sdk.android.oss.common.OSSLog;
 import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.common.auth.OSSCustomSignerCredentialProvider;
+import com.alibaba.sdk.android.oss.common.auth.OSSStsTokenCredentialProvider;
 import com.alibaba.sdk.android.oss.internal.OSSAsyncTask;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
@@ -131,6 +132,7 @@ public class PerfectInformationActivity extends AppCompatActivity {
                 // 如果因为某种原因加签失败，描述error信息后，返回nil
                 // 以下是用本地算法进行的演示
                 Log.v(TAG,"content:"+content);
+                Log.e("fl","content:"+content);
                 createSingleOssAk(content);
                 return mbd.getData();//"OSS " + AccessKeyId + ":" + OSSUtils.base64(hmac - sha1(SecretKeyId, content));
             }
@@ -585,9 +587,8 @@ public class PerfectInformationActivity extends AppCompatActivity {
                 }
                 bucketName = osscredentialsComRes.getData().getBucketName();
                 Log.v(TAG, "buckname:" + osscredentialsComRes.getData().getBucketName());
-
-//                {"endpoint":"oss-cn-hangzhou.aliyuncs.com","accessKeyId":"LTAI1WzOdcWDGWNl","accessKeySecret":"X2AvzuKH8Zs2YGcLwweXG34POMdXa6",
-//                        "bucketName":"timecats-yunpan","domain":"http://timecats-yunpan.oss-cn-hangzhou.aliyuncs.com/"}
+//:{"code":"00","msg":"Success","data":{"endpoint":"oss-cn-hangzhou.aliyuncs.com","accessKeyId":"LTAI1WzOdcWDGWNl","accessKeySecret":"X2AvzuKH8Zs2YGcLwweXG34POMdXa6"
+//                        ,"bucketName":"timecats-yunpan","domain":"http://timecats-yunpan.oss-cn-hangzhou.aliyuncs.com/"}}
                 initOss(osscredentialsComRes.getData().getEndpoint(), osscredentialsComRes.getData().getAccessKeyId(),
                         osscredentialsComRes.getData().getAccessKeySecret(), osscredentialsComRes.getData().getSecurityToken());
             } else {
@@ -612,8 +613,8 @@ public class PerfectInformationActivity extends AppCompatActivity {
     private void initOss(String endpoint, final String AccessKeyId, final String SecretKeyId, String SecurityToken) {
 // 在移动端建议使用STS方式初始化OSSClient。
 // 更多信息可查看sample 中 sts 使用方式(https://github.com/aliyun/aliyun-oss-android-sdk/tree/master/app/src/main/java/com/alibaba/sdk/android/oss/app)
-//        OSSCredentialProvider credentialProvider = new OSSStsTokenCredentialProvider(
-//                AccessKeyId, SecretKeyId, SecurityToken);
+        OSSCredentialProvider credentialProvider = new OSSStsTokenCredentialProvider(
+                AccessKeyId, SecretKeyId, token);
 //        自签名模式
 
 

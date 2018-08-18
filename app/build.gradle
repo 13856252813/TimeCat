@@ -42,6 +42,20 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            if (variant.buildType.name.equals('release')) {
+                output.outputFileName = "timecat-${variant.versionName}-${variant.versionCode}.apk"
+
+            }
+            if (variant.buildType.name.equals('beta')) {
+            }
+            if (variant.buildType.name.equals('debug')) {
+
+            }
+        }
+    }
     sourceSets {
         main {
             // 设置Jni so文件路径 如果有jniLibs目录就不需要设置，好像手动创建的 jniLibs目录无效
@@ -127,6 +141,8 @@ dependencies {
     api 'com.tencent.bugly:nativecrashreport:3.3.1'
     // bugly end
     api files('libs/hyphenatechat_3.4.3.jar')
+    api 'de.hdodenhof:circleimageview:2.1.0'
+
 }
 // ADD THIS AT THE BOTTOM
 //apply plugin: 'com.google.gms.google-services'

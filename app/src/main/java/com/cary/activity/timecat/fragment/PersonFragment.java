@@ -15,8 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.request.RequestOptions;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.person.advice.ComPlaintAdviceActivity;
 import com.cary.activity.timecat.fragment.person.attention.MyAttentionActivity;
@@ -39,13 +37,12 @@ import com.cary.activity.timecat.reglogin.LoginActivity;
 import com.cary.activity.timecat.reglogin.PerfectInformationActivity;
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.ToastUtil;
-import com.cary.activity.timecat.util.view.GlideCircleTransform;
-import com.cary.activity.timecat.util.view.RoundImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -64,9 +61,7 @@ public class PersonFragment extends Fragment {
     @BindView(R.id.rl_address_store_user)
     LinearLayout rlAddressStoreUser;
     @BindView(R.id.riv_user_head)
-    RoundImageView rivUserHead;
-    @BindView(R.id.iv_user_head)
-    ImageView ivUserHead;
+    CircleImageView rivUserHead;
     @BindView(R.id.tv_user_nick)
     TextView tvUserNick;
     @BindView(R.id.iv_user_link)
@@ -185,7 +180,6 @@ public class PersonFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        StatusBarUtil.setPaddingSmart(getActivity(), view.findViewById(R.id.toolbar));
         ButterKnife.bind(getActivity());
 
         sharedPreferencesHelper = new SharedPreferencesHelper(getActivity());
@@ -196,6 +190,7 @@ public class PersonFragment extends Fragment {
         uid = (int) sharedPreferencesHelper.getSharedPreference("id", 0);
         mApi = PersonSelfApi.getApi();
         createSingle(uid);
+
 
     }
 
@@ -332,14 +327,7 @@ public class PersonFragment extends Fragment {
                         createSingle(relatedId);
                     }
                     String imageUrl =  HttpUrlClient.ALIYUNPHOTOBASEURL+mRes.getData().getImgurl();
-                    RequestOptions options2 = new RequestOptions()
-//                    .centerCrop()
-                            .override(88, 88)
-                            .placeholder(R.mipmap.avatarw)
-                            .error(R.mipmap.avatarw)
-                            .priority(Priority.HIGH)
-                            .transform(new GlideCircleTransform(getActivity(), 2, R.color.black));
-                    Glide.with(getActivity()).load(imageUrl).apply(options2).into(ivUserHead);
+                    Glide.with(getActivity()).load(imageUrl).into(rivUserHead);
                     tvUserNick.setText(mRes.getData().getNickname());
                     tvUserBanlance.setText(mRes.getData().getAmount() + "");
                     tvUserEverylook.setText(mRes.getData().getScore() + "");
@@ -370,16 +358,15 @@ public class PersonFragment extends Fragment {
                 Log.i(TAG, "---" + response.body().toString());
                 mRes = response.body();
                 if ("00".equals(mRes.getCode())) {
-                    RequestOptions options2 = new RequestOptions()
-//                    .centerCrop()
-                            .override(88, 88)
-                            .placeholder(R.mipmap.avatarw)
-                            .error(R.mipmap.avatarw)
-                            .priority(Priority.HIGH)
-                            .transform(new GlideCircleTransform(getActivity(), 2, getActivity().getResources().getColor(R.color.black)));
+//                    RequestOptions options2 = new RequestOptions()
+//                            .override(88, 88)
+//                            .placeholder(R.mipmap.avatarw)
+//                            .error(R.mipmap.avatarw)
+//                            .priority(Priority.HIGH)
+//                            .transform(new GlideCircleTransform(getActivity(), 2, getActivity().getResources().getColor(R.color.black)));
                     String imageUrl = //"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2595140314,823568551&fm=27&gp=0.jpg";
                     HttpUrlClient.ALIYUNPHOTOBASEURL+mRes.getData().getImgurl();
-                    Glide.with(getActivity()).load(imageUrl).apply(options2).into(rivUserHead);
+                    Glide.with(getActivity()).load(imageUrl).into(rivUserHead);
 
                 } else {
                     ToastUtil.showShort(getActivity(), mRes.getMsg());

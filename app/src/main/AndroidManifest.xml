@@ -191,6 +191,7 @@
         <!-- 环信end -->
 
         <activity android:name=".fragment.index.basicser.BasicServiceActivity" />
+        <activity android:name=".activity.CommentActivity" />
         <activity android:name=".fragment.index.selectfriendpay.SelectFriendPayActivity" />
         <activity android:name=".fragment.index.timeclouddish.TimeCloudDishActivity" />
         <activity android:name=".fragment.index.timeclouddish.photo.CloudDishPhotoActivity" />

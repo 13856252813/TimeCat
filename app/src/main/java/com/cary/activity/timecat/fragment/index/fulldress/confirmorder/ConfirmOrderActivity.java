@@ -2,7 +2,6 @@ package com.cary.activity.timecat.fragment.index.fulldress.confirmorder;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.index.setmealdetial.SetMealDetialResult;
 import com.cary.activity.timecat.fragment.index.timeclouddish.showimage.SpaceItemDecoration;
@@ -22,7 +22,7 @@ import butterknife.OnClick;
 /**
  * 确认订单
  */
-public class ConfirmOrderActivity extends AppCompatActivity {
+public class ConfirmOrderActivity extends BaseActivity {
     private static final String TAG = ConfirmOrderActivity.class.getSimpleName();
 
     @BindView(R.id.title_back)
@@ -158,7 +158,6 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_order);
         ButterKnife.bind(this);
 
         mMealDetailBean= (SetMealDetialResult) getIntent().getSerializableExtra("detialresult");
@@ -183,6 +182,11 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         recyclerviewConfirmOrderSecnic.addItemDecoration(new SpaceItemDecoration(20));
         recyclerviewConfirmOrderSecnic.setAdapter(adapter);
         setDatas();
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_confirm_order;
     }
 
     private void setDatas(){

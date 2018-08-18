@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.cary.activity.timecat.MyRealApplication;
+
 /**
  *  Toast统一管理类
  * Created by Cary on 2018/4/1.
@@ -46,7 +48,7 @@ public class ToastUtil {
     public static void showShort(Context context, CharSequence message) {
         if (isShow){
             if (mToast == null) {
-                mToast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+                mToast = Toast.makeText(MyRealApplication.getInstance(), message, Toast.LENGTH_SHORT);
             } else {
                 mToast.setText(message);
             }
@@ -63,7 +65,7 @@ public class ToastUtil {
     public static void showShort(Context context, int resId) {
         if (isShow){
             if (mToast == null) {
-                mToast = Toast.makeText(context, resId, Toast.LENGTH_SHORT);
+                mToast = Toast.makeText(MyRealApplication.getInstance(), resId, Toast.LENGTH_SHORT);
             } else {
                 mToast.setText(resId);
             }
@@ -80,7 +82,7 @@ public class ToastUtil {
     public static void showLong(Context context, CharSequence message) {
         if (isShow){
             if (mToast == null) {
-                mToast = Toast.makeText(context, message, Toast.LENGTH_LONG);
+                mToast = Toast.makeText(MyRealApplication.getInstance(), message, Toast.LENGTH_LONG);
             } else {
                 mToast.setText(message);
             }
@@ -97,7 +99,7 @@ public class ToastUtil {
     public static void showLong(Context context, int resId) {
         if (isShow){
             if (mToast == null) {
-                mToast = Toast.makeText(context, resId, Toast.LENGTH_LONG);
+                mToast = Toast.makeText(MyRealApplication.getInstance(), resId, Toast.LENGTH_LONG);
             } else {
                 mToast.setText(resId);
             }

@@ -124,6 +124,7 @@ public class MessageFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        messageListCommitResultCall.cancel();
     }
 
     private Callback<MessageListCommitResult> callbackMessage = new Callback<MessageListCommitResult>() {
@@ -152,9 +153,11 @@ public class MessageFragment extends Fragment {
         }
     };
 
+
+    private Call<MessageListCommitResult> messageListCommitResultCall;
     private void createSingleMessageList() {
-        Call<MessageListCommitResult> call = messageListApi.getService().createCommit(token, uid);
-        call.enqueue(callbackMessage);
+        messageListCommitResultCall = messageListApi.getService().createCommit(token, uid);
+        messageListCommitResultCall.enqueue(callbackMessage);
     }
 
     //RecyclerView实现ListView效果，实际就是布局管理器参数改为GridLayoutManager

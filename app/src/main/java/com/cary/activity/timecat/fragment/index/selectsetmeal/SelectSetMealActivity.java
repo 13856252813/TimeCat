@@ -51,7 +51,6 @@ public class SelectSetMealActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_set_meal);
         ButterKnife.bind(this);
         StatusBarUtil.setColor(this,getResources().getColor(R.color.white),0);
 
@@ -72,7 +71,7 @@ public class SelectSetMealActivity extends BaseActivity {
 
     @Override
     public int getLayout() {
-        return 0;
+        return R.layout.activity_select_set_meal;
     }
 
     private void initView() {
