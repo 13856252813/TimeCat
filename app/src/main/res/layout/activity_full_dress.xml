@@ -11,23 +11,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <include layout="@layout/title_layout" />
 
         <ImageView
             android:id="@+id/iv_fulldress_sellarea"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/ten"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:scaleType="fitXY"
             android:src="@mipmap/salearea" />
 
         <ImageView
             android:id="@+id/iv_fulldress_sharearea"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/ten"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:scaleType="fitXY"
             android:src="@mipmap/sharearea" />
     </LinearLayout>

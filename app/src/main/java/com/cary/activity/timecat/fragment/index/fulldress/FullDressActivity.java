@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 
 import butterknife.BindView;
@@ -17,7 +18,7 @@ import butterknife.OnClick;
 /**
  * 礼服馆
  */
-public class FullDressActivity extends AppCompatActivity {
+public class FullDressActivity extends BaseActivity {
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -35,7 +36,6 @@ public class FullDressActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_dress);
         ButterKnife.bind(this);
         titleText.setText("服装馆");
         titleText.setTextColor(getResources().getColor(R.color.color_three));
@@ -43,6 +43,11 @@ public class FullDressActivity extends AppCompatActivity {
         titleBack.setPadding(20, 0, 0, 0);
         titleBack.setImageDrawable(getResources().getDrawable(R.mipmap.leftarrow));
 
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_full_dress;
     }
 
     @OnClick({R.id.title_back, R.id.iv_fulldress_sellarea, R.id.iv_fulldress_sharearea})

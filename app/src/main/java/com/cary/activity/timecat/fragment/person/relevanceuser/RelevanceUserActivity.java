@@ -136,13 +136,6 @@ public class RelevanceUserActivity extends BaseActivity {
                 }
                 break;
             case R.id.tv_relevance_user_change:
-//                ToastUtil.showShort(this, "更换关联用户：" + relevanceID);
-//                Intent intent = new Intent(this, RelevanceUserActivity.class);
-//                intent.putExtra("relevance", mResList.getData().get(0).getId());
-//                intent.putExtra("relevanceadd",1);
-//                startActivity(intent);
-//                finish();
-
                 titleText.setText("添加关联用户");
                 llNorelevanceuser.setVisibility(View.VISIBLE);
                 llRelevanceUser.setVisibility(View.GONE);
