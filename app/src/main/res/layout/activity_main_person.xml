@@ -38,35 +38,11 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/rl_address_store_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/ten"
-                android:orientation="horizontal"
-                android:padding="5dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/routew" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/five"
-                    android:text="时光猫"
-                    android:textColor="@color/white"
-                    android:textSize="14dp" />
-
-            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rl_notify_user"
-
                 android:padding="10dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView

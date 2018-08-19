@@ -58,8 +58,6 @@ public class PersonFragment extends Fragment {
 
     @BindView(R.id.rl_notify_user)
     RelativeLayout rlNotifyUser;
-    @BindView(R.id.rl_address_store_user)
-    LinearLayout rlAddressStoreUser;
     @BindView(R.id.riv_user_head)
     CircleImageView rivUserHead;
     @BindView(R.id.tv_user_nick)
@@ -200,17 +198,13 @@ public class PersonFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.rl_notify_user, R.id.rl_address_store_user, R.id.riv_user_head, R.id.tv_user_nick, R.id.iv_user_link, R.id.tv_user_link, R.id.ll_user_balance, R.id.ll_user_everylook, R.id.ll_user_extralook, R.id.rl_user_myorder, R.id.ll_user_mycasheldge, R.id.ll_user_attention, R.id.ll_user_reciveinfomation, R.id.ll_user_moneyname, R.id.ll_user_newhelp, R.id.ll_user_servicephone, R.id.ll_user_sharemoney, R.id.ll_user_advice, R.id.ll_user_setting})
+    @OnClick({R.id.rl_notify_user,R.id.riv_user_head, R.id.tv_user_nick, R.id.iv_user_link, R.id.tv_user_link, R.id.ll_user_balance, R.id.ll_user_everylook, R.id.ll_user_extralook, R.id.rl_user_myorder, R.id.ll_user_mycasheldge, R.id.ll_user_attention, R.id.ll_user_reciveinfomation, R.id.ll_user_moneyname, R.id.ll_user_newhelp, R.id.ll_user_servicephone, R.id.ll_user_sharemoney, R.id.ll_user_advice, R.id.ll_user_setting})
     public void onViewClicked(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.rl_notify_user:
                 intent.setClass(getActivity(), SystemMessageActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.rl_address_store_user:
-                ToastUtil.showShort(getActivity(), "店铺");
-
                 break;
             case R.id.riv_user_head:
 //                ToastUtil.showShort(getActivity(), "头像");

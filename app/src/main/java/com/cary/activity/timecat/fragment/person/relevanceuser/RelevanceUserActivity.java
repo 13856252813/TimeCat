@@ -1,8 +1,6 @@
 package com.cary.activity.timecat.fragment.person.relevanceuser;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -14,9 +12,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.request.RequestOptions;
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
+import com.cary.activity.timecat.http.base.HttpUrlClient;
+import com.cary.activity.timecat.reglogin.LoginCommitResult;
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.ToastUtil;
 
@@ -30,7 +29,7 @@ import retrofit2.Response;
 /**
  * 关联用户
  */
-public class RelevanceUserActivity extends AppCompatActivity {
+public class RelevanceUserActivity extends BaseActivity {
 
     private static final String TAG = RelevanceUserActivity.class.getSimpleName();
 
@@ -73,11 +72,11 @@ public class RelevanceUserActivity extends AppCompatActivity {
     private int uid;
     private String token;
 
+    private LoginCommitResult.Data mCurrentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_relevance_user);
         ButterKnife.bind(this);
 
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
@@ -102,8 +101,18 @@ public class RelevanceUserActivity extends AppCompatActivity {
             llRelevanceUser.setVisibility(View.VISIBLE);
             createSingleList();
         }
+        mCurrentUser=getCurrentUser();
+        if(mCurrentUser!=null){
+            tvRelevanceUserMy.setText(mCurrentUser.getNickname());
+            Glide.with(this).load( HttpUrlClient.ALIYUNPHOTOBASEURL +mCurrentUser.getImgurl())
+                    .into(ivRelevanceUser);
+        }
 
+    }
 
+    @Override
+    public int getLayout() {
+        return R.layout.activity_relevance_user;
     }
 
     @OnClick({R.id.title_back, R.id.btn_add_relevance_user, R.id.tv_relevance_user_change, R.id.tv_relevance_user_delete})
@@ -127,12 +136,16 @@ public class RelevanceUserActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.tv_relevance_user_change:
-                ToastUtil.showShort(this, "更换关联用户：" + relevanceID);
-                Intent intent = new Intent(this, RelevanceUserActivity.class);
-                intent.putExtra("relevance", mResList.getData().get(0).getId());
-                intent.putExtra("relevanceadd",1);
-                startActivity(intent);
-                finish();
+//                ToastUtil.showShort(this, "更换关联用户：" + relevanceID);
+//                Intent intent = new Intent(this, RelevanceUserActivity.class);
+//                intent.putExtra("relevance", mResList.getData().get(0).getId());
+//                intent.putExtra("relevanceadd",1);
+//                startActivity(intent);
+//                finish();
+
+                titleText.setText("添加关联用户");
+                llNorelevanceuser.setVisibility(View.VISIBLE);
+                llRelevanceUser.setVisibility(View.GONE);
                 break;
             case R.id.tv_relevance_user_delete:
 //                ToastUtil.showShort(this, "删除关联用户：" + relevanceID);
@@ -189,16 +202,11 @@ public class RelevanceUserActivity extends AppCompatActivity {
                 Log.i(TAG, "---" + response.body().toString());
                 mResList = response.body();
                 if ("00".equals(mResList.getCode())) {
-                    RequestOptions options2 = new RequestOptions()
-//                    .centerCrop()
-                            .override(60, 40)
-                            .placeholder(R.mipmap.ic_launcher)
-                            .error(R.mipmap.ic_launcher)
-                            .priority(Priority.HIGH);
-//                    .transform(new GlideCircleTransform(mContext, 2, mContext.getResources().getColor(R.color.black)));
-                    String imageUrl = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1685935631,4222374157&fm=27&gp=0.jpg";
-//                HttpUrlClient.ALIYUNPHOTOBASEURL + data.getImgurl();
-                    Glide.with(RelevanceUserActivity.this).load(imageUrl).apply(options2).into(ivRelevanceUser);
+                    if(mResList.getData()!=null && mResList.getData().size()!=0){
+                        String imageUrl = HttpUrlClient.ALIYUNPHOTOBASEURL+mResList.getData().get(0).getImgurl();
+                        tvRelevanceUser.setText(mResList.getData().get(0).getNickname());
+                        Glide.with(RelevanceUserActivity.this).load(imageUrl).into(ivRelevanceUser);
+                    }
                 } else {
                     ToastUtil.showShort(RelevanceUserActivity.this, mResData.getMsg());
                 }

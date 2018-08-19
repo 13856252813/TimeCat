@@ -3,6 +3,8 @@ package com.cary.activity.timecat.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+
 import java.util.Map;
 
 /**
@@ -39,7 +41,7 @@ public class SharedPreferencesHelper {
         } else if (object instanceof Long) {
             editor.putLong(key, (Long) object);
         } else {
-            editor.putString(key, object.toString());
+            editor.putString(key, new Gson().toJson(object));
         }
         editor.commit();
     }

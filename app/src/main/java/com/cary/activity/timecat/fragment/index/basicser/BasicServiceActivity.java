@@ -40,7 +40,6 @@ public class BasicServiceActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_basic_service);
         ButterKnife.bind(this);
         mApi = SetMealApi.getApi();
 
@@ -57,7 +56,7 @@ public class BasicServiceActivity extends BaseActivity {
 
     @Override
     public int getLayout() {
-        return 0;
+        return R.layout.activity_basic_service;
     }
 
     public void getBasicDate(){

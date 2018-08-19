@@ -8,8 +8,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.cary.activity.timecat.reglogin.LoginCommitResult;
+import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.StatusBarUtil;
 import com.cary.activity.timecat.util.ToastUtil;
+import com.google.gson.Gson;
 import com.hyphenate.util.DensityUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
@@ -23,6 +26,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     View mFloatView;
 
     private Unbinder mUnbind;
+
+    private SharedPreferencesHelper mSharePreference;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +85,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         return true;
     }
 
+    public LoginCommitResult.Data getCurrentUser(){
+        if(mSharePreference == null){
+            mSharePreference=new SharedPreferencesHelper(this);
+        }
+        return new Gson().fromJson(
+                (String) mSharePreference.getSharedPreference("user",""),LoginCommitResult.Data.class);
+
+    }
 
     private void initCustomerView(){
 

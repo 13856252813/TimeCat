@@ -549,6 +549,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     sharedPreferencesHelper.put("token", loginComRes.getData().getToken());
                     sharedPreferencesHelper.put("storeId", loginComRes.getData().getshopId());
                     sharedPreferencesHelper.put("storeName",loginComRes.getData().getStoreName());
+                    sharedPreferencesHelper.put("user",loginComRes.getData());
                     EMClient.getInstance().login( loginComRes.getData().getId()+"","123456",new EMCallBack() {//回调
                         @Override
                         public void onSuccess() {
