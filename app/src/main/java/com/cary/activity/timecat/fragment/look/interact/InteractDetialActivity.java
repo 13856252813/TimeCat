@@ -123,10 +123,7 @@ public class InteractDetialActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_interact_detial);
         ButterKnife.bind(this);
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         titleText.setText("详情");
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
@@ -248,6 +245,9 @@ public class InteractDetialActivity extends BaseActivity {
                 Log.i(TAG, "---" + response.body().toString());
                 commentRes = response.body();
                 if ("00".equals(mRes.getCode())) {
+                    etInteractDetialAddComment.setText("");
+                    etInteractDetialAddComment.clearFocus();
+                    createSingleInteract();
 //                    List<InteractDetialResult.Evas> evasList = new InteractDetialResult().getData().getEvas();
 //                    InteractDetialResult.Evas evas = (InteractDetialResult.Evas) new InteractDetialResult().getData().getEvas();
 //                    evas.setEvaId(commentRes.getData().getEvaId());
