@@ -380,19 +380,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 //设置适配器
         recyclerViewGrid.setAdapter(recyclerViewGridAdapter);
 //布局管理器对象 参数1.上下文 2.规定显示的行数
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
-//通过布局管理器可以控制条目排列的顺序 true反向显示 false正常显示(默认)
-        gridLayoutManager.setReverseLayout(inversion);
-//设置RecycleView显示的方向是水平还是垂直
-//GridLayout.HORIZONTAL水平 GridLayout.VERTICAL默认垂直
-// 三元运算符
-        gridLayoutManager.setOrientation(orientation ? GridLayout.VERTICAL : GridLayout.HORIZONTAL);
-//设置布局管理器， 参数linearLayoutManager对象
+        LinearLayoutManager  gridLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,false);
         recyclerViewGrid.setLayoutManager(gridLayoutManager);
         recyclerViewGridAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int postion) {
-//                ToastUtil.showShort(getActivity(), "Grid 1 postion:" + postion);
                 Intent intent = new Intent(getActivity(), HotScenicDetialActivity.class);
                 intent.putExtra("id", mHotScenicData.get(postion).getId());
                 startActivity(intent);

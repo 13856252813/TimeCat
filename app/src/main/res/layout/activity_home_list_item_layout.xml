@@ -2,13 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:background="@color/white">
 
     <ImageView
         android:id="@+id/activity_home_list_item_hot_img"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitStart" />
+        android:scaleType="fitCenter" />
 
     <TextView
         android:id="@+id/activity_home_list_item_hot_title"

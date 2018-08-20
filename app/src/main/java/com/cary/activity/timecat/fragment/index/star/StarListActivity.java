@@ -79,7 +79,6 @@ public class StarListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-//        setContentView(R.layout.activity_star_list);
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
         titleText.setTextColor(getResources().getColor(R.color.color_three));
         titleBack.setPadding(20, 0, 0, 0);

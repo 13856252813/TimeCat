@@ -95,8 +95,6 @@ public class RecyclerViewListAdapter extends RecyclerView.Adapter<RecyclerViewLi
             //给imageView设置图片数据
 //            mImageView.setImageResource(data.icon);
             RequestOptions options2 = new RequestOptions()
-//                    .centerCrop()
-                    .override(420, 360)
                     .placeholder(R.mipmap.ic_launcher)
                     .error(R.mipmap.avatarw)
                     .priority(Priority.HIGH);

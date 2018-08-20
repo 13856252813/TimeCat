@@ -3,17 +3,19 @@ package com.cary.activity.timecat.fragment.index.fulldress.confirmorder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
+import com.cary.activity.timecat.activity.SceneListActivity;
 import com.cary.activity.timecat.fragment.index.setmealdetial.SetMealDetialResult;
-import com.cary.activity.timecat.fragment.index.timeclouddish.showimage.SpaceItemDecoration;
+import com.cary.activity.timecat.http.base.HttpUrlClient;
+import com.cary.activity.timecat.model.AttractionBean;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +26,7 @@ import butterknife.OnClick;
  */
 public class ConfirmOrderActivity extends BaseActivity {
     private static final String TAG = ConfirmOrderActivity.class.getSimpleName();
+    private static final int REQUEST_CODE_SECENE = 1000;
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -127,16 +130,12 @@ public class ConfirmOrderActivity extends BaseActivity {
     LinearLayout llConfirmOrderClothingAddGirl;
     @BindView(R.id.tv_confirm_order_clothing_name_add_girl)
     TextView tvConfirmOrderClothingNameAddGirl;
-    @BindView(R.id.recyclerview_confirm_order_secnic)
-    RecyclerView recyclerviewConfirmOrderSecnic;
     @BindView(R.id.iv_confirm_order_secnic_add)
     ImageView ivConfirmOrderSecnicAdd;
     @BindView(R.id.tv_confirm_order_secnic_two)
     TextView tvConfirmOrderSecnicTwo;
     @BindView(R.id.tv_confirm_order_secnic_name_two)
     TextView tvConfirmOrderSecnicNameTwo;
-    @BindView(R.id.rl_confirm_order_secnic_add)
-    RelativeLayout rlConfirmOrderSecnicAdd;
     @BindView(R.id.tv_confirm_order_setmealmoney_text)
     TextView tvConfirmOrderSetmealmoneyText;
     @BindView(R.id.tv_confirm_order_setmealmoney_flag)
@@ -176,11 +175,6 @@ public class ConfirmOrderActivity extends BaseActivity {
          */
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerviewConfirmOrderSecnic.setLayoutManager(linearLayoutManager);
-        adapter = new SelectSniecAdapter(this);
-        //设置item间距，30dp
-        recyclerviewConfirmOrderSecnic.addItemDecoration(new SpaceItemDecoration(20));
-        recyclerviewConfirmOrderSecnic.setAdapter(adapter);
         setDatas();
     }
 
@@ -201,7 +195,7 @@ public class ConfirmOrderActivity extends BaseActivity {
     @OnClick({R.id.title_back, R.id.iv_confirm_order_commodity, R.id.ll_confirm_order_camcerman,
             R.id.ll_confirm_order_dresser, R.id.rl_confirm_order_user,
             R.id.ll_confirm_order_clothing_add_boy, R.id.ll_confirm_order_clothing_add_girl,
-            R.id.rl_confirm_order_secnic_add})
+            R.id.rl_confirm_order_secnic_add,R.id.iv_confirm_order_secnic_add})
     public void onViewClicked(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -238,10 +232,26 @@ public class ConfirmOrderActivity extends BaseActivity {
                 intent.putExtra("sex", "1");
                 startActivity(intent);
                 break;
-            case R.id.rl_confirm_order_secnic_add:
-                intent.setClass(this,SelectScenicActivity.class);
-                startActivity(intent);
+            case R.id.iv_confirm_order_secnic_add:
+                intent.setClass(this, SceneListActivity.class);
+                intent.putExtra("id", mMealDetailBean.getData().getId()+"");
+                startActivityForResult(intent,REQUEST_CODE_SECENE);
                 break;
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data == null){
+            return;
+        }
+        if(requestCode == REQUEST_CODE_SECENE){
+            AttractionBean.DataBean bean= (AttractionBean.DataBean) data.getSerializableExtra("data");
+            Glide.with(this).load(HttpUrlClient.ALIYUNPHOTOBASEURL+bean.getImgurl()).into(ivConfirmOrderSecnicAdd);
+            tvConfirmOrderSecnicTwo.setText("¥"+bean.getAmount());
+            tvConfirmOrderSecnicNameTwo.setText(bean.getTitle());
 
         }
     }

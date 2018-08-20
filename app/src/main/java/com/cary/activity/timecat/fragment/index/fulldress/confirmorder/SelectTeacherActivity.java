@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -24,7 +23,6 @@ import com.cary.activity.timecat.util.ToastUtil;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -75,10 +73,6 @@ public class SelectTeacherActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_select_teacher);
-        ButterKnife.bind(this);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         teacherFlag = getIntent().getStringExtra("teacherflag");
 
@@ -87,7 +81,7 @@ public class SelectTeacherActivity extends BaseActivity {
         titleBack.setPadding(20, 0, 0, 0);
         titleBack.setImageDrawable(getResources().getDrawable(R.mipmap.leftarrow));
         if ("camcer".equals(teacherFlag)) {
-            titleText.setText("选择摄影师");
+            titleText.setText("选择老师");
             teacherType = "";
         }
         if ("dresser".equals(teacherFlag)) {
@@ -107,17 +101,6 @@ public class SelectTeacherActivity extends BaseActivity {
             }
         });
 
-        /**
-         * 创建一个linearlayoutmaneger对象，并将他设置到recyclerview当中。layoutmanager用于指定
-         * recyclerview的布局方式，这里是线性布局的意思。可以实现和listview类似的效果。
-         */
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//        recyclerSelectTeacher.setLayoutManager(linearLayoutManager);
-//        selectAdapter = new SelectTeacherAdapter(this);
-//        //设置item间距，30dp
-//        recyclerSelectTeacher.addItemDecoration(new SpaceItemDecoration(20));
-//        recyclerSelectTeacher.setAdapter(selectAdapter);
         sharePh = new SharedPreferencesHelper(this);
         token = (String) sharePh.getSharedPreference("token", "");
         uid = (int) sharePh.getSharedPreference("id", 0);

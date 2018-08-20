@@ -143,6 +143,7 @@ dependencies {
     api files('libs/hyphenatechat_3.4.3.jar')
     api 'de.hdodenhof:circleimageview:2.1.0'
 
+
 }
 // ADD THIS AT THE BOTTOM
 //apply plugin: 'com.google.gms.google-services'

@@ -159,8 +159,7 @@
                 android:id="@+id/recyclerViewThree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="@dimen/ten" />
+                android:background="@color/white"/>
 
         </LinearLayout>
 
