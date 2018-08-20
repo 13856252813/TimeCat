@@ -407,38 +407,17 @@
         </android.support.v4.widget.NestedScrollView>
 
         <!--底部的在线预订-->
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/tv_set_meal_detial_onlinereserve"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:background="@color/login_color_btn"
             android:layout_alignParentBottom="true"
-            android:background="@color/white"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_set_meal_detial_telphone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableTop="@mipmap/telephonecall"
-                android:gravity="center"
-                android:padding="@dimen/eight"
-                android:text="电话"
-                android:textColor="@color/color_six"
-                android:textSize="10dp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/tv_set_meal_detial_onlinereserve"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/login_color_btn"
-                android:gravity="center"
-                android:padding="@dimen/eight"
-                android:text="在线预定"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
-        </LinearLayout>
-
+            android:gravity="center"
+            android:padding="@dimen/eight"
+            android:text="在线预定"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

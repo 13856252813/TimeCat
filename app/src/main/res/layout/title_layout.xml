@@ -29,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="title_right"
-        android:textColor="@color/white"
-        android:textSize="@dimen/textsize_title"
-        android:visibility="gone" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/btn_logout_normal"
+        android:textSize="@dimen/textsize_title" />
 </RelativeLayout>

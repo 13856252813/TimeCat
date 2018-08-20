@@ -2,16 +2,15 @@ package com.cary.activity.timecat.fragment.index.fulldress.confirmorder;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.index.fulldress.detial.FullDressDetialActivity;
 import com.cary.activity.timecat.main.adapter.OnItemClickListener;
@@ -20,9 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class SelectColothActivity extends AppCompatActivity {
+public class SelectColothActivity extends BaseActivity {
     private static final String TAG = SelectTeacherActivity.class.getSimpleName();
 
     @BindView(R.id.title_back)
@@ -42,11 +40,6 @@ public class SelectColothActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_coloth);
-        ButterKnife.bind(this);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-
         titleText.setText("选择服装");
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
         titleText.setTextColor(getResources().getColor(R.color.color_three));
@@ -65,6 +58,11 @@ public class SelectColothActivity extends AppCompatActivity {
 
         loadListDate(false, true, fulldessRecyclerviewGrid, mGridList);
         fulldessRecyclerviewGrid.setNestedScrollingEnabled(false);
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_select_coloth;
     }
 
     //此处是底部的gridview 的列表

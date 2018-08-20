@@ -15,7 +15,7 @@
             android:layout_width="110dp"
             android:layout_height="68dp"
             android:layout_margin="5dp"
-            android:scaleType="fitXY"
+            android:scaleType="centerInside"
             android:src="@mipmap/ic_launcher" />
 
 

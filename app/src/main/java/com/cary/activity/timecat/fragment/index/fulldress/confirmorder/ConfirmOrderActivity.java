@@ -13,13 +13,16 @@ import com.bumptech.glide.Glide;
 import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.activity.SceneListActivity;
+import com.cary.activity.timecat.fragment.index.fulldress.FullDressTabActivity;
 import com.cary.activity.timecat.fragment.index.setmealdetial.SetMealDetialResult;
 import com.cary.activity.timecat.http.base.HttpUrlClient;
 import com.cary.activity.timecat.model.AttractionBean;
+import com.cary.activity.timecat.model.BasicMealInfo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * 确认订单
@@ -27,6 +30,8 @@ import butterknife.OnClick;
 public class ConfirmOrderActivity extends BaseActivity {
     private static final String TAG = ConfirmOrderActivity.class.getSimpleName();
     private static final int REQUEST_CODE_SECENE = 1000;
+    private static final int REQUEST_CLOTH_CODE = 1001;
+    private static final int REQUEST_BASIC_INFO =1002 ;
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -50,10 +55,6 @@ public class ConfirmOrderActivity extends BaseActivity {
     ImageView ivConfirmOrderUserArrow;
     @BindView(R.id.rl_confirm_order_user)
     RelativeLayout rlConfirmOrderUser;
-    @BindView(R.id.iv_confirm_order_user_head)
-    ImageView ivConfirmOrderUserHead;
-    @BindView(R.id.tv_confirm_order_user_name)
-    TextView tvConfirmOrderUserName;
     @BindView(R.id.tv_confirm_order_user_bridegroom_text)
     TextView tvConfirmOrderUserBridegroomText;
     @BindView(R.id.tv_confirm_order_user_bridegroom)
@@ -153,14 +154,25 @@ public class ConfirmOrderActivity extends BaseActivity {
     private SelectSniecAdapter adapter;
 
     private SetMealDetialResult mMealDetailBean;
+    private ImageView mCurrentImageView;
+
+    @BindView(R.id.iv_confirm_order_user_head)
+    CircleImageView mImageIcon;
+    @BindView(R.id.tv_confirm_order_user_name)
+    TextView mTextUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
 
-        mMealDetailBean= (SetMealDetialResult) getIntent().getSerializableExtra("detialresult");
+        mMealDetailBean = (SetMealDetialResult) getIntent().getSerializableExtra("detialresult");
 
+        if(getCurrentUser()!=null){
+            Glide.with(this).load(HttpUrlClient.ALIYUNPHOTOBASEURL+getCurrentUser().
+                    getImgurl()).into(mImageIcon);
+            mTextUserName.setText(getCurrentUser().getNickname());
+        }
 
         titleText.setText("确认订单");
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
@@ -183,19 +195,20 @@ public class ConfirmOrderActivity extends BaseActivity {
         return R.layout.activity_confirm_order;
     }
 
-    private void setDatas(){
-        if(mMealDetailBean==null){
+    private void setDatas() {
+        if (mMealDetailBean == null) {
             return;
         }
         tvConfirmOrderCommodityDesc.setText(mMealDetailBean.getData().getTitle());
         tvConfirmOrderCommodityStore.setText(mMealDetailBean.getData().getStoreName());
-        tvConfirmOrderCommodityPrice.setText(mMealDetailBean.getData().getPrice()+"");
+        tvConfirmOrderCommodityPrice.setText(mMealDetailBean.getData().getPrice() + "");
     }
 
     @OnClick({R.id.title_back, R.id.iv_confirm_order_commodity, R.id.ll_confirm_order_camcerman,
             R.id.ll_confirm_order_dresser, R.id.rl_confirm_order_user,
             R.id.ll_confirm_order_clothing_add_boy, R.id.ll_confirm_order_clothing_add_girl,
-            R.id.rl_confirm_order_secnic_add,R.id.iv_confirm_order_secnic_add})
+            R.id.rl_confirm_order_secnic_add, R.id.iv_confirm_order_secnic_add, R.id.iv_confirm_order_clothing,
+            R.id.iv_confirm_order_clothing_add_boy, R.id.iv_confirm_order_clothing_add_boy_two, R.id.iv_confirm_order_clothing_two})
     public void onViewClicked(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -219,23 +232,21 @@ public class ConfirmOrderActivity extends BaseActivity {
                 break;
             case R.id.rl_confirm_order_user:
                 intent.setClass(this, BaseInfoMessageActivity.class);
-
-                startActivity(intent);
-                break;
-            case R.id.ll_confirm_order_clothing_add_boy:
-                intent.setClass(this, SelectColothActivity.class);
-                intent.putExtra("sex", "2");
-                startActivity(intent);
-                break;
-            case R.id.ll_confirm_order_clothing_add_girl:
-                intent.setClass(this, SelectColothActivity.class);
-                intent.putExtra("sex", "1");
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_BASIC_INFO);
                 break;
             case R.id.iv_confirm_order_secnic_add:
                 intent.setClass(this, SceneListActivity.class);
-                intent.putExtra("id", mMealDetailBean.getData().getId()+"");
-                startActivityForResult(intent,REQUEST_CODE_SECENE);
+                intent.putExtra("id", mMealDetailBean.getData().getId() + "");
+                startActivityForResult(intent, REQUEST_CODE_SECENE);
+                break;
+            case R.id.iv_confirm_order_clothing:
+            case R.id.iv_confirm_order_clothing_add_boy:
+            case R.id.iv_confirm_order_clothing_add_boy_two:
+            case R.id.iv_confirm_order_clothing_two:
+                mCurrentImageView= (ImageView) view;
+                intent.setClass(this,FullDressTabActivity.class);
+                intent.putExtra("flagtag","1");
+                startActivityForResult(intent,REQUEST_CLOTH_CODE);
                 break;
 
         }
@@ -244,14 +255,21 @@ public class ConfirmOrderActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(data == null){
+        if (data == null) {
             return;
         }
-        if(requestCode == REQUEST_CODE_SECENE){
-            AttractionBean.DataBean bean= (AttractionBean.DataBean) data.getSerializableExtra("data");
-            Glide.with(this).load(HttpUrlClient.ALIYUNPHOTOBASEURL+bean.getImgurl()).into(ivConfirmOrderSecnicAdd);
-            tvConfirmOrderSecnicTwo.setText("¥"+bean.getAmount());
+        if (requestCode == REQUEST_CODE_SECENE) {
+            AttractionBean.DataBean bean = (AttractionBean.DataBean) data.getSerializableExtra("data");
+            Glide.with(this).load(HttpUrlClient.ALIYUNPHOTOBASEURL + bean.getImgurl()).into(ivConfirmOrderSecnicAdd);
+            tvConfirmOrderSecnicTwo.setText("¥" + bean.getAmount());
             tvConfirmOrderSecnicNameTwo.setText(bean.getTitle());
+
+        }else if(requestCode == REQUEST_CLOTH_CODE){
+
+        }else if(requestCode ==REQUEST_BASIC_INFO){
+            BasicMealInfo info= (BasicMealInfo) data.getSerializableExtra("data");
+            tvConfirmOrderUserBridegroom.setText(info.getBridegroom());
+
 
         }
     }

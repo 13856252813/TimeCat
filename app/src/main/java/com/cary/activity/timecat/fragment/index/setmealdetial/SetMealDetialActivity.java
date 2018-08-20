@@ -62,8 +62,6 @@ public class SetMealDetialActivity extends BaseActivity {
 
     @BindView(R.id.banner_set_meal_detial)
     BannerLayout bannerSetMealDetial;
-    @BindView(R.id.tv_set_meal_detial_telphone)
-    TextView tvSetMealDetialTelphone;
     @BindView(R.id.tv_set_meal_detial_onlinereserve)
     TextView tvSetMealDetialOnlinereserve;
     @BindView(R.id.iv_set_meal_detial_back)
@@ -202,7 +200,7 @@ public class SetMealDetialActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.iv_set_meal_detial_back, R.id.layout_comment,R.id.basic_serve, R.id.rl_set_meal_store_name, R.id.tv_set_meal_collect, R.id.tv_set_meal_detial_telphone, R.id.tv_set_meal_detial_onlinereserve})
+    @OnClick({R.id.iv_set_meal_detial_back, R.id.layout_comment,R.id.basic_serve, R.id.rl_set_meal_store_name, R.id.tv_set_meal_collect,R.id.tv_set_meal_detial_onlinereserve})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_set_meal_detial_back:
@@ -216,9 +214,6 @@ public class SetMealDetialActivity extends BaseActivity {
                     //取消 未选中
                     createSingleMealUnCollect();
                 }
-                break;
-            case R.id.tv_set_meal_detial_telphone:
-                ToastUtil.showShort(this, "电话");
                 break;
             case R.id.tv_set_meal_detial_onlinereserve:
 //                ToastUtil.showShort(this, "在线预定");

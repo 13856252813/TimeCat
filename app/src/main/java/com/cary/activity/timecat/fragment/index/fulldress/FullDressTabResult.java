@@ -1,13 +1,14 @@
 package com.cary.activity.timecat.fragment.index.fulldress;
 
+import java.io.Serializable;
 import java.util.List;
 
 /***
  * 礼服馆的title
  */
-public class FullDressTabResult {
+public class FullDressTabResult implements Serializable{
 
-    public class Data {
+    public class Data implements Serializable{
         private int id;
 
         private String name;

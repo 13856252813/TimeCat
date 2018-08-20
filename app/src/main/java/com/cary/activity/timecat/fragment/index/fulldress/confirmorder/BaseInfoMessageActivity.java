@@ -1,12 +1,9 @@
 package com.cary.activity.timecat.fragment.index.fulldress.confirmorder;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,16 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
+import com.cary.activity.timecat.model.BasicMealInfo;
 import com.cary.activity.timecat.util.ToastUtil;
 
 import java.util.Calendar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class BaseInfoMessageActivity extends AppCompatActivity {
+public class BaseInfoMessageActivity extends BaseActivity {
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -36,13 +34,13 @@ public class BaseInfoMessageActivity extends AppCompatActivity {
     @BindView(R.id.tv_baseinfomessage_bridegroom_text)
     TextView tvBaseinfomessageBridegroomText;
     @BindView(R.id.et_baseinfomessage_bridegroom)
-    TextView etBaseinfomessageBridegroom;
+    EditText etBaseinfomessageBridegroom;
     @BindView(R.id.ll_baseinfomessage_bridegroom)
     LinearLayout llBaseinfomessageBridegroom;
     @BindView(R.id.tv_baseinfomessage_brideg_text)
     TextView tvBaseinfomessageBridegText;
     @BindView(R.id.et_baseinfomessage_brideg)
-    TextView etBaseinfomessageBrideg;
+    EditText etBaseinfomessageBrideg;
     @BindView(R.id.ll_baseinfomessage_brideg)
     LinearLayout llBaseinfomessageBrideg;
     @BindView(R.id.tv_baseinfomessage_shootingtime_text)
@@ -60,44 +58,55 @@ public class BaseInfoMessageActivity extends AppCompatActivity {
     @BindView(R.id.tv_baseinfomessage_store_reception_text)
     TextView tvBaseinfomessageStoreReceptionText;
     @BindView(R.id.et_baseinfomessage_store_reception)
-    TextView etBaseinfomessageStoreReception;
+    EditText etBaseinfomessageStoreReception;
     @BindView(R.id.ll_baseinfomessage_store_reception)
     LinearLayout llBaseinfomessageStoreReception;
+
+
+
+
+    private String bridegroom, brideg, marryTime, shootTime, storeReceptionStr;
+
+    private BasicMealInfo mBasicInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base_info_message);
-        ButterKnife.bind(this);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         titleText.setText("基本信息");
+        titleTextRight.setText("完成");
+        titleTextRight.setTextColor(getResources().getColor(R.color.login_color_btn));
         rlTitle.setBackgroundColor(getResources().getColor(android.R.color.white));
         titleText.setTextColor(getResources().getColor(R.color.color_three));
         titleBack.setPadding(20, 0, 0, 0);
         titleBack.setImageDrawable(getResources().getDrawable(R.mipmap.leftarrow));
 
+
     }
 
-    private String bridegroom, brideg, storeReception, shootTime, storeReceptionStr;
+    @Override
+    public int getLayout() {
+        return R.layout.activity_base_info_message;
+    }
 
-    @OnClick({R.id.title_back, R.id.ll_baseinfomessage_bridegroom, R.id.ll_baseinfomessage_brideg, R.id.ll_baseinfomessage_shootingtime, R.id.ll_baseinfomessage_wedding_day, R.id.ll_baseinfomessage_store_reception})
+
+    @OnClick({R.id.title_back, R.id.title_text_right,R.id.ll_baseinfomessage_bridegroom, R.id.ll_baseinfomessage_brideg,
+            R.id.ll_baseinfomessage_shootingtime, R.id.ll_baseinfomessage_wedding_day, R.id.ll_baseinfomessage_store_reception})
     public void onViewClicked(View view) {
         Calendar c = Calendar.getInstance();
         switch (view.getId()) {
             case R.id.title_back:
                 finish();
                 break;
-            case R.id.ll_baseinfomessage_bridegroom:
-                showInputDialog("新郎姓名", etBaseinfomessageBridegroom);
-                bridegroom = etBaseinfomessageBridegroom.getText().toString().trim();
-                ToastUtil.showShort(this, "新郎姓名：" + bridegroom);
-                break;
-            case R.id.ll_baseinfomessage_brideg:
-                showInputDialog("新娘姓名", etBaseinfomessageBrideg);
-                brideg = etBaseinfomessageBrideg.getText().toString().trim();
-                ToastUtil.showShort(this, "新娘姓名：" + brideg);
+            case R.id.title_text_right:
+                bridegroom =etBaseinfomessageBridegroom.getText().toString().trim();
+                brideg= etBaseinfomessageBrideg.getText().toString().trim();
+                storeReceptionStr= etBaseinfomessageStoreReception.getText().toString().trim();
+                mBasicInfo=new BasicMealInfo( bridegroom, brideg, marryTime, shootTime, storeReceptionStr);
+                Intent intent=new Intent();
+                intent.putExtra("data",mBasicInfo);
+                setResult(RESULT_OK,intent);
+                finish();
                 break;
             case R.id.ll_baseinfomessage_shootingtime:
                 showDatePickerDialog(2, etBaseinfomessageShootingtime, c);
@@ -106,34 +115,12 @@ public class BaseInfoMessageActivity extends AppCompatActivity {
                 break;
             case R.id.ll_baseinfomessage_wedding_day:
                 showDatePickerDialog(2, etBaseinfomessageWeddingDay, c);
-                storeReceptionStr = etBaseinfomessageWeddingDay.getText().toString().trim();
+                marryTime = etBaseinfomessageWeddingDay.getText().toString().trim();
                 ToastUtil.showShort(this, "婚期时间" + storeReceptionStr);
-                break;
-            case R.id.ll_baseinfomessage_store_reception:
-                showInputDialog("门店接待", etBaseinfomessageStoreReception);
-                storeReception = etBaseinfomessageStoreReception.getText().toString().trim();
-                ToastUtil.showShort(this, "门店接待：" + storeReception);
                 break;
         }
     }
 
-    private void showInputDialog(String title, final TextView tv) {
-        /*@setView 装入一个EditView
-         */
-        final EditText editText = new EditText(BaseInfoMessageActivity.this);
-        AlertDialog.Builder inputDialog =
-                new AlertDialog.Builder(BaseInfoMessageActivity.this);
-        inputDialog.setTitle(title).setView(editText);
-        inputDialog.setPositiveButton("确定",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-//                        Toast.makeText(BaseInfoMessageActivity.this,
-                        tv.setText(editText.getText().toString().trim());
-//                                Toast.LENGTH_SHORT).show();
-                    }
-                }).show();
-    }
 
     /**
      * 日期选择
