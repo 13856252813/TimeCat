@@ -802,20 +802,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/tv_confirm_order_setmealmoney_flag"
-            android:text="34532"
             android:textColor="@color/login_color_btn"
             android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/tv_confirm_order_setmealmoney_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tv_confirm_order_setmealmoney"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/tv_confirm_order_setmealmoney"
-            android:text=".00"
-            android:textColor="@color/login_color_btn"
-            android:textSize="13dp" />
 
         <TextView
             android:id="@+id/tv_confirm_order_commit_money"

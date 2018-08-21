@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/five"
-        android:paddingBottom="@dimen/five">
+        android:paddingBottom="@dimen/five"
+        android:paddingTop="@dimen/five">
 
         <ImageView
             android:id="@+id/iv_fulldess_list_back"
@@ -24,7 +24,18 @@
             android:scaleType="center"
             android:src="@mipmap/leftarrow" />
 
+        <TextView
+            android:id="@+id/cloth_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择服装"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_333333"
+            android:textSize="18sp" />
+
         <LinearLayout
+            android:id="@+id/layout_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -62,6 +73,7 @@
         android:id="@+id/tl_fulldress_tab"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="10dp"

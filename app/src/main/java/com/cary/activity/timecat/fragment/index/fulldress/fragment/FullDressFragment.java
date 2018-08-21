@@ -1,6 +1,5 @@
 package com.cary.activity.timecat.fragment.index.fulldress.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -36,7 +35,6 @@ import retrofit2.Response;
  * 衣服分类
  */
 
-@SuppressLint("ValidFragment")
 public class FullDressFragment extends Fragment {
     private static final String TAG = FullDressFragment.class.getSimpleName();
 
@@ -52,56 +50,39 @@ public class FullDressFragment extends Fragment {
     private String uid;
     private int currentpage = 1;
     private String storeId;
-    private int sex = 1;//0男 1女
-    private String type = "0";//0售卖 1共享
-//    public static Fragment newInstance(int pos) {
-//        position = pos;
-//        TabFragment fragment = new TabFragment();
-//        return fragment;
-//    }
-
-    public FullDressFragment(FullDressTabResult.Data data, int sex, String type) {
-        this.data = data;
-        this.sex = sex;
-        this.type = type;
+    private int sex;//0男 1女
+    private static String type = "0";//0售卖 1共享
+    public static FullDressFragment newInstance(FullDressTabResult.Data data, String type) {
+        FullDressFragment fragment = new FullDressFragment();
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("data",data);
+        bundle.putString("type",type);
+        fragment.setArguments(bundle);
+        return fragment;
     }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater,container,savedInstanceState);
+        sharePh = new SharedPreferencesHelper(getActivity());
+
+
+        data= (FullDressTabResult.Data) getArguments().getSerializable("data");
+        type=getArguments().getString("type");
+        sex= (int) sharePh.getSharedPreference("sex",1);
+        Log.e("fl","------sex2222222222222222222222:"+sex+"----data:"+data.getName());
+
         View rootView = inflater.inflate(R.layout.select_set_meal_all, container, false);
 
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//        recyclerView.setLayoutManager(layoutManager);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-        //通过布局管理器可以控制条目排列的顺序 true反向显示 false正常显示(默认)
         gridLayoutManager.setReverseLayout(false);
-        //设置RecycleView显示的方向是水平还是垂直
-        //GridLayout.HORIZONTAL水平 GridLayout.VERTICAL默认垂直
-        // 三元运算符
-        gridLayoutManager.setOrientation(true ? GridLayout.VERTICAL : GridLayout.HORIZONTAL);
-        //设置布局管理器， 参数linearLayoutManager对象
+        gridLayoutManager.setOrientation(GridLayout.VERTICAL);
         recyclerView.setLayoutManager(gridLayoutManager);
-        //添加Android自带的分割线
         recyclerView.addItemDecoration(new SpaceItemDecoration(5));
-//        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
-//        mAdapter = new SelectSetMealRecyclerAdapter(getActivity(),mListDatas);
-//        recyclerView.setAdapter(mAdapter);
-//
-//        mAdapter.setOnItemClickListener(new OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int postion) {
-//                ToastUtil.showShort(getActivity(), "Grid 1 postion:" + postion);
-//                Intent intent = new Intent(getActivity(), SetMealDetialActivity.class);
-//                intent.putExtra("id","123");
-//                startActivity(intent);
-//            }
-//        });
-
-        sharePh = new SharedPreferencesHelper(getActivity());
         token = (String) sharePh.getSharedPreference("token", "");
         uid = ((int) sharePh.getSharedPreference("id", 0) + "");
         storeId = sharePh.getSharedPreference("storeId", 0) + "";
@@ -201,7 +182,7 @@ public class FullDressFragment extends Fragment {
 
     private void createSingleColoth(int catagory) {
         Call<FullDressColtheResult> call = mApi.getService().createCommitColothPage(token,
-                catagory + "", sex + "", type, currentpage);
+                catagory + "", this.sex + "", type, currentpage);
         call.enqueue(callbackColth);
     }
 

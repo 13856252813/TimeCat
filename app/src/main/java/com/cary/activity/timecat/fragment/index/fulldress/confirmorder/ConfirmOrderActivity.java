@@ -31,7 +31,7 @@ public class ConfirmOrderActivity extends BaseActivity {
     private static final String TAG = ConfirmOrderActivity.class.getSimpleName();
     private static final int REQUEST_CODE_SECENE = 1000;
     private static final int REQUEST_CLOTH_CODE = 1001;
-    private static final int REQUEST_BASIC_INFO =1002 ;
+    private static final int REQUEST_BASIC_INFO = 1002;
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -143,8 +143,6 @@ public class ConfirmOrderActivity extends BaseActivity {
     TextView tvConfirmOrderSetmealmoneyFlag;
     @BindView(R.id.tv_confirm_order_setmealmoney)
     TextView tvConfirmOrderSetmealmoney;
-    @BindView(R.id.tv_confirm_order_setmealmoney_two)
-    TextView tvConfirmOrderSetmealmoneyTwo;
     @BindView(R.id.tv_confirm_order_commit_money)
     TextView tvConfirmOrderCommitMoney;
     @BindView(R.id.ll_confirm_order_dresser)
@@ -161,6 +159,8 @@ public class ConfirmOrderActivity extends BaseActivity {
     @BindView(R.id.tv_confirm_order_user_name)
     TextView mTextUserName;
 
+    private double mTotalPrice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,8 +168,8 @@ public class ConfirmOrderActivity extends BaseActivity {
 
         mMealDetailBean = (SetMealDetialResult) getIntent().getSerializableExtra("detialresult");
 
-        if(getCurrentUser()!=null){
-            Glide.with(this).load(HttpUrlClient.ALIYUNPHOTOBASEURL+getCurrentUser().
+        if (getCurrentUser() != null) {
+            Glide.with(this).load(HttpUrlClient.ALIYUNPHOTOBASEURL + getCurrentUser().
                     getImgurl()).into(mImageIcon);
             mTextUserName.setText(getCurrentUser().getNickname());
         }
@@ -179,12 +179,6 @@ public class ConfirmOrderActivity extends BaseActivity {
         titleText.setTextColor(getResources().getColor(R.color.color_three));
         titleBack.setPadding(20, 0, 0, 0);
         titleBack.setImageDrawable(getResources().getDrawable(R.mipmap.leftarrow));
-        /**
-         * 创建一个linearlayoutmaneger对象，并将他设置到recyclerview当中。layoutmanager用于指定
-         * recyclerview的布局方式，这里是线性布局的意思。可以实现和listview类似的效果。
-         *
-         * 接下来我们创建了Fruitadapter的实例，并将数据传进去
-         */
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         setDatas();
@@ -199,9 +193,11 @@ public class ConfirmOrderActivity extends BaseActivity {
         if (mMealDetailBean == null) {
             return;
         }
+        mTotalPrice = mMealDetailBean.getData().getPrice();
         tvConfirmOrderCommodityDesc.setText(mMealDetailBean.getData().getTitle());
         tvConfirmOrderCommodityStore.setText(mMealDetailBean.getData().getStoreName());
         tvConfirmOrderCommodityPrice.setText(mMealDetailBean.getData().getPrice() + "");
+        tvConfirmOrderSetmealmoney.setText(mTotalPrice + "");
     }
 
     @OnClick({R.id.title_back, R.id.iv_confirm_order_commodity, R.id.ll_confirm_order_camcerman,
@@ -232,7 +228,7 @@ public class ConfirmOrderActivity extends BaseActivity {
                 break;
             case R.id.rl_confirm_order_user:
                 intent.setClass(this, BaseInfoMessageActivity.class);
-                startActivityForResult(intent,REQUEST_BASIC_INFO);
+                startActivityForResult(intent, REQUEST_BASIC_INFO);
                 break;
             case R.id.iv_confirm_order_secnic_add:
                 intent.setClass(this, SceneListActivity.class);
@@ -240,13 +236,22 @@ public class ConfirmOrderActivity extends BaseActivity {
                 startActivityForResult(intent, REQUEST_CODE_SECENE);
                 break;
             case R.id.iv_confirm_order_clothing:
+            case R.id.iv_confirm_order_clothing_two:
             case R.id.iv_confirm_order_clothing_add_boy:
             case R.id.iv_confirm_order_clothing_add_boy_two:
-            case R.id.iv_confirm_order_clothing_two:
-                mCurrentImageView= (ImageView) view;
-                intent.setClass(this,FullDressTabActivity.class);
-                intent.putExtra("flagtag","1");
-                startActivityForResult(intent,REQUEST_CLOTH_CODE);
+                int sex;
+                if (view.getId() == R.id.iv_confirm_order_clothing || view.getId() ==
+                        R.id.iv_confirm_order_clothing_two) {
+                    sex=1;
+                }else {
+                    sex=0;
+                }
+                mCurrentImageView = (ImageView) view;
+                intent.setClass(this, FullDressTabActivity.class);
+                intent.putExtra("flagtag", "1");
+                intent.putExtra("isOrder", true);
+                intent.putExtra("sex", sex);
+                startActivityForResult(intent, REQUEST_CLOTH_CODE);
                 break;
 
         }
@@ -264,13 +269,15 @@ public class ConfirmOrderActivity extends BaseActivity {
             tvConfirmOrderSecnicTwo.setText("¥" + bean.getAmount());
             tvConfirmOrderSecnicNameTwo.setText(bean.getTitle());
 
-        }else if(requestCode == REQUEST_CLOTH_CODE){
+        } else if (requestCode == REQUEST_CLOTH_CODE) {
 
-        }else if(requestCode ==REQUEST_BASIC_INFO){
-            BasicMealInfo info= (BasicMealInfo) data.getSerializableExtra("data");
+        } else if (requestCode == REQUEST_BASIC_INFO) {
+            BasicMealInfo info = (BasicMealInfo) data.getSerializableExtra("data");
             tvConfirmOrderUserBridegroom.setText(info.getBridegroom());
-
-
+            tvConfirmOrderUserWeddingtime.setText(info.getShootTime());
+            tvConfirmOrderUserReception.setText(info.getStoreReceptionStr());
+            tvConfirmOrderUserWeddingday.setText(info.getMarryTime());
+            tvConfirmOrderUserBride.setText(info.getBrideg());
         }
     }
 }

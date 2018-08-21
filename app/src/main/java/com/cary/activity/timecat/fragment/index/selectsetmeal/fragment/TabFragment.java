@@ -55,11 +55,6 @@ public class TabFragment extends Fragment {
     private String IdStr;
     private String typeList;
     private String storeId;
-//    public static Fragment newInstance(int pos) {
-//        position = pos;
-//        TabFragment fragment = new TabFragment();
-//        return fragment;
-//    }
 
     public TabFragment(String IdStr,int pos,String typeList) {
         this.position  = pos;
@@ -76,21 +71,7 @@ public class TabFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-//添加Android自带的分割线
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
-//
-//        mAdapter = new SelectSetMealRecyclerAdapter(getActivity(),mListDatas);
-//        recyclerView.setAdapter(mAdapter);
-//
-//        mAdapter.setOnItemClickListener(new OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int postion) {
-//                ToastUtil.showShort(getActivity(), "Grid 1 postion:" + postion);
-//                Intent intent = new Intent(getActivity(), SetMealDetialActivity.class);
-//                intent.putExtra("id","123");
-//                startActivity(intent);
-//            }
-//        });
 
         sharePh = new SharedPreferencesHelper(getActivity());
         token = (String) sharePh.getSharedPreference("token", "");

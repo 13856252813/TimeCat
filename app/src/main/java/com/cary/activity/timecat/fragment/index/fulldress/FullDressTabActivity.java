@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cary.activity.timecat.BaseActivity;
@@ -48,6 +49,10 @@ public class FullDressTabActivity extends BaseActivity {
     TabLayout tlFulldressTab;
     @BindView(R.id.viewpager_fulldress)
     ViewPager viewpagerFulldress;
+    @BindView(R.id.cloth_title)
+    TextView mTextTitle;
+    @BindView(R.id.layout_tab)
+    LinearLayout mLayoutTab;
 
     private String flagTag = "0";
     //当标签数目小于等于4个时，标签栏不可滑动
@@ -67,12 +72,12 @@ public class FullDressTabActivity extends BaseActivity {
     private String uid;
     private int sex=1;//0男 1女
 
+    private MyPagerAdapter myPagerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_full_dress_tab);
         ButterKnife.bind(this);
-
         flagTag = getIntent().getStringExtra("flagtag");
         if (!TextUtils.isEmpty(flagTag)) {
             if ("0".equals(flagTag)) {
@@ -81,12 +86,27 @@ public class FullDressTabActivity extends BaseActivity {
                 Log.v(TAG, "我是共享区");
             }
         }
+        sex =getIntent().getIntExtra("sex",1);
+        boolean isOrder= getIntent().getBooleanExtra("isOrder",false);
+        if(isOrder){
+            mTextTitle.setVisibility(View.VISIBLE);
+            mLayoutTab.setVisibility(View.GONE);
+        }
 
         sharePh = new SharedPreferencesHelper(this);
+        sharePh.put("sex",sex);
         token = (String) sharePh.getSharedPreference("token", "");
         uid = ((int) sharePh.getSharedPreference("id", 0) + "");
         mApi = FullDressTabApi.getApi();
-        createSinglefulldress("1", flagTag, "");
+
+
+        myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        tlFulldressTab.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tlFulldressTab.setSelectedTabIndicatorColor(getResources().getColor(R.color.login_color_btn));
+        tlFulldressTab.setSelectedTabIndicatorHeight((int) getResources().getDimension(R.dimen.two));
+        tlFulldressTab.setupWithViewPager(viewpagerFulldress);
+
+        createSinglefulldress(sex+"", flagTag, "");
     }
 
     @Override
@@ -101,6 +121,8 @@ public class FullDressTabActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.btn_fulldess_gril:
+                sex = 1;
+                sharePh.put("sex",sex);
                 btnFulldessGril.setBackgroundResource(R.drawable.switch_button_left_checked);
                 btnFulldessBoy.setBackgroundResource(R.drawable.switch_button_right);
                 btnFulldessBoy.setTextColor(getResources().getColor(R.color.login_color_btn));
@@ -108,6 +130,8 @@ public class FullDressTabActivity extends BaseActivity {
                 createSinglefulldress("1", flagTag, "");
                 break;
             case R.id.btn_fulldess_boy:
+                sex = 0;
+                sharePh.put("sex",sex);
                 btnFulldessGril.setBackgroundResource(R.drawable.switch_button_left);
                 btnFulldessBoy.setBackgroundResource(R.drawable.switch_button_right_checked);
                 btnFulldessBoy.setTextColor(getResources().getColor(R.color.white));
@@ -127,7 +151,8 @@ public class FullDressTabActivity extends BaseActivity {
                 if ("00".equals(mFDTabRes.getCode())) {
                     mData = mFDTabRes.getData();
                     initDatas(mData);
-                    initViewPager();
+                    viewpagerFulldress.setAdapter(myPagerAdapter);
+                    myPagerAdapter.notifyDataSetChanged();
                     initTabLayout();
                 } else {
                     ToastUtil.showShort(FullDressTabActivity.this, mFDTabRes.getMsg());
@@ -150,14 +175,6 @@ public class FullDressTabActivity extends BaseActivity {
     }
 
     private void initTabLayout() {
-        //MODE_FIXED标签栏不可滑动，各个标签会平分屏幕的宽度
-        tlFulldressTab.setTabMode(/*tabCount <= MOVABLE_COUNT ? TabLayout.MODE_FIXED :*/ TabLayout.MODE_SCROLLABLE);
-        //指示条的颜色
-        tlFulldressTab.setSelectedTabIndicatorColor(getResources().getColor(R.color.login_color_btn));
-        tlFulldressTab.setSelectedTabIndicatorHeight((int) getResources().getDimension(R.dimen.two));
-        //关联tabLayout和ViewPager,两者的选择和滑动状态会相互影响
-        tlFulldressTab.setupWithViewPager(viewpagerFulldress);
-        //自定义标签布局
         for (int i = 0; i < tabs.size(); i++) {
             TabLayout.Tab tab = tlFulldressTab.getTabAt(i);
             TextView tv = (TextView) LayoutInflater.from(this).inflate(R.layout.activity_full_dress_tab_view, tlFulldressTab, false);
@@ -166,24 +183,19 @@ public class FullDressTabActivity extends BaseActivity {
         }
     }
 
-    private void initViewPager() {
-        viewpagerFulldress.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-    }
 
     private void initDatas(List<FullDressTabResult.Data> mList) {
+        getSupportFragmentManager().getFragments().clear();
         tabs = new ArrayList<>();
-        fragments = new ArrayList<>();
+        if (fragments == null) {
+            fragments = new ArrayList<>();
+        }
+        fragments.clear();
         for (int i = 0; i < mList.size(); i++) {
             tabs.add(mList.get(i).getName());
-            FullDressFragment fragment = new FullDressFragment(mList.get(i),sex,flagTag);
+            FullDressFragment fragment = FullDressFragment.newInstance(mList.get(i), flagTag);
             fragments.add(fragment);
         }
-
-
-        for (int i = 0; i < tabs.size(); i++) {
-//            fragments.add(TabFragment.newInstance(tabs.get(i)));
-        }
-
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
@@ -198,17 +210,14 @@ public class FullDressTabActivity extends BaseActivity {
         }
 
         @Override
-        public int getCount() {
-            return fragments.size();
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
         }
 
-        /**
-         * 如果不是自定义标签布局，需要重写该方法
-         */
-//        @Nullable
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            return tabs.get(position);
-//        }
+        @Override
+        public int getCount() {
+            return fragments == null ? 0 : fragments.size();
+        }
+
     }
 }
