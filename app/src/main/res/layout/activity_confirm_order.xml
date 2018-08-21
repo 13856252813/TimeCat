@@ -159,10 +159,10 @@
                 android:padding="@dimen/ten">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
+                    android:padding="10dp"
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
@@ -191,21 +191,21 @@
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:gravity="center">
+                    android:padding="10dp"
+                    android:layout_weight="2">
 
                     <TextView
                         android:id="@+id/tv_confirm_order_user_bridegroom_text"
                         android:layout_width="wrap_content"
+                        android:layout_alignParentLeft="true"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:text="新郎"
                         android:textColor="@color/color_six"
                         android:textSize="13dp" />
 
                     <TextView
                         android:id="@+id/tv_confirm_order_user_bridegroom"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/fifteen"
@@ -226,7 +226,7 @@
 
                     <TextView
                         android:id="@+id/tv_confirm_order_user_bride"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_confirm_order_user_bridegroom_text"
                         android:layout_gravity="center"
@@ -249,7 +249,7 @@
 
                     <TextView
                         android:id="@+id/tv_confirm_order_user_weddingday"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_confirm_order_user_brideg_text"
                         android:layout_gravity="center"
@@ -289,7 +289,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/fifteen"
                         android:layout_marginTop="@dimen/ten"
-                        android:layout_toRightOf="@id/tv_confirm_order_user_bridegroom"
+                        android:layout_toRightOf="@id/tv_confirm_order_user_bride"
                         android:text="景点"
                         android:textColor="@color/color_six"
                         android:textSize="13dp" />
@@ -314,7 +314,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/fifteen"
                         android:layout_marginTop="@dimen/ten"
-                        android:layout_toRightOf="@id/tv_confirm_order_user_bridegroom"
+                        android:layout_toRightOf="@id/tv_confirm_order_user_weddingday"
                         android:text="接待"
                         android:textColor="@color/color_six"
                         android:textSize="13dp" />

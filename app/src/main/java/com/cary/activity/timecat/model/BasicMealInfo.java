@@ -53,4 +53,15 @@ public class BasicMealInfo implements Serializable {
     public void setStoreReceptionStr(String storeReceptionStr) {
         this.storeReceptionStr = storeReceptionStr;
     }
+
+    @Override
+    public String toString() {
+        return "BasicMealInfo{" +
+                "bridegroom='" + bridegroom + '\'' +
+                ", brideg='" + brideg + '\'' +
+                ", marryTime='" + marryTime + '\'' +
+                ", shootTime='" + shootTime + '\'' +
+                ", storeReceptionStr='" + storeReceptionStr + '\'' +
+                '}';
+    }
 }

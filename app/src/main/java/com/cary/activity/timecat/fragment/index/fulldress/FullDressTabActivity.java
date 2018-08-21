@@ -73,6 +73,7 @@ public class FullDressTabActivity extends BaseActivity {
     private int sex=1;//0男 1女
 
     private MyPagerAdapter myPagerAdapter;
+    public boolean isOrder=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +88,7 @@ public class FullDressTabActivity extends BaseActivity {
             }
         }
         sex =getIntent().getIntExtra("sex",1);
-        boolean isOrder= getIntent().getBooleanExtra("isOrder",false);
+        isOrder= getIntent().getBooleanExtra("isOrder",false);
         if(isOrder){
             mTextTitle.setVisibility(View.VISIBLE);
             mLayoutTab.setVisibility(View.GONE);

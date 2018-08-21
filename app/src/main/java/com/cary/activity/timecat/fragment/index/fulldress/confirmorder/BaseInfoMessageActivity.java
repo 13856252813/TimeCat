@@ -3,6 +3,7 @@ package com.cary.activity.timecat.fragment.index.fulldress.confirmorder;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -14,7 +15,6 @@ import android.widget.TextView;
 import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.model.BasicMealInfo;
-import com.cary.activity.timecat.util.ToastUtil;
 
 import java.util.Calendar;
 
@@ -63,8 +63,6 @@ public class BaseInfoMessageActivity extends BaseActivity {
     LinearLayout llBaseinfomessageStoreReception;
 
 
-
-
     private String bridegroom, brideg, marryTime, shootTime, storeReceptionStr;
 
     private BasicMealInfo mBasicInfo;
@@ -90,7 +88,7 @@ public class BaseInfoMessageActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.title_back, R.id.title_text_right,R.id.ll_baseinfomessage_bridegroom, R.id.ll_baseinfomessage_brideg,
+    @OnClick({R.id.title_back, R.id.title_text_right, R.id.ll_baseinfomessage_bridegroom, R.id.ll_baseinfomessage_brideg,
             R.id.ll_baseinfomessage_shootingtime, R.id.ll_baseinfomessage_wedding_day, R.id.ll_baseinfomessage_store_reception})
     public void onViewClicked(View view) {
         Calendar c = Calendar.getInstance();
@@ -99,24 +97,21 @@ public class BaseInfoMessageActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.title_text_right:
-                bridegroom =etBaseinfomessageBridegroom.getText().toString().trim();
-                brideg= etBaseinfomessageBrideg.getText().toString().trim();
-                storeReceptionStr= etBaseinfomessageStoreReception.getText().toString().trim();
-                mBasicInfo=new BasicMealInfo( bridegroom, brideg, marryTime, shootTime, storeReceptionStr);
-                Intent intent=new Intent();
-                intent.putExtra("data",mBasicInfo);
-                setResult(RESULT_OK,intent);
+                bridegroom = etBaseinfomessageBridegroom.getText().toString().trim();
+                brideg = etBaseinfomessageBrideg.getText().toString().trim();
+                storeReceptionStr = etBaseinfomessageStoreReception.getText().toString().trim();
+                mBasicInfo = new BasicMealInfo(bridegroom, brideg, marryTime, shootTime, storeReceptionStr);
+                Log.e("fl", "----------basicInfo：" + mBasicInfo.toString());
+                Intent intent = new Intent();
+                intent.putExtra("data", mBasicInfo);
+                setResult(RESULT_OK, intent);
                 finish();
                 break;
             case R.id.ll_baseinfomessage_shootingtime:
-                showDatePickerDialog(2, etBaseinfomessageShootingtime, c);
-                shootTime = etBaseinfomessageShootingtime.getText().toString().trim();
-                ToastUtil.showShort(this, "拍摄时间" + shootTime);
+                showDatePickerDialog(1, 2, etBaseinfomessageShootingtime, c);
                 break;
             case R.id.ll_baseinfomessage_wedding_day:
-                showDatePickerDialog(2, etBaseinfomessageWeddingDay, c);
-                marryTime = etBaseinfomessageWeddingDay.getText().toString().trim();
-                ToastUtil.showShort(this, "婚期时间" + storeReceptionStr);
+                showDatePickerDialog(2, 2, etBaseinfomessageWeddingDay, c);
                 break;
         }
     }
@@ -129,12 +124,19 @@ public class BaseInfoMessageActivity extends BaseActivity {
      * @param tv
      * @param calendar
      */
-    private void showDatePickerDialog(int themeResId, final TextView tv, Calendar calendar) {
+    private void showDatePickerDialog(final int timeType, int themeResId, final TextView tv, Calendar calendar) {
         new DatePickerDialog(this, themeResId, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 tv.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
                 tv.setTextColor(getResources().getColor(R.color.color_three));
+
+                if (timeType == 1) {
+                    shootTime = tv.getText().toString().trim();
+                } else {
+                    marryTime = tv.getText().toString().trim();
+                }
+
             }
         }
                 , calendar.get(Calendar.YEAR)

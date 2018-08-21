@@ -14,6 +14,8 @@ import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.activity.SceneListActivity;
 import com.cary.activity.timecat.fragment.index.fulldress.FullDressTabActivity;
+import com.cary.activity.timecat.fragment.index.fulldress.fragment.FullDressColtheResult;
+import com.cary.activity.timecat.fragment.index.photography.PayPhotoGraphyOrderActivity;
 import com.cary.activity.timecat.fragment.index.setmealdetial.SetMealDetialResult;
 import com.cary.activity.timecat.http.base.HttpUrlClient;
 import com.cary.activity.timecat.model.AttractionBean;
@@ -204,7 +206,8 @@ public class ConfirmOrderActivity extends BaseActivity {
             R.id.ll_confirm_order_dresser, R.id.rl_confirm_order_user,
             R.id.ll_confirm_order_clothing_add_boy, R.id.ll_confirm_order_clothing_add_girl,
             R.id.rl_confirm_order_secnic_add, R.id.iv_confirm_order_secnic_add, R.id.iv_confirm_order_clothing,
-            R.id.iv_confirm_order_clothing_add_boy, R.id.iv_confirm_order_clothing_add_boy_two, R.id.iv_confirm_order_clothing_two})
+            R.id.iv_confirm_order_clothing_add_boy, R.id.iv_confirm_order_clothing_add_boy_two, R.id.iv_confirm_order_clothing_two,
+            R.id.tv_confirm_order_commit_money})
     public void onViewClicked(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -242,9 +245,9 @@ public class ConfirmOrderActivity extends BaseActivity {
                 int sex;
                 if (view.getId() == R.id.iv_confirm_order_clothing || view.getId() ==
                         R.id.iv_confirm_order_clothing_two) {
-                    sex=1;
-                }else {
-                    sex=0;
+                    sex = 1;
+                } else {
+                    sex = 0;
                 }
                 mCurrentImageView = (ImageView) view;
                 intent.setClass(this, FullDressTabActivity.class);
@@ -252,6 +255,13 @@ public class ConfirmOrderActivity extends BaseActivity {
                 intent.putExtra("isOrder", true);
                 intent.putExtra("sex", sex);
                 startActivityForResult(intent, REQUEST_CLOTH_CODE);
+                break;
+            case R.id.tv_confirm_order_commit_money:
+                Intent intent2 = new Intent(this, PayPhotoGraphyOrderActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("detialresult", mMealDetailBean);
+                intent2.putExtras(bundle);
+                startActivity(intent2);
                 break;
 
         }
@@ -268,9 +278,15 @@ public class ConfirmOrderActivity extends BaseActivity {
             Glide.with(this).load(HttpUrlClient.ALIYUNPHOTOBASEURL + bean.getImgurl()).into(ivConfirmOrderSecnicAdd);
             tvConfirmOrderSecnicTwo.setText("¥" + bean.getAmount());
             tvConfirmOrderSecnicNameTwo.setText(bean.getTitle());
+            mTotalPrice = mTotalPrice + bean.getAmount();
+            tvConfirmOrderSetmealmoney.setText(mTotalPrice + "");
+
 
         } else if (requestCode == REQUEST_CLOTH_CODE) {
-
+            FullDressColtheResult.Data bean = (FullDressColtheResult.Data) data.getSerializableExtra("dress");
+            Glide.with(this).load(HttpUrlClient.ALIYUNPHOTOBASEURL + bean.getImgurl()).into(mCurrentImageView);
+            mTotalPrice = mTotalPrice + bean.getAmount();
+            tvConfirmOrderSetmealmoney.setText(mTotalPrice + "");
         } else if (requestCode == REQUEST_BASIC_INFO) {
             BasicMealInfo info = (BasicMealInfo) data.getSerializableExtra("data");
             tvConfirmOrderUserBridegroom.setText(info.getBridegroom());

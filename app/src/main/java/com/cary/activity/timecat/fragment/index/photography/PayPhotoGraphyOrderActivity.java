@@ -100,9 +100,6 @@ public class PayPhotoGraphyOrderActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_pay_photo_graphy_order);
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//A
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         ButterKnife.bind(this);
 
@@ -115,6 +112,7 @@ public class PayPhotoGraphyOrderActivity extends BaseActivity {
         mDetialRes = (SetMealDetialResult) getIntent().getSerializableExtra("detialresult");
         if (mDetialRes != null) {
             frontMoney = mDetialRes.getData().getFrontMoney();
+            Log.e("fl","-----------------mDetialRes:"+mDetialRes.toString());
             if (frontMoney != 0) {
                 payPhotoGraphyOrderBeforehandMoney.setText(frontMoney + "");
                 PayMoney = frontMoney;

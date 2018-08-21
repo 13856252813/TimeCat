@@ -216,12 +216,6 @@ public class SetMealDetialActivity extends BaseActivity {
                 }
                 break;
             case R.id.tv_set_meal_detial_onlinereserve:
-//                ToastUtil.showShort(this, "在线预定");
-//                Intent intent = new Intent(this, PayPhotoGraphyOrderActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("detialresult", mDetialRes);
-//                intent.putExtras(bundle);
-//                startActivity(intent);
                 Intent intent = new Intent(this, ConfirmOrderActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("detialresult", mDetialRes);

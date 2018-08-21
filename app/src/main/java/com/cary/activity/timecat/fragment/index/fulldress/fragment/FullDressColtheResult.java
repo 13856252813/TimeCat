@@ -1,12 +1,13 @@
 package com.cary.activity.timecat.fragment.index.fulldress.fragment;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 服装的列表
  */
-public class FullDressColtheResult {
-    public class Query {
+public class FullDressColtheResult implements Serializable {
+    public class Query implements Serializable {
         private int sex;
 
         private int sellType;
@@ -29,7 +30,7 @@ public class FullDressColtheResult {
 
     }
 
-    public class Pi {
+    public class Pi implements Serializable{
         private int pageSize;
 
         private int totalPage;
@@ -82,7 +83,7 @@ public class FullDressColtheResult {
 
     }
 
-    public class Data {
+    public class Data implements Serializable{
         private int id;
 
         private int storeId;

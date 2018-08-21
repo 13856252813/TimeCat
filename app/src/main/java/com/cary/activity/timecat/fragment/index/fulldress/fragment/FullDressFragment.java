@@ -16,6 +16,7 @@ import android.widget.GridLayout;
 
 import com.cary.activity.timecat.R;
 import com.cary.activity.timecat.fragment.index.fulldress.FullDessGridAdapter;
+import com.cary.activity.timecat.fragment.index.fulldress.FullDressTabActivity;
 import com.cary.activity.timecat.fragment.index.fulldress.FullDressTabApi;
 import com.cary.activity.timecat.fragment.index.fulldress.FullDressTabResult;
 import com.cary.activity.timecat.fragment.index.fulldress.detial.FullDressDetialActivity;
@@ -52,6 +53,7 @@ public class FullDressFragment extends Fragment {
     private String storeId;
     private int sex;//0男 1女
     private static String type = "0";//0售卖 1共享
+
     public static FullDressFragment newInstance(FullDressTabResult.Data data, String type) {
         FullDressFragment fragment = new FullDressFragment();
         Bundle bundle=new Bundle();
@@ -64,7 +66,7 @@ public class FullDressFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater,container,savedInstanceState);
         sharePh = new SharedPreferencesHelper(getActivity());
 
@@ -89,16 +91,23 @@ public class FullDressFragment extends Fragment {
 
         mApi = FullDressTabApi.getApi();
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swiperefreshlayout_setmeal);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter = new FullDessGridAdapter(getActivity());
         recyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int postion) {
-                Intent intent = new Intent(getActivity(), FullDressDetialActivity.class);
-                intent.putExtra("id", mData.get(postion).getId());
-                intent.putExtra("flagTag", type);
-                startActivity(intent);
+                if(((FullDressTabActivity)getActivity()).isOrder){
+                    Intent intent=new Intent();
+                    intent.putExtra("dress",mData.get(postion));
+                    getActivity().setResult(((FullDressTabActivity) getActivity()).RESULT_OK,intent);
+                    getActivity().finish();
+                }else {
+                    Intent intent = new Intent(getActivity(), FullDressDetialActivity.class);
+                    intent.putExtra("id", mData.get(postion).getId());
+                    intent.putExtra("flagTag", type);
+                    startActivity(intent);
+                }
+
             }
         });
 
