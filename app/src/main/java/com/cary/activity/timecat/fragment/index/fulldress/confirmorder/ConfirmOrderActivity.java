@@ -3,6 +3,7 @@ package com.cary.activity.timecat.fragment.index.fulldress.confirmorder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,14 +18,20 @@ import com.cary.activity.timecat.fragment.index.fulldress.FullDressTabActivity;
 import com.cary.activity.timecat.fragment.index.fulldress.fragment.FullDressColtheResult;
 import com.cary.activity.timecat.fragment.index.photography.PayPhotoGraphyOrderActivity;
 import com.cary.activity.timecat.fragment.index.setmealdetial.SetMealDetialResult;
+import com.cary.activity.timecat.http.base.ApiClient;
 import com.cary.activity.timecat.http.base.HttpUrlClient;
 import com.cary.activity.timecat.model.AttractionBean;
 import com.cary.activity.timecat.model.BasicMealInfo;
+import com.cary.activity.timecat.model.Order;
+import com.cary.activity.timecat.reglogin.LoginCommitResult;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * 确认订单
@@ -34,6 +41,9 @@ public class ConfirmOrderActivity extends BaseActivity {
     private static final int REQUEST_CODE_SECENE = 1000;
     private static final int REQUEST_CLOTH_CODE = 1001;
     private static final int REQUEST_BASIC_INFO = 1002;
+    private static final int REQUEST_TEACHER = 1002;
+
+
 
     @BindView(R.id.title_back)
     ImageView titleBack;
@@ -151,6 +161,9 @@ public class ConfirmOrderActivity extends BaseActivity {
     LinearLayout llConfirmOrderDresser;
     @BindView(R.id.ll_confirm_order_camcerman)
     LinearLayout llConfirmOrderCamcerman;
+    @BindView(R.id.tv_confirm_order_camcerman)
+    TextView mOrderCamcerman;
+
     private SelectSniecAdapter adapter;
 
     private SetMealDetialResult mMealDetailBean;
@@ -220,13 +233,11 @@ public class ConfirmOrderActivity extends BaseActivity {
             case R.id.ll_confirm_order_camcerman:
                 intent.setClass(this, SelectTeacherActivity.class);
                 intent.putExtra("teacherflag", "camcer");
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_TEACHER);
                 break;
             case R.id.ll_confirm_order_dresser:
                 intent.setClass(this, SelectTeacherActivity.class);
                 intent.putExtra("teacherflag", "dresser");
-                intent.setClass(this, SelectTeacherActivity.class);
-                intent.putExtra("teacherflag", "camcer");
                 startActivity(intent);
                 break;
             case R.id.rl_confirm_order_user:
@@ -257,6 +268,7 @@ public class ConfirmOrderActivity extends BaseActivity {
                 startActivityForResult(intent, REQUEST_CLOTH_CODE);
                 break;
             case R.id.tv_confirm_order_commit_money:
+//                loadOrder();
                 Intent intent2 = new Intent(this, PayPhotoGraphyOrderActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("detialresult", mMealDetailBean);
@@ -264,6 +276,32 @@ public class ConfirmOrderActivity extends BaseActivity {
                 startActivity(intent2);
                 break;
 
+        }
+    }
+
+    public void loadOrder() {
+        LoginCommitResult.Data user = getCurrentUser();
+        if (user != null) {
+            Call<Order> call = ApiClient.getApi().getService().loadOrder(user.getToken(), mMealDetailBean.getData().getId() + "",
+                    user.getId() + "");
+            call.enqueue(new Callback<Order>() {
+                @Override
+                public void onResponse(Call<Order> call, Response<Order> response) {
+                    if (response.isSuccessful()) {
+                        Log.i(TAG, "success!!!");
+                        Log.i(TAG, "---" + response.body().toString());
+                        Order orer = response.body();
+                        if ("00".equals(orer.getCode())) {
+
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Order> call, Throwable t) {
+
+                }
+            });
         }
     }
 
@@ -294,6 +332,8 @@ public class ConfirmOrderActivity extends BaseActivity {
             tvConfirmOrderUserReception.setText(info.getStoreReceptionStr());
             tvConfirmOrderUserWeddingday.setText(info.getMarryTime());
             tvConfirmOrderUserBride.setText(info.getBrideg());
+        }else if(requestCode ==REQUEST_TEACHER){
+            TeacherListResult bean = (TeacherListResult) data.getSerializableExtra("teacher");
         }
     }
 }

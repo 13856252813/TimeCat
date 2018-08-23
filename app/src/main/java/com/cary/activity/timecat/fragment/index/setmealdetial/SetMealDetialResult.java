@@ -3,6 +3,7 @@ package com.cary.activity.timecat.fragment.index.setmealdetial;
 import java.io.Serializable;
 
 public class SetMealDetialResult implements Serializable{
+
     public class Data implements Serializable{
         private int id;
 

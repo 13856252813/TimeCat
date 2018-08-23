@@ -81,12 +81,12 @@ public class SelectTeacherActivity extends BaseActivity {
         titleBack.setPadding(20, 0, 0, 0);
         titleBack.setImageDrawable(getResources().getDrawable(R.mipmap.leftarrow));
         if ("camcer".equals(teacherFlag)) {
-            titleText.setText("选择老师");
-            teacherType = "";
+            titleText.setText("选择摄影师");
+            teacherType = "摄影师";
         }
         if ("dresser".equals(teacherFlag)) {
             titleText.setText("选择化妆师");
-            teacherType="";
+            teacherType="化妆师";
         }
         titleBack.setOnClickListener(new View.OnClickListener() {
             @Override

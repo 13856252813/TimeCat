@@ -32,11 +32,12 @@
                     android:layout_height="38dp"
                     android:background="@drawable/text_bg"
                     android:gravity="center"
-                    android:text="+"
+                    android:text="-"
                     android:textColor="@color/color_666666"
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/add_remove"
                     android:layout_width="160dp"
                     android:layout_height="38dp"
                     android:background="@drawable/text_bg"
@@ -46,11 +47,12 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/add_amount"
                     android:layout_width="48dp"
                     android:layout_height="38dp"
                     android:background="@drawable/text_bg"
                     android:gravity="center"
-                    android:text="-"
+                    android:text="+"
                     android:textColor="@color/color_666666"
                     android:textSize="18sp" />
 
@@ -267,6 +269,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
         android:background="@color/white"
         android:orientation="horizontal">
 
@@ -274,7 +277,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_marginLeft="@dimen/ten"
             android:text="总金额"
             android:textColor="#858585"
@@ -283,7 +285,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_marginLeft="30dp"
             android:text="¥"
             android:textColor="#F83345"
@@ -293,18 +294,10 @@
             android:id="@+id/tv_full_dress_order_summoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:text="345"
             android:textColor="#F83345"
             android:textSize="26dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text=".00"
-            android:textColor="#F83345"
-            android:textSize="13dp" />
 
 
         <Button

@@ -65,24 +65,14 @@ public class SelectColothActivity extends BaseActivity {
         return R.layout.activity_select_coloth;
     }
 
-    //此处是底部的gridview 的列表
-    //RecyclerView实现ListView效果，实际就是布局管理器参数改为GridLayoutManager
     private void loadListDate(Boolean inversion, Boolean orientation,
                               final RecyclerView recyclerViewGrid, List<String> mGridList) {
 
-//创建适配器adapter对象 参数1.上下文 2.数据加载集合
         SelectColothGridAdapter recyclerViewGridAdapter = new SelectColothGridAdapter(this, mGridList);
-//设置适配器
         recyclerViewGrid.setAdapter(recyclerViewGridAdapter);
-//布局管理器对象 参数1.上下文 2.规定显示的行数
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-//通过布局管理器可以控制条目排列的顺序 true反向显示 false正常显示(默认)
         gridLayoutManager.setReverseLayout(inversion);
-//设置RecycleView显示的方向是水平还是垂直
-//GridLayout.HORIZONTAL水平 GridLayout.VERTICAL默认垂直
-// 三元运算符
         gridLayoutManager.setOrientation(orientation ? GridLayout.VERTICAL : GridLayout.HORIZONTAL);
-//设置布局管理器， 参数linearLayoutManager对象
         recyclerViewGrid.setLayoutManager(gridLayoutManager);
         recyclerViewGridAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override

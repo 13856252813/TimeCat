@@ -79,8 +79,8 @@ public class StoreDetialCommentImageAdapter extends RecyclerView.Adapter<StoreDe
         RequestOptions options2 = new RequestOptions()
 //                    .centerCrop()
                 .override(113, 113)
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
+                .placeholder(R.mipmap.image_default)
+                .error(R.mipmap.image_default)
                 .priority(Priority.HIGH);
 //                    .transform(new GlideCircleTransform(mContext, 2, mContext.getResources().getColor(R.color.black)));
         String imageUrl = HttpUrlClient.ALIYUNPHOTOBASEURL + mLists[position];

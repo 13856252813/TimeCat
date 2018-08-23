@@ -60,6 +60,9 @@ public class SelectTeacherActivity extends AppCompatActivity {
     @BindView(R.id.swiperefreshlayout_teacher)
     SwipeRefreshLayout swiperefreshlayoutTeacher;
 
+    @BindView(R.id.swiperefreshlayout_teacher)
+    SwipeRefreshLayout swiperefreshlayoutTeacher;
+
     private TeacherApi teahListApi;
     private TeacherListResult mteahListRes;
     private List<TeacherListResult.Data> mteahListData;
@@ -90,11 +93,11 @@ public class SelectTeacherActivity extends AppCompatActivity {
         titleBack.setImageDrawable(getResources().getDrawable(R.mipmap.left_arrow));
         if ("camcer".equals(teacherFlag)) {
             titleText.setText("选择摄影师");
-            teacherType = "";
+            teacherType = "摄影师";
         }
         if ("dresser".equals(teacherFlag)) {
             titleText.setText("选择化妆师");
-            teacherType="";
+            teacherType="化妆师";
         }
         titleBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,17 +112,6 @@ public class SelectTeacherActivity extends AppCompatActivity {
             }
         });
 
-        /**
-         * 创建一个linearlayoutmaneger对象，并将他设置到recyclerview当中。layoutmanager用于指定
-         * recyclerview的布局方式，这里是线性布局的意思。可以实现和listview类似的效果。
-         */
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//        recyclerSelectTeacher.setLayoutManager(linearLayoutManager);
-//        selectAdapter = new SelectTeacherAdapter(this);
-//        //设置item间距，30dp
-//        recyclerSelectTeacher.addItemDecoration(new SpaceItemDecoration(20));
-//        recyclerSelectTeacher.setAdapter(selectAdapter);
         sharePh = new SharedPreferencesHelper(this);
         token = (String) sharePh.getSharedPreference("token", "");
         uid = (int) sharePh.getSharedPreference("id", 0);
@@ -141,12 +133,10 @@ public class SelectTeacherActivity extends AppCompatActivity {
         });
 
         recyclerSelectTeacher.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override//滚动状态变化时回调
+            @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 
                 super.onScrollStateChanged(recyclerView, newState);
-                // mLastVisibleItemPosition=mLayoutManager.findLastVisibleItemPosition();
-                //滑动停止并且底部不可滚动（即滑动到底部） 加载更多
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && !(ViewCompat.canScrollVertically(recyclerView, 1))) {
                     if (currentpage < SumPage) {
                         loadMore();
@@ -198,8 +188,6 @@ public class SelectTeacherActivity extends AppCompatActivity {
                 mteahListRes = response.body();
                 if ("00".equals(mteahListRes.getCode())) {
                     mteahListData = mteahListRes.getData();
-//                    loadListDate(false, true, recyclerViewSelectStore, R.layout.activity_select_store_item_layout, mSStoreData);
-//                    recyclerViewSelectStore.setNestedScrollingEnabled(false);
                     if (currentpage == 1) {
                         mAdapter.reSetData(mteahListData);
                         swiperefreshlayoutTeacher.setRefreshing(false);

@@ -180,8 +180,6 @@ public class SetMealDetialActivity extends BaseActivity {
         mCommentApi = StoreCommentApi.getApi();
         createSingleComment();
         initBasicRecyclerView();
-//        initNoteRecyclerView();
-
 
     }
 

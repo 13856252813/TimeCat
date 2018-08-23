@@ -92,10 +92,9 @@ public class StoreDetialCommentAdapter extends RecyclerView.Adapter<StoreDetialC
         RequestOptions options2 = new RequestOptions()
 //                    .centerCrop()
                 .override(40, 40)
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
+                .placeholder(R.mipmap.avatarw)
+                .error(R.mipmap.avatarw)
                 .priority(Priority.HIGH);
-//                    .transform(new GlideCircleTransform(mContext, 2, mContext.getResources().getColor(R.color.black)));
         String imageUrl = HttpUrlClient.ALIYUNPHOTOBASEURL + data.getImgurl();
         Glide.with(mContext).load(imageUrl).apply(options2).into(holder.ivTeacherDetialLeaveMessageUserHead);
 

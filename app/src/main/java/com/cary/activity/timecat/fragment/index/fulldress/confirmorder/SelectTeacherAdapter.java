@@ -4,12 +4,10 @@ package com.cary.activity.timecat.fragment.index.fulldress.confirmorder;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,8 +20,6 @@ import com.cary.activity.timecat.fragment.index.timeclouddish.showimage.SpaceIte
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class SelectTeacherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -76,17 +72,13 @@ public class SelectTeacherAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 
         public void setData(final TeacherListResult.Data data) {
-//        holder.showPrice.setText("¥" + data.getPrice());
             tvTeacherNameNick.setText(data.getWebUser().getNickname() + " | " + data.getWebUser().getPosition());
             RequestOptions options2 = new RequestOptions()
-//                    .centerCrop()
                     .override(960, 480)
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
+                    .placeholder(R.mipmap.image_default)
+                    .error(R.mipmap.image_default)
                     .priority(Priority.HIGH);
-//                    .transform(new GlideCircleTransform(mContext, 2, mContext.getResources().getColor(R.color.black)));
             String imageUrl = "http://pic.ytqmx.com:82/2013/0410/06/02.jpg!720.jpg";
-// HttpUrlClient.ALIYUNPHOTOBASEURL + data.getWebUser().getImgurl();
             Glide.with(mContext).load(imageUrl).apply(options2).into(ivSelectTeacherItemHead);
             tvTeacherDescription.setText(data.getSelfIntroduction());
             tvSetmealCharge.setText("¥" + data.getWebUser().getPhotoAmount() + "/");
@@ -98,25 +90,8 @@ public class SelectTeacherAdapter extends RecyclerView.Adapter<RecyclerView.View
             selectworkAdapter = new SelectTeacherWorkAdapter(mContext);
             //设置item间距，30dp
             recyclerTeacherWorks.addItemDecoration(new SpaceItemDecoration(20));
-            recyclerTeacherWorks.setAdapter(selectworkAdapter);
+//            recyclerTeacherWorks.setAdapter(selectworkAdapter);
 
-            if (map != null && map.size() > 0) {
-                Log.v("SelectFriendPayAdapter", "313  map.getData:" + map.get(data));
-                cbProtol.setChecked(map.get(data));
-                cbProtol.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        map.put(data,isChecked);//!map.get(data));
-                        //单选
-                        singlesel(data);
-                        if(isChecked) {
-                            //刷新适配器
-                            notifyDataSetChanged();
-                            mListener.onCheckClick(getPosition());
-                        }
-                    }
-                });
-            }
         }
 
         @Override
@@ -125,25 +100,6 @@ public class SelectTeacherAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
     }
 
-    /**
-     * 单选
-     *
-     * @param data
-     */
-    public void singlesel(TeacherListResult.Data data) {
-        Set<Map.Entry<TeacherListResult.Data, Boolean>> entries = map.entrySet();
-        for (Map.Entry<TeacherListResult.Data, Boolean> entry : entries) {
-            entry.setValue(false);
-        }
-        map.put(data, true);
-        notifyDataSetChanged();
-    }
-
-    /**
-     * 用于把要展示的数据源传进来，并赋值给一个全局变量mFruitList，我们后续的操作都将在这个数据源的基础上进行。
-     *
-     * @param mContext
-     */
     public SelectTeacherAdapter(Context mContext) {
         this.mContext = mContext;
         map = new HashMap<>();

@@ -42,15 +42,10 @@ public class SelectColothGridAdapter extends RecyclerView.Adapter<SelectColothGr
         holder.showName.setText(mList.get(position));
 //        holder.showPrice.setText("¥"+mList.get(position));
         RequestOptions options2 = new RequestOptions()
-//                    .centerCrop()
                 .override(960, 480)
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.ic_launcher)
+                .placeholder(R.mipmap.image_default)
+                .error(R.mipmap.image_default)
                 .priority(Priority.HIGH);
-//                    .transform(new GlideCircleTransform(mContext, 2, mContext.getResources().getColor(R.color.black)));
-//        String imageUrl = HttpUrlClient.ALIYUNPHOTOBASEURL + data.getImgurl();
-//        Log.v("ShowImagedapter", "imageUrl:" + imageUrl);
-//        Glide.with(mContext).load(imageUrl).apply(options2).into(holder.showImage);
         holder.itemView.setTag(position);
 
     }
@@ -83,7 +78,6 @@ public class SelectColothGridAdapter extends RecyclerView.Adapter<SelectColothGr
         }
         @Override
         public void onClick(View v) {
-            // getpostion()为Viewholder自带的一个方法，用来获取RecyclerView当前的位置，将此作为参数，传出去
             mListener.onItemClick(v, getPosition());
         }
     }

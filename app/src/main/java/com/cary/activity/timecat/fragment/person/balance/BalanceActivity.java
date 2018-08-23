@@ -1,5 +1,6 @@
 package com.cary.activity.timecat.fragment.person.balance;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 
 import com.cary.activity.timecat.BaseActivity;
 import com.cary.activity.timecat.R;
+import com.cary.activity.timecat.activity.RechargeActivity;
+import com.cary.activity.timecat.activity.WithDrawActivity;
 import com.cary.activity.timecat.fragment.index.timeclouddish.showimage.SpaceItemDecoration;
 import com.cary.activity.timecat.util.SharedPreferencesHelper;
 import com.cary.activity.timecat.util.ToastUtil;
@@ -145,10 +148,10 @@ public class BalanceActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.ll_balance_withdraw:
-                ToastUtil.showShort(this, "提现");
+                startActivityForResult(new Intent(this, WithDrawActivity.class),100);
                 break;
             case R.id.ll_balance_recharge:
-                ToastUtil.showShort(this, "充值");
+                startActivityForResult(new Intent(this, RechargeActivity.class),100);
                 break;
         }
     }

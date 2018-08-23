@@ -8,6 +8,9 @@
     android:orientation="vertical"
     tools:context=".fragment.index.fulldress.confirmorder.ConfirmOrderActivity">
 
+    <include layout="@layout/title_layout" />
+
+
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -20,7 +23,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/title_layout" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,7 +68,7 @@
                     android:layout_width="76dp"
                     android:layout_height="76dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/image_default" />
 
                 <TextView
                     android:id="@+id/tv_confirm_order_commodity_title"
