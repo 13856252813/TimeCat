@@ -112,7 +112,6 @@ public class PayPhotoGraphyOrderActivity extends BaseActivity {
         mDetialRes = (SetMealDetialResult) getIntent().getSerializableExtra("detialresult");
         if (mDetialRes != null) {
             frontMoney = mDetialRes.getData().getFrontMoney();
-            Log.e("fl","-----------------mDetialRes:"+mDetialRes.toString());
             if (frontMoney != 0) {
                 payPhotoGraphyOrderBeforehandMoney.setText(frontMoney + "");
                 PayMoney = frontMoney;

@@ -161,8 +161,6 @@ public class ConfirmOrderActivity extends BaseActivity {
     LinearLayout llConfirmOrderDresser;
     @BindView(R.id.ll_confirm_order_camcerman)
     LinearLayout llConfirmOrderCamcerman;
-    @BindView(R.id.tv_confirm_order_camcerman)
-    TextView mOrderCamcerman;
 
     private SelectSniecAdapter adapter;
 
